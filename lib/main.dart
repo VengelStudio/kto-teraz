@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'views/game_options.dart';
 
 void main() {
   runApp(MyApp());
@@ -64,10 +65,9 @@ class HomePage extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      _buildPopupDialog(context, 'Testowy text zeby zobaczyc'),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GameOptions()),
                 );
               },
               child: Text(
