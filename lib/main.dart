@@ -26,28 +26,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Widget _buildPopupDialog(BuildContext context, String text) {
-  return new AlertDialog(
-    title: const Text('Popup'),
-    content: new Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(text),
-      ],
-    ),
-    actions: <Widget>[
-      new FlatButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        textColor: Theme.of(context).primaryColor,
-        child: const Text('Close'),
-      ),
-    ],
-  );
-}
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
