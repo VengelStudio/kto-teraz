@@ -5,14 +5,14 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_spinner/widgets/question_card.dart';
 import 'package:flutter_spinner/utils/emojis.dart';
+import 'package:flutter_spinner/utils/options.model.dart';
 import 'package:flutter_spinner/utils/players.dart';
 import 'package:flutter_spinner/utils/questions.dart';
 
 class GamePage extends StatefulWidget {
-  final int numberOfPeople;
-  final bool isTabuEnabled;
+  final GameOptions gameOptions;
 
-  const GamePage(this.numberOfPeople, this.isTabuEnabled);
+  const GamePage(this.gameOptions);
 
   @override
   _GameState createState() => _GameState();
@@ -21,14 +21,14 @@ class GamePage extends StatefulWidget {
 class _GameState extends State<GamePage> {
   int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
-  List<Question> questions = [];
-  int questionIndex = 0;
+  QuestionManager questionManager;
 
   _loadQuestions() async {
-    var fetchedQuestions = await loadQuestions(context);
+    var createdManager =
+        await QuestionManager.create(context, widget.gameOptions.isTabuEnabled);
 
     setState(() {
-      questions = fetchedQuestions;
+      questionManager = createdManager;
     });
   }
 
@@ -42,7 +42,7 @@ class _GameState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    final players = Player.generate(widget.numberOfPeople);
+    final players = Player.generate(widget.gameOptions.numberOfPeople);
 
     final wheelIndicator = FortuneIndicator(
       alignment: Alignment.topCenter,
@@ -84,7 +84,7 @@ class _GameState extends State<GamePage> {
             Expanded(
               child: Container(
                   margin: const EdgeInsets.only(left: 10, right: 10),
-                  child: questions.length > 0
+                  child: questionManager != null
                       ? PhysicalShape(
                           color: Colors.transparent,
                           shadowColor: Colors.black,
