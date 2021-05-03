@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'game_page.dart';
 
 class GameOptions extends StatelessWidget {
   @override
@@ -14,6 +15,15 @@ class GameOptions extends StatelessWidget {
                 'Opcje gry',
                 style: TextStyle(fontSize: 30.0),
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GamePage()),
+                );
+              },
+              child: Text('Start'),
             ),
             ElevatedButton(
               onPressed: () {
