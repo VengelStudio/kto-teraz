@@ -82,6 +82,16 @@ class _GameState extends State<GamePage> {
                 },
                 animateFirst: false,
                 selected: selected,
+                indicators: <FortuneIndicator>[
+                  FortuneIndicator(
+                    alignment: Alignment.topCenter,
+                    child: Transform.translate(
+                      child:
+                          new TriangleIndicator(color: const Color(0xff2f2f2f)),
+                      offset: const Offset(0, -11),
+                    ),
+                  ),
+                ],
                 items: [
                   for (var it in items)
                     FortuneItem(
