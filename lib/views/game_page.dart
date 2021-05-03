@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:flutter_spinner/utils/emojis.utils.dart';
 import 'package:flutter_svg/svg.dart';
 
 class GamePage extends StatefulWidget {
@@ -13,20 +14,11 @@ class PlayerSlice {
   int id;
   Color color;
   SvgPicture emoji;
-  Transform transformedEmoji;
 
   PlayerSlice(int id, Color color, SvgPicture emoji) {
     this.id = id;
     this.color = color;
     this.emoji = emoji;
-
-    this.transformedEmoji = Transform.translate(
-      offset: const Offset(60.0, 0.0),
-      child: Transform.rotate(
-        child: Transform.scale(child: this.emoji, scale: 0.8),
-        angle: -pi / 2,
-      ),
-    );
   }
 
   static getEmojiSvg(int index) {
@@ -93,7 +85,7 @@ class _GameState extends State<GamePage> {
                   for (var it in items)
                     FortuneItem(
                       // child: Text(it.text),
-                      child: it.transformedEmoji,
+                      child: Emojis.getTransformedEmoji(it.emoji),
                       style: FortuneItemStyle(
                         color: it.color, // <-- custom circle slice fill color
                         borderColor: Colors
