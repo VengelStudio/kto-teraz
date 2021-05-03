@@ -80,7 +80,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 30.0),
                       child: Text(
-                        "Liczba osób",
+                        "Pytania tabu?",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
