@@ -1,14 +1,12 @@
-import 'dart:convert';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-import 'package:flutter_spinner/utils/emojis.utils.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_spinner/widgets/question_card.dart';
+import 'package:flutter_spinner/utils/emojis.dart';
+import 'package:flutter_spinner/utils/players.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 
 class GamePage extends StatefulWidget {
   final int numberOfPeople;
@@ -18,58 +16,6 @@ class GamePage extends StatefulWidget {
 
   @override
   _GameState createState() => _GameState();
-}
-
-class PlayerSlice {
-  int id;
-  Color color;
-  SvgPicture emoji;
-
-  PlayerSlice({int id, Color color, SvgPicture emoji}) {
-    this.id = id;
-    this.color = color;
-    this.emoji = emoji;
-  }
-
-  static List<PlayerSlice> generate(int playerCount) {
-    List colors = new List.generate(playerCount,
-        (i) => HSLColor.fromAHSL(1, 360 * i / playerCount, 0.7, 0.5).toColor());
-
-    return new List.generate(
-        playerCount,
-        (i) =>
-            new PlayerSlice(id: i, color: colors[i], emoji: Emojis.getSvg(i)));
-  }
-}
-
-Future<List<Question>> loadQuestions(BuildContext context) async {
-  final data = await DefaultAssetBundle.of(context)
-      .loadString('assets/json/questions.json');
-
-  return compute(parseQuestions, data);
-}
-
-// A function that converts a response body into a List<Photo>.
-List<Question> parseQuestions(String rawJson) {
-  final parsed = jsonDecode(rawJson);
-
-  return parsed.map<Question>((json) => Question.fromJson(json)).toList();
-}
-
-class Question {
-  final String text;
-  final double probability;
-  final bool isTabu;
-
-  Question({this.text, this.probability, this.isTabu});
-
-  factory Question.fromJson(Map<String, dynamic> json) {
-    return Question(
-      text: json['text'] as String,
-      probability: json['probability'] as double,
-      isTabu: json['isTabu'] as bool,
-    );
-  }
 }
 
 class _GameState extends State<GamePage> {
@@ -96,7 +42,7 @@ class _GameState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    final players = PlayerSlice.generate(widget.numberOfPeople);
+    final players = Player.generate(widget.numberOfPeople);
 
     final wheelIndicator = FortuneIndicator(
       alignment: Alignment.topCenter,
