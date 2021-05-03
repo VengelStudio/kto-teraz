@@ -69,45 +69,53 @@ class _GameState extends State<GamePage> {
         child: Column(
           children: [
             Expanded(
-              child: FortuneWheel(
-                physics: CircularPanPhysics(
-                  duration: Duration(seconds: nextDurationInS),
-                  curve: Curves.ease,
-                ),
-                onFling: () {
-                  setState(() {
-                    nextDurationInS = Random().nextInt(4) + 1;
-                    selected = Random().nextInt(players.length);
-                  });
-                },
-                animateFirst: false,
-                selected: selected,
-                indicators: <FortuneIndicator>[
-                  FortuneIndicator(
-                    alignment: Alignment.topCenter,
-                    child: Transform.translate(
-                      child:
-                          new TriangleIndicator(color: const Color(0xff2f2f2f)),
-                      offset: const Offset(0, -11),
-                    ),
-                  ),
-                ],
-                items: [
-                  for (var player in players)
-                    FortuneItem(
-                      // child: Text(it.text),
-                      child: Emojis.getTransformedEmoji(player.emoji),
-                      style: FortuneItemStyle(
-                        color:
-                            player.color, // <-- custom circle slice fill color
-                        borderColor: Colors
-                            .black38, // <-- custom circle slice stroke color
-                        borderWidth: 1, // <-- custom circle slice stroke width
+                child: Container(
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    child: PhysicalShape(
+                      color: Colors.transparent,
+                      shadowColor: Colors.black,
+                      elevation: 8,
+                      clipper: ShapeBorderClipper(shape: CircleBorder()),
+                      child: FortuneWheel(
+                        physics: CircularPanPhysics(
+                          duration: Duration(seconds: nextDurationInS),
+                          curve: Curves.ease,
+                        ),
+                        onFling: () {
+                          setState(() {
+                            nextDurationInS = Random().nextInt(4) + 1;
+                            selected = Random().nextInt(players.length);
+                          });
+                        },
+                        animateFirst: false,
+                        selected: selected,
+                        indicators: <FortuneIndicator>[
+                          FortuneIndicator(
+                            alignment: Alignment.topCenter,
+                            child: Transform.translate(
+                              child: new TriangleIndicator(
+                                  color: const Color(0xff2f2f2f)),
+                              offset: const Offset(0, -11),
+                            ),
+                          ),
+                        ],
+                        items: [
+                          for (var player in players)
+                            FortuneItem(
+                              // child: Text(it.text),
+                              child: Emojis.getTransformedEmoji(player.emoji),
+                              style: FortuneItemStyle(
+                                color: player
+                                    .color, // <-- custom circle slice fill color
+                                borderColor: Colors
+                                    .black38, // <-- custom circle slice stroke color
+                                borderWidth:
+                                    1, // <-- custom circle slice stroke width
+                              ),
+                            ),
+                        ],
                       ),
-                    ),
-                ],
-              ),
-            ),
+                    ))),
           ],
         ),
       ),
