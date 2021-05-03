@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:flutter_spinner/utils/emojis.utils.dart';
+import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_spinner/widgets/question_card.dart';
 
 class GamePage extends StatefulWidget {
   final int numberOfPeople;
@@ -63,6 +65,8 @@ class _GameState extends State<GamePage> {
   int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
 
+  Winner winner = new Winner();
+
   @override
   Widget build(BuildContext context) {
     final players = PlayerSlice.generate(widget.numberOfPeople);
@@ -79,13 +83,22 @@ class _GameState extends State<GamePage> {
       setState(() {
         nextDurationInS = Random().nextInt(4) + 1;
         selectedPlayerIndex = Random().nextInt(players.length);
+
+        winner.index = selectedPlayerIndex;
+        winner.color = players[selectedPlayerIndex].color;
+        winner.emoji = players[selectedPlayerIndex].emoji;
       });
     }
 
     // todo temporary dialog, remove this when implementing question popup
-    showAlertDialog(BuildContext context) {
+    showQuestionCard(BuildContext context) {
       AlertDialog alert = AlertDialog(
-        content: Text("Index won: $selectedPlayerIndex"),
+        content: Column(
+          children: [
+            winner.emoji,
+            Text("Index won: ${winner.index} ${winner.color}"),
+          ],
+        ),
         actions: [
           TextButton(
             child: Text("OK"),
@@ -107,7 +120,7 @@ class _GameState extends State<GamePage> {
 
     openQuestion() {
       // todo temporary dialog, remove this when implementing question popup
-      showAlertDialog(context);
+      showQuestionCard(context);
     }
 
     return Scaffold(
