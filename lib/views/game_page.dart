@@ -55,7 +55,7 @@ class PlayerSlice {
 }
 
 class _GameState extends State<GamePage> {
-  int selected = 0;
+  int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
 
   int tempPlayerCount = 15;
@@ -63,6 +63,49 @@ class _GameState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     final players = PlayerSlice.generate(tempPlayerCount);
+
+    final wheelIndicator = FortuneIndicator(
+      alignment: Alignment.topCenter,
+      child: Transform.translate(
+        child: new TriangleIndicator(color: const Color(0xff2f2f2f)),
+        offset: const Offset(0, -11),
+      ),
+    );
+
+    spinWheel() {
+      setState(() {
+        nextDurationInS = Random().nextInt(4) + 1;
+        selectedPlayerIndex = Random().nextInt(players.length);
+      });
+    }
+
+    // todo temporary dialog, remove this when implementing question popup
+    showAlertDialog(BuildContext context) {
+      AlertDialog alert = AlertDialog(
+        content: Text("Index won: $selectedPlayerIndex"),
+        actions: [
+          TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).pop();
+            },
+          ),
+        ],
+      );
+
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+
+    openQuestion() {
+      // todo temporary dialog, remove this when implementing question popup
+      showAlertDialog(context);
+    }
 
     return Scaffold(
       body: GestureDetector(
@@ -81,24 +124,11 @@ class _GameState extends State<GamePage> {
                           duration: Duration(seconds: nextDurationInS),
                           curve: Curves.ease,
                         ),
-                        onFling: () {
-                          setState(() {
-                            nextDurationInS = Random().nextInt(4) + 1;
-                            selected = Random().nextInt(players.length);
-                          });
-                        },
+                        onFling: spinWheel,
+                        onAnimationEnd: openQuestion,
                         animateFirst: false,
-                        selected: selected,
-                        indicators: <FortuneIndicator>[
-                          FortuneIndicator(
-                            alignment: Alignment.topCenter,
-                            child: Transform.translate(
-                              child: new TriangleIndicator(
-                                  color: const Color(0xff2f2f2f)),
-                              offset: const Offset(0, -11),
-                            ),
-                          ),
-                        ],
+                        selected: selectedPlayerIndex,
+                        indicators: <FortuneIndicator>[wheelIndicator],
                         items: [
                           for (var player in players)
                             FortuneItem(
