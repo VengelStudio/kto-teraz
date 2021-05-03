@@ -62,7 +62,7 @@ class _GameState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    final items = PlayerSlice.generate(tempPlayerCount);
+    final players = PlayerSlice.generate(tempPlayerCount);
 
     return Scaffold(
       body: GestureDetector(
@@ -77,7 +77,7 @@ class _GameState extends State<GamePage> {
                 onFling: () {
                   setState(() {
                     nextDurationInS = Random().nextInt(4) + 1;
-                    selected = Random().nextInt(items.length);
+                    selected = Random().nextInt(players.length);
                   });
                 },
                 animateFirst: false,
@@ -93,12 +93,13 @@ class _GameState extends State<GamePage> {
                   ),
                 ],
                 items: [
-                  for (var it in items)
+                  for (var player in players)
                     FortuneItem(
                       // child: Text(it.text),
-                      child: Emojis.getTransformedEmoji(it.emoji),
+                      child: Emojis.getTransformedEmoji(player.emoji),
                       style: FortuneItemStyle(
-                        color: it.color, // <-- custom circle slice fill color
+                        color:
+                            player.color, // <-- custom circle slice fill color
                         borderColor: Colors
                             .black38, // <-- custom circle slice stroke color
                         borderWidth: 1, // <-- custom circle slice stroke width
