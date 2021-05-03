@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/options.model.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-import './game_page.dart';
+import 'game_page.dart';
 
-class GameOptions extends StatefulWidget {
+class GameOptionsPage extends StatefulWidget {
   @override
-  _GameOptionsState createState() => _GameOptionsState();
+  _GameOptionsPageState createState() => _GameOptionsPageState();
 }
 
-class _GameOptionsState extends State<GameOptions> {
-  bool isTabuEnabled = false;
-  int numberOfPeople = 2;
+class _GameOptionsPageState extends State<GameOptionsPage> {
+  GameOptions gameOptions = new GameOptions();
 
   @override
   Widget build(BuildContext context) {
@@ -45,26 +45,28 @@ class _GameOptionsState extends State<GameOptions> {
                         IconButton(
                           icon: Icon(Icons.remove),
                           onPressed: () => setState(() {
-                            final finalValue = numberOfPeople - 1;
-                            numberOfPeople = finalValue.clamp(0, 20);
+                            final finalValue = gameOptions.numberOfPeople - 1;
+                            gameOptions.numberOfPeople =
+                                finalValue.clamp(2, 15);
                           }),
                         ),
                         NumberPicker(
-                          value: numberOfPeople,
+                          value: gameOptions.numberOfPeople,
                           minValue: 2,
                           maxValue: 15,
                           itemWidth: 40,
                           itemCount: 1,
                           step: 1,
                           haptics: true,
-                          onChanged: (value) =>
-                              setState(() => numberOfPeople = value),
+                          onChanged: (value) => setState(
+                              () => gameOptions.numberOfPeople = value),
                         ),
                         IconButton(
                           icon: Icon(Icons.add),
                           onPressed: () => setState(() {
-                            final finalValue = numberOfPeople + 1;
-                            numberOfPeople = finalValue.clamp(0, 20);
+                            final finalValue = gameOptions.numberOfPeople + 1;
+                            gameOptions.numberOfPeople =
+                                finalValue.clamp(2, 15);
                           }),
                         ),
                       ],
@@ -84,11 +86,10 @@ class _GameOptionsState extends State<GameOptions> {
                     ),
                     Flexible(
                         child: Switch(
-                      value: isTabuEnabled,
+                      value: gameOptions.isTabuEnabled,
                       onChanged: (value) {
                         setState(() {
-                          isTabuEnabled = value;
-                          print(isTabuEnabled);
+                          gameOptions.isTabuEnabled = value;
                         });
                       },
                       activeColor: Colors.blue,
@@ -108,8 +109,9 @@ class _GameOptionsState extends State<GameOptions> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                GamePage(numberOfPeople, isTabuEnabled)),
+                            builder: (context) => GamePage(
+                                gameOptions.numberOfPeople,
+                                gameOptions.isTabuEnabled)),
                       );
                       // Navigator.pop(context);
                       // print('Number of people: $numberOfPeople');
