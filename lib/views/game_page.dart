@@ -16,10 +16,29 @@ class PlayerSlice {
 
   SvgPicture emoji;
 
+  Transform transformedEmoji;
+
   PlayerSlice(int id, Color color, SvgPicture emoji) {
     this.id = id;
     this.color = color;
     this.emoji = emoji;
+
+    // this.transformedEmoji = Transform.rotate(
+    //   angle: -1,
+    //   child: Transform.translate(
+    //     child: this.emoji,
+    //     offset: const Offset(0.0, 15.0),
+    //   ),
+    // );
+
+    this.transformedEmoji = Transform.translate(
+      offset: const Offset(60.0, 0.0),
+      child: Transform.rotate(
+        // child: this.emoji,
+        child: Transform.scale(child: this.emoji, scale: 0.8),
+        angle: -pi / 2,
+      ),
+    );
   }
 
   static getEmojiSvg(int index) {
@@ -59,7 +78,7 @@ class _GameState extends State<GamePage> {
   int selected = 0;
   int nextDurationInS = 4;
 
-  int temp_player_count = 20;
+  int temp_player_count = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +105,12 @@ class _GameState extends State<GamePage> {
                   for (var it in items)
                     FortuneItem(
                       // child: Text(it.text),
-                      child: it.emoji,
+                      child: it.transformedEmoji,
                       style: FortuneItemStyle(
                         color: it.color, // <-- custom circle slice fill color
                         borderColor: Colors
-                            .green, // <-- custom circle slice stroke color
-                        borderWidth: 3, // <-- custom circle slice stroke width
+                            .black38, // <-- custom circle slice stroke color
+                        borderWidth: 1, // <-- custom circle slice stroke width
                       ),
                     ),
                 ],
