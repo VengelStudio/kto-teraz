@@ -11,11 +11,8 @@ class GamePage extends StatefulWidget {
 
 class PlayerSlice {
   int id;
-
   Color color;
-
   SvgPicture emoji;
-
   Transform transformedEmoji;
 
   PlayerSlice(int id, Color color, SvgPicture emoji) {
@@ -23,18 +20,9 @@ class PlayerSlice {
     this.color = color;
     this.emoji = emoji;
 
-    // this.transformedEmoji = Transform.rotate(
-    //   angle: -1,
-    //   child: Transform.translate(
-    //     child: this.emoji,
-    //     offset: const Offset(0.0, 15.0),
-    //   ),
-    // );
-
     this.transformedEmoji = Transform.translate(
       offset: const Offset(60.0, 0.0),
       child: Transform.rotate(
-        // child: this.emoji,
         child: Transform.scale(child: this.emoji, scale: 0.8),
         angle: -pi / 2,
       ),
@@ -78,11 +66,11 @@ class _GameState extends State<GamePage> {
   int selected = 0;
   int nextDurationInS = 4;
 
-  int temp_player_count = 15;
+  int tempPlayerCount = 15;
 
   @override
   Widget build(BuildContext context) {
-    final items = PlayerSlice.generate(temp_player_count);
+    final items = PlayerSlice.generate(tempPlayerCount);
 
     return Scaffold(
       body: GestureDetector(
