@@ -80,6 +80,7 @@ class _GameState extends State<GamePage> {
                     selected = Random().nextInt(items.length);
                   });
                 },
+                animateFirst: false,
                 selected: selected,
                 items: [
                   for (var it in items)
