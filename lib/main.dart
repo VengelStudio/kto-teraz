@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.blue,
           disabledColor: Colors.grey,
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
           splashColor: Colors.blueAccent,
           textTheme: ButtonTextTheme.primary,
         ),
