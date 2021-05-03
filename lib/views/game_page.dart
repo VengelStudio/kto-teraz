@@ -6,6 +6,11 @@ import 'package:flutter_spinner/utils/emojis.utils.dart';
 import 'package:flutter_svg/svg.dart';
 
 class GamePage extends StatefulWidget {
+  final int numberOfPeople;
+  final bool isTabuEnabled;
+
+  const GamePage(this.numberOfPeople, this.isTabuEnabled);
+
   @override
   _GameState createState() => _GameState();
 }
@@ -58,11 +63,9 @@ class _GameState extends State<GamePage> {
   int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
 
-  int tempPlayerCount = 15;
-
   @override
   Widget build(BuildContext context) {
-    final players = PlayerSlice.generate(tempPlayerCount);
+    final players = PlayerSlice.generate(widget.numberOfPeople);
 
     final wheelIndicator = FortuneIndicator(
       alignment: Alignment.topCenter,
