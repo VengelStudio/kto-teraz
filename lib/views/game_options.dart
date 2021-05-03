@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import './game_page.dart';
+
 class GameOptions extends StatefulWidget {
   @override
   _GameOptionsState createState() => _GameOptionsState();
@@ -8,7 +10,7 @@ class GameOptions extends StatefulWidget {
 
 class _GameOptionsState extends State<GameOptions> {
   bool isTabuEnabled = false;
-  int numberOfPeople = 0;
+  int numberOfPeople = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,8 @@ class _GameOptionsState extends State<GameOptions> {
                         ),
                         NumberPicker(
                           value: numberOfPeople,
-                          minValue: 0,
-                          maxValue: 20,
+                          minValue: 2,
+                          maxValue: 15,
                           itemWidth: 40,
                           itemCount: 1,
                           step: 1,
@@ -103,9 +105,15 @@ class _GameOptionsState extends State<GameOptions> {
                 children: [
                   RaisedButton(
                     onPressed: () {
-                      Navigator.pop(context);
-                      print('Number of people: $numberOfPeople');
-                      print('Is tabu enabled: $isTabuEnabled');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                GamePage(numberOfPeople, isTabuEnabled)),
+                      );
+                      // Navigator.pop(context);
+                      // print('Number of people: $numberOfPeople');
+                      // print('Is tabu enabled: $isTabuEnabled');
                     },
                     child: Text(
                       'Start',
