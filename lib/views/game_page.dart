@@ -92,28 +92,11 @@ class _GameState extends State<GamePage> {
 
     // todo temporary dialog, remove this when implementing question popup
     showQuestionCard(BuildContext context) {
-      AlertDialog alert = AlertDialog(
-        content: Column(
-          children: [
-            winner.emoji,
-            Text("Index won: ${winner.index} ${winner.color}"),
-          ],
-        ),
-        actions: [
-          TextButton(
-            child: Text("OK"),
-            onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-          ),
-        ],
-      );
-
       // show the dialog
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return alert;
+          return QuestionCard(winner: winner);
         },
       );
     }
@@ -121,6 +104,7 @@ class _GameState extends State<GamePage> {
     openQuestion() {
       // todo temporary dialog, remove this when implementing question popup
       showQuestionCard(context);
+      print(winner);
     }
 
     return Scaffold(
