@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 class GameOptions extends StatefulWidget {
   @override
@@ -24,53 +25,76 @@ class _GameOptionsState extends State<GameOptions> {
               ),
             ),
             Container(
-                width: 200.0,
                 child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: Text(
-                            "Liczba osób",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
-                        Flexible(
-                          child: TextField(
-                            keyboardType: TextInputType.number,
-                            onChanged: (text) {
-                              numberOfPeople = int.parse(text);
-                              print("Number of people: $text");
-                            },
-                          ),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30.0),
+                      child: Text(
+                        "Liczba osób",
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: Text(
-                            "Liczba osób",
-                            style: TextStyle(fontSize: 20),
-                          ),
+                        IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed: () => setState(() {
+                            final finalValue = numberOfPeople - 1;
+                            numberOfPeople = finalValue.clamp(0, 20);
+                          }),
                         ),
-                        Flexible(
-                            child: Switch(
-                          value: isTabuEnabled,
-                          onChanged: (value) {
-                            setState(() {
-                              isTabuEnabled = value;
-                              print(isTabuEnabled);
-                            });
-                          },
-                          activeColor: Colors.blue,
-                        ))
+                        NumberPicker(
+                          value: numberOfPeople,
+                          minValue: 0,
+                          maxValue: 20,
+                          itemWidth: 40,
+                          itemCount: 1,
+                          step: 1,
+                          haptics: true,
+                          onChanged: (value) =>
+                              setState(() => numberOfPeople = value),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () => setState(() {
+                            final finalValue = numberOfPeople + 1;
+                            numberOfPeople = finalValue.clamp(0, 20);
+                          }),
+                        ),
                       ],
                     ),
                   ],
-                )),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30.0),
+                      child: Text(
+                        "Liczba osób",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    Flexible(
+                        child: Switch(
+                      value: isTabuEnabled,
+                      onChanged: (value) {
+                        setState(() {
+                          isTabuEnabled = value;
+                          print(isTabuEnabled);
+                        });
+                      },
+                      activeColor: Colors.blue,
+                    ))
+                  ],
+                ),
+              ],
+            )),
             Container(
               margin: const EdgeInsets.only(top: 60),
               width: MediaQuery.of(context).size.width / 3,
@@ -80,17 +104,20 @@ class _GameOptionsState extends State<GameOptions> {
                   RaisedButton(
                     onPressed: () {
                       Navigator.pop(context);
+                      print('Number of people: $numberOfPeople');
+                      print('Is tabu enabled: $isTabuEnabled');
                     },
                     child: Text(
-                      'Powrót',
-                      style: TextStyle(fontSize: 18),
+                      'Start',
                     ),
                   ),
                   RaisedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Start'),
+                    child: Text(
+                      'Powrót',
+                    ),
                   ),
                 ],
               ),
