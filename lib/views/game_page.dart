@@ -102,7 +102,6 @@ class _GameState extends State<GamePage> {
                         items: [
                           for (var player in players)
                             FortuneItem(
-                              // child: Text(it.text),
                               child: Emojis.getTransformedEmoji(player.emoji),
                               style: FortuneItemStyle(
                                 color: player
