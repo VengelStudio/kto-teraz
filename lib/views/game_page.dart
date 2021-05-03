@@ -29,15 +29,19 @@ class _GameState extends State<GamePage> {
         title: Text('Flutter Fortune Wheel'),
       ),
       body: GestureDetector(
-        onTap: () {
-          setState(() {
-            selected = Random().nextInt(items.length);
-          });
-        },
         child: Column(
           children: [
             Expanded(
               child: FortuneWheel(
+                physics: CircularPanPhysics(
+                  duration: Duration(seconds: 4),
+                  curve: Curves.decelerate,
+                ),
+                onFling: () {
+                  setState(() {
+                    selected = Random().nextInt(items.length);
+                  });
+                },
                 selected: selected,
                 items: [
                   for (var it in items) FortuneItem(child: Text(it)),
