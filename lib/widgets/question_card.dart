@@ -28,7 +28,12 @@ class _QuestionCardState extends State<QuestionCard> {
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: Container(child: Center(child: Text("xd"))),
+            child: Container(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [widget.winner.emoji, Text('(Kliknij aby zamknąć)')],
+            )),
           ),
         ),
       ),
