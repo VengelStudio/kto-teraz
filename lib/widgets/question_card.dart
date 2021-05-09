@@ -4,8 +4,10 @@ import 'package:flutter_spinner/utils/winner.model.dart';
 
 class QuestionCard extends StatefulWidget {
   final Winner winner;
+  final String question;
 
-  QuestionCard({Key key, @required this.winner}) : super(key: key);
+  QuestionCard({Key key, @required this.winner, @required this.question})
+      : super(key: key);
 
   @override
   _QuestionCardState createState() => _QuestionCardState();
@@ -48,7 +50,7 @@ class _QuestionCardState extends State<QuestionCard> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 32.0),
                           child: Text(
-                            'Jakie komplementy lubisz słyszeć najbardziej',
+                            widget.question,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 32.0,
@@ -65,7 +67,7 @@ class _QuestionCardState extends State<QuestionCard> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 12.0, horizontal: 32.0),
                         child: Text(
-                          'Jakie komplementy lubisz słyszeć najbardziej',
+                          widget.question,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 32.0,

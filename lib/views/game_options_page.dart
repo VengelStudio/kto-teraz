@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/options.model.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 
 import 'game_page.dart';
 
@@ -36,39 +36,18 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       padding: const EdgeInsets.only(right: 30.0),
                       child: Text(
                         "Liczba osób",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 28),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.remove),
-                          onPressed: () => setState(() {
-                            final finalValue = gameOptions.numberOfPeople - 1;
-                            gameOptions.numberOfPeople =
-                                finalValue.clamp(2, 15);
-                          }),
-                        ),
-                        NumberPicker(
-                          value: gameOptions.numberOfPeople,
-                          minValue: 2,
-                          maxValue: 15,
-                          itemWidth: 40,
-                          itemCount: 1,
-                          step: 1,
-                          haptics: true,
-                          onChanged: (value) => setState(
-                              () => gameOptions.numberOfPeople = value),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.add),
-                          onPressed: () => setState(() {
-                            final finalValue = gameOptions.numberOfPeople + 1;
-                            gameOptions.numberOfPeople =
-                                finalValue.clamp(2, 15);
-                          }),
-                        ),
+                        TextButton(
+                            child: Text(
+                              gameOptions.numberOfPeople.toString(),
+                              style: TextStyle(fontSize: 38.0),
+                            ),
+                            onPressed: () => showPickerNumber(context)),
                       ],
                     ),
                   ],
@@ -81,7 +60,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       padding: const EdgeInsets.only(right: 30.0),
                       child: Text(
                         "Pytania tabu?",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 28),
                       ),
                     ),
                     Flexible(
@@ -136,5 +115,27 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
         ),
       ),
     );
+  }
+
+  showPickerNumber(BuildContext context) {
+    new Picker(
+        adapter: NumberPickerAdapter(data: [
+          NumberPickerColumn(begin: 2, end: 12),
+        ]),
+        hideHeader: true,
+        title: new Text("Liczba osób"),
+        textAlign: TextAlign.center,
+        confirmText: "Wybierz",
+        cancelText: "Anuluj",
+        itemExtent: 60.0,
+        textStyle: TextStyle(fontSize: 30.0, color: Colors.black),
+        selectedTextStyle: TextStyle(fontSize: 40.0),
+        cancelTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
+        confirmTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
+        onConfirm: (Picker picker, List value) {
+          setState(() {
+            gameOptions.numberOfPeople = picker.getSelectedValues()[0];
+          });
+        }).showDialog(context);
   }
 }
