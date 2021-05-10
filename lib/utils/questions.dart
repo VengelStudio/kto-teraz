@@ -35,24 +35,24 @@ class Question {
 
 class QuestionManager {
   int questionIndex = 0;
-  List<Question> questions = [];
+  List<Question> _questions = [];
 
   static Future<QuestionManager> create(
       BuildContext context, bool isTabuEnabled) async {
     var component = QuestionManager();
 
-    component.questions = (await loadQuestions(context));
+    component._questions = (await loadQuestions(context));
 
     if (!isTabuEnabled) {
-      component.questions =
-          component.questions.where((question) => !question.isTabu).toList();
+      component._questions =
+          component._questions.where((question) => !question.isTabu).toList();
     }
 
     return component;
   }
 
   Question next() {
-    Question result = questions[questionIndex % questions.length];
+    Question result = _questions[questionIndex % _questions.length];
     questionIndex++;
 
     return result;
