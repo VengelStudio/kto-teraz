@@ -51,8 +51,8 @@ class QuestionManager {
     return component;
   }
 
-  next() {
-    var result = questions[questionIndex % questions.length];
+  Question next() {
+    Question result = questions[questionIndex % questions.length];
     questionIndex++;
 
     return result;
