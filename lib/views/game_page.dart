@@ -81,9 +81,11 @@ class _GameState extends State<GamePage> {
     return Scaffold(
       body: GestureDetector(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
               child: Container(
+                  alignment: Alignment.center,
                   margin: const EdgeInsets.only(left: 10, right: 10),
                   child: questionManager != null
                       ? PhysicalShape(
@@ -122,8 +124,12 @@ class _GameState extends State<GamePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            CircularProgressIndicator(),
-                            Text("Ładowanie pytań...")
+                            CircularProgressIndicator(
+                              valueColor:
+                                  AlwaysStoppedAnimation(Color(0xffD30C7B)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text("Ładowanie...")
                           ],
                         )),
             ),
