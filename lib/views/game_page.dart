@@ -57,7 +57,7 @@ class _GameState extends State<GamePage> {
         nextDurationInS = Random().nextInt(4) + 1;
         selectedPlayerIndex = Random().nextInt(players.length);
 
-        winner.index = selectedPlayerIndex;
+        winner.id = selectedPlayerIndex;
         winner.color = players[selectedPlayerIndex].color;
         winner.emoji = players[selectedPlayerIndex].emoji;
       });

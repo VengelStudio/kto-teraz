@@ -27,7 +27,6 @@ class _QuestionCardState extends State<QuestionCard> {
             setState(() {
               Navigator.of(context).pop();
             });
-            print(widget.winner.index);
           },
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
