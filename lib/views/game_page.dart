@@ -19,9 +19,9 @@ class GamePage extends StatefulWidget {
 }
 
 class _GameState extends State<GamePage> {
-  int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
   QuestionManager questionManager;
+  Winner winner = new Winner();
 
   _loadQuestions() async {
     var createdManager =
@@ -38,8 +38,6 @@ class _GameState extends State<GamePage> {
     _loadQuestions();
   }
 
-  Winner winner = new Winner();
-
   @override
   Widget build(BuildContext context) {
     final players = Player.generate(widget.gameOptions.numberOfPeople);
@@ -55,11 +53,11 @@ class _GameState extends State<GamePage> {
     spinWheel() {
       setState(() {
         nextDurationInS = Random().nextInt(4) + 1;
-        selectedPlayerIndex = Random().nextInt(players.length);
 
-        winner.id = selectedPlayerIndex;
-        winner.color = players[selectedPlayerIndex].color;
-        winner.emoji = players[selectedPlayerIndex].emoji;
+        int winnerId = Random().nextInt(players.length);
+        winner.id = winnerId;
+        winner.color = players[winnerId].color;
+        winner.emoji = players[winnerId].emoji;
       });
     }
 
@@ -101,7 +99,7 @@ class _GameState extends State<GamePage> {
                             onFling: spinWheel,
                             onAnimationEnd: openQuestion,
                             animateFirst: false,
-                            selected: selectedPlayerIndex,
+                            selected: winner.id == null ? 0 : winner.id,
                             indicators: <FortuneIndicator>[wheelIndicator],
                             items: [
                               for (var player in players)
