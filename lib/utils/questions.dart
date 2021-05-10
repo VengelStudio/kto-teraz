@@ -48,6 +48,8 @@ class QuestionManager {
           component._questions.where((question) => !question.isTabu).toList();
     }
 
+    component._questions.shuffle();
+
     return component;
   }
 
