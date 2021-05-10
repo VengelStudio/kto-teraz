@@ -67,7 +67,10 @@ class _GameState extends State<GamePage> {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return QuestionCard(winner: winner);
+          return QuestionCard(
+            winner: winner,
+            question: questionManager.next(),
+          );
         },
       );
     }

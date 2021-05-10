@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 import 'dart:math' as math;
 import 'package:flutter_spinner/utils/winner.model.dart';
 
 class QuestionCard extends StatefulWidget {
   final Winner winner;
-  final String question;
+  final Question question;
 
   QuestionCard({Key key, @required this.winner, @required this.question})
       : super(key: key);
@@ -50,7 +51,7 @@ class _QuestionCardState extends State<QuestionCard> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 32.0),
                           child: Text(
-                            widget.question,
+                            widget.question.text,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 32.0,
@@ -67,7 +68,7 @@ class _QuestionCardState extends State<QuestionCard> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 12.0, horizontal: 32.0),
                         child: Text(
-                          widget.question,
+                          widget.question.text,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 32.0,
