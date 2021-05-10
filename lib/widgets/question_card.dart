@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'package:flutter_spinner/utils/questions.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
+import 'package:flutter_spinner/widgets/question_card_block.dart';
 
 class QuestionCard extends StatefulWidget {
   final Winner winner;
-  final String question;
+  final Question question;
 
   QuestionCard({Key key, @required this.winner, @required this.question})
       : super(key: key);
@@ -26,7 +27,6 @@ class _QuestionCardState extends State<QuestionCard> {
             setState(() {
               Navigator.of(context).pop();
             });
-            print(widget.winner.index);
           },
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -35,50 +35,32 @@ class _QuestionCardState extends State<QuestionCard> {
               Container(color: Color(0xF2F2F2F2)),
               Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 100.0),
-                    Transform.scale(scale: 2, child: widget.winner.emoji),
-                    SizedBox(height: 80.0),
-                    Transform.rotate(
-                      angle: -math.pi,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        color: Color(0xFFFFFFFF),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 32.0),
-                          child: Text(
-                            widget.question,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 32.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20.0),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      color: Color(0xFFFFFFFF),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12.0, horizontal: 32.0),
-                        child: Text(
-                          widget.question,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 32.0,
-                          ),
-                        ),
-                      ),
+                    SizedBox(height: 40.0),
+                    Flexible(
+                        // fit: FlexFit.tight,
+                        child: Transform.scale(
+                            scale: 2, child: widget.winner.emoji)),
+                    // SizedBox(height: 20.0),
+                    Spacer(),
+                    Column(
+                      children: [
+                        QuestionCardBlock(
+                            text: widget.question.text, inverted: true),
+                        SizedBox(height: 20.0),
+                        QuestionCardBlock(text: widget.question.text),
+                      ],
                     ),
                     Spacer(),
-                    Text('(Kliknij aby zamknąć)'),
+                    Text(
+                      '(kliknij aby zamknąć)',
+                      style:
+                          TextStyle(fontSize: 15.0, color: Color(0xff555555)),
+                    ),
                     SizedBox(
-                      height: 32,
+                      height: 30,
                     )
                   ],
                 ),

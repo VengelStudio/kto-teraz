@@ -2,74 +2,45 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-import 'package:flutter_spinner/utils/emojis.utils.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_spinner/widgets/question_card.dart';
+import 'package:flutter_spinner/utils/emojis.dart';
+import 'package:flutter_spinner/utils/options.model.dart';
+import 'package:flutter_spinner/utils/players.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 
 class GamePage extends StatefulWidget {
-  final int numberOfPeople;
-  final bool isTabuEnabled;
+  final GameOptions gameOptions;
 
-  const GamePage(this.numberOfPeople, this.isTabuEnabled);
+  const GamePage(this.gameOptions);
 
   @override
   _GameState createState() => _GameState();
 }
 
-class PlayerSlice {
-  int id;
-  Color color;
-  SvgPicture emoji;
-
-  PlayerSlice(int id, Color color, SvgPicture emoji) {
-    this.id = id;
-    this.color = color;
-    this.emoji = emoji;
-  }
-
-  static getEmojiSvg(int index) {
-    // todo shuffle
-
-    final emojis = [
-      "assets/images/emoji/mouse.svg",
-      "assets/images/emoji/cow.svg",
-      "assets/images/emoji/elephant.svg",
-      "assets/images/emoji/turtle.svg",
-      "assets/images/emoji/chicken.svg",
-      "assets/images/emoji/pinguin.svg",
-      "assets/images/emoji/rabbit.svg",
-      "assets/images/emoji/cat.svg",
-      "assets/images/emoji/monkey.svg",
-      "assets/images/emoji/dog.svg",
-      "assets/images/emoji/pig.svg",
-      "assets/images/emoji/unicorn.svg",
-      "assets/images/emoji/duck.svg",
-      "assets/images/emoji/shark.svg",
-      "assets/images/emoji/dinosaur.svg",
-    ];
-
-    return SvgPicture.asset(emojis[index % emojis.length]);
-  }
-
-  static List<PlayerSlice> generate(int howMany) {
-    List colors = new List.generate(howMany,
-        (i) => HSLColor.fromAHSL(1, 360 * i / howMany, 0.7, 0.5).toColor());
-
-    return new List.generate(
-        howMany, (i) => new PlayerSlice(i, colors[i], getEmojiSvg(i)));
-  }
-}
-
 class _GameState extends State<GamePage> {
-  int selectedPlayerIndex = 0;
   int nextDurationInS = 4;
-
+  QuestionManager questionManager;
   Winner winner = new Winner();
+
+  _loadQuestions() async {
+    var createdManager =
+        await QuestionManager.create(context, widget.gameOptions.isTabuEnabled);
+
+    setState(() {
+      questionManager = createdManager;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadQuestions();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final players = PlayerSlice.generate(widget.numberOfPeople);
+    final players = Player.generate(widget.gameOptions.numberOfPeople);
 
     final wheelIndicator = FortuneIndicator(
       alignment: Alignment.topCenter,
@@ -82,27 +53,27 @@ class _GameState extends State<GamePage> {
     spinWheel() {
       setState(() {
         nextDurationInS = Random().nextInt(4) + 1;
-        selectedPlayerIndex = Random().nextInt(players.length);
 
-        winner.index = selectedPlayerIndex;
-        winner.color = players[selectedPlayerIndex].color;
-        winner.emoji = players[selectedPlayerIndex].emoji;
+        int winnerId = Random().nextInt(players.length);
+        winner.id = winnerId;
+        winner.color = players[winnerId].color;
+        winner.emoji = players[winnerId].emoji;
       });
     }
 
-    // todo temporary dialog, remove this when implementing question popup
     showQuestionCard(BuildContext context) {
-      // show the dialog
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return QuestionCard(winner: winner);
+          return QuestionCard(
+            winner: winner,
+            question: questionManager.next(),
+          );
         },
       );
     }
 
     openQuestion() {
-      // todo temporary dialog, remove this when implementing question popup
       showQuestionCard(context);
       print(winner);
     }
@@ -110,41 +81,58 @@ class _GameState extends State<GamePage> {
     return Scaffold(
       body: GestureDetector(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                child: Container(
-                    margin: const EdgeInsets.only(left: 10, right: 10),
-                    child: PhysicalShape(
-                      color: Colors.transparent,
-                      shadowColor: Colors.black,
-                      elevation: 8,
-                      clipper: ShapeBorderClipper(shape: CircleBorder()),
-                      child: FortuneWheel(
-                        physics: CircularPanPhysics(
-                          duration: Duration(seconds: nextDurationInS),
-                          curve: Curves.ease,
-                        ),
-                        onFling: spinWheel,
-                        onAnimationEnd: openQuestion,
-                        animateFirst: false,
-                        selected: selectedPlayerIndex,
-                        indicators: <FortuneIndicator>[wheelIndicator],
-                        items: [
-                          for (var player in players)
-                            FortuneItem(
-                              child: Emojis.getTransformedEmoji(player.emoji),
-                              style: FortuneItemStyle(
-                                color: player
-                                    .color, // <-- custom circle slice fill color
-                                borderColor: Colors
-                                    .black38, // <-- custom circle slice stroke color
-                                borderWidth:
-                                    1, // <-- custom circle slice stroke width
-                              ),
+              child: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  child: questionManager != null
+                      ? PhysicalShape(
+                          color: Colors.transparent,
+                          shadowColor: Colors.black,
+                          elevation: 8,
+                          clipper: ShapeBorderClipper(shape: CircleBorder()),
+                          child: FortuneWheel(
+                            physics: CircularPanPhysics(
+                              duration: Duration(seconds: nextDurationInS),
+                              curve: Curves.ease,
                             ),
-                        ],
-                      ),
-                    ))),
+                            onFling: spinWheel,
+                            onAnimationEnd: openQuestion,
+                            animateFirst: false,
+                            selected: winner.id == null ? 0 : winner.id,
+                            indicators: <FortuneIndicator>[wheelIndicator],
+                            items: [
+                              for (var player in players)
+                                FortuneItem(
+                                  child:
+                                      Emojis.getTransformedEmoji(player.emoji),
+                                  style: FortuneItemStyle(
+                                    color: player
+                                        .color, // <-- custom circle slice fill color
+                                    borderColor: Colors
+                                        .black38, // <-- custom circle slice stroke color
+                                    borderWidth:
+                                        1, // <-- custom circle slice stroke width
+                                  ),
+                                ),
+                            ],
+                          ),
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(
+                              valueColor:
+                                  AlwaysStoppedAnimation(Color(0xffD30C7B)),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text("Ładowanie...")
+                          ],
+                        )),
+            ),
           ],
         ),
       ),
