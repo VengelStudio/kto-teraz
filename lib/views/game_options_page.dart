@@ -83,7 +83,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -98,7 +98,10 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       'Start',
                     ),
                   ),
-                  RaisedButton(
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },

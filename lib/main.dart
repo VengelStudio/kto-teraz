@@ -12,12 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Kto teraz?',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        buttonTheme: ButtonThemeData(
-          buttonColor: Colors.blue,
-          disabledColor: Colors.grey,
-          padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-          splashColor: Colors.blueAccent,
-          textTheme: ButtonTextTheme.primary,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            textStyle: TextStyle(fontSize: 18.0),
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+          ),
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -41,17 +40,14 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 50.0),
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => GameOptionsPage()),
                 );
               },
-              child: Text(
-                "Zagraj",
-                style: TextStyle(fontSize: 30.0),
-              ),
+              child: Text("Zagraj"),
             )
           ],
         ),
