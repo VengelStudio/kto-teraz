@@ -19,8 +19,8 @@ class _QuestionCardState extends State<QuestionCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
+    return Scaffold(
+      body: Center(
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {

@@ -61,20 +61,16 @@ class _GameState extends State<GamePage> {
       });
     }
 
-    showQuestionCard(BuildContext context) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return QuestionCard(
+    openQuestion() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => QuestionCard(
             winner: winner,
             question: questionManager.next(),
-          );
-        },
+          ),
+        ),
       );
-    }
-
-    openQuestion() {
-      showQuestionCard(context);
       print(winner);
     }
 
