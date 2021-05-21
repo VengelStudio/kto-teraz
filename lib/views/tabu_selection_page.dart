@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/views/collection_creator.dart';
 
-class TabuSelection extends StatefulWidget {
-  @override
-  _TabuSelectionState createState() => _TabuSelectionState();
-}
-
-class _TabuSelectionState extends State<TabuSelection> {
+class TabuSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +19,16 @@ class _TabuSelectionState extends State<TabuSelection> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CollectionCreator(
+                          isTabu: true,
+                        ),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Tak',
                     style: TextStyle(fontSize: 32.0, color: Colors.black),
@@ -31,7 +36,16 @@ class _TabuSelectionState extends State<TabuSelection> {
                 ),
                 SizedBox(width: 100.0),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CollectionCreator(
+                          isTabu: false,
+                        ),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Nie',
                     style: TextStyle(fontSize: 32.0, color: Colors.black),
