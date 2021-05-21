@@ -15,104 +15,106 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(bottom: 60),
-              child: Text(
-                'Opcje gry',
-                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(bottom: 60),
+                child: Text(
+                  'Opcje gry',
+                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Container(
-                child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: Text(
-                        "Liczba osób",
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                            child: Text(
-                              gameOptions.numberOfPeople.toString(),
-                              style: TextStyle(fontSize: 38.0),
-                            ),
-                            onPressed: () => showPickerNumber(context)),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: Text(
-                        "Pytania tabu?",
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                    Flexible(
-                        child: Switch(
-                      value: gameOptions.isTabuEnabled,
-                      onChanged: (value) {
-                        setState(() {
-                          gameOptions.isTabuEnabled = value;
-                        });
-                      },
-                      activeColor: Colors.blue,
-                    ))
-                  ],
-                ),
-              ],
-            )),
-            Container(
-              margin: const EdgeInsets.only(top: 60),
-              width: MediaQuery.of(context).size.width / 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              Container(
+                  child: Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => GamePage(gameOptions)),
-                      );
-                      // Navigator.pop(context);
-                      // print('Number of people: $numberOfPeople');
-                      // print('Is tabu enabled: $isTabuEnabled');
-                    },
-                    child: Text(
-                      'Start',
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30.0),
+                        child: Text(
+                          "Liczba osób",
+                          style: TextStyle(fontSize: 28),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                              child: Text(
+                                gameOptions.numberOfPeople.toString(),
+                                style: TextStyle(fontSize: 38.0),
+                              ),
+                              onPressed: () => showPickerNumber(context)),
+                        ],
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'Powrót',
-                    ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30.0),
+                        child: Text(
+                          "Pytania tabu?",
+                          style: TextStyle(fontSize: 28),
+                        ),
+                      ),
+                      Flexible(
+                          child: Switch(
+                        value: gameOptions.isTabuEnabled,
+                        onChanged: (value) {
+                          setState(() {
+                            gameOptions.isTabuEnabled = value;
+                          });
+                        },
+                        activeColor: Colors.blue,
+                      ))
+                    ],
                   ),
                 ],
+              )),
+              Container(
+                margin: const EdgeInsets.only(top: 60),
+                width: MediaQuery.of(context).size.width / 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GamePage(gameOptions)),
+                        );
+                        // Navigator.pop(context);
+                        // print('Number of people: $numberOfPeople');
+                        // print('Is tabu enabled: $isTabuEnabled');
+                      },
+                      child: Text(
+                        'Start',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Powrót',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
