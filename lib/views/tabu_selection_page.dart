@@ -11,17 +11,31 @@ class _TabuSelectionState extends State<TabuSelection> {
     return Scaffold(
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Czy twoja nowa kolekcja będzie zawierac pytania Tabu?'),
+            Text(
+              'Czy twoja nowa kolekcja będzie zawierac pytania Tabu?',
+              style: TextStyle(fontSize: 32.0),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 32.0),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
+                TextButton(
                   onPressed: () {},
-                  child: Text('Tak'),
+                  child: Text(
+                    'Tak',
+                    style: TextStyle(fontSize: 32.0, color: Colors.black),
+                  ),
                 ),
-                ElevatedButton(
+                SizedBox(width: 100.0),
+                TextButton(
                   onPressed: () {},
-                  child: Text('Nie'),
+                  child: Text(
+                    'Nie',
+                    style: TextStyle(fontSize: 32.0, color: Colors.black),
+                  ),
                 )
               ],
             )

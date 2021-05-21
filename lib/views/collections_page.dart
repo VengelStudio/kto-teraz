@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/views/tabu_selection_page.dart';
 import 'package:flutter_spinner/widgets/collection_card.dart';
 
 class Collections extends StatefulWidget {
@@ -31,6 +32,25 @@ class _CollectionsState extends State<Collections> {
               index -= 1;
               return CollectionCard(title: collections[index]);
             }),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TabuSelection()),
+            );
+          },
+          shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.black,
+          elevation: 0,
+          child: const Icon(
+            Icons.add,
+            size: 40,
+          ),
+        ),
       ),
     );
   }
