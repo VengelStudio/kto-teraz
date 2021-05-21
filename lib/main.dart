@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/views/collections_page.dart';
 import 'views/game_options_page.dart';
 
 void main() {
@@ -29,27 +30,39 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(bottom: 40),
-              child: Text(
-                'Kto teraz?',
-                style: TextStyle(fontSize: 50.0),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(bottom: 40),
+                child: Text(
+                  'Kto teraz?',
+                  style: TextStyle(fontSize: 50.0),
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GameOptionsPage()),
-                );
-              },
-              child: Text("Zagraj"),
-            )
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Collections()),
+                  );
+                },
+                child: Text("Kolekcje pytań"),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GameOptionsPage()),
+                  );
+                },
+                child: Text("Zagraj"),
+              )
+            ],
+          ),
         ),
       ),
     );
