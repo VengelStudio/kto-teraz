@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             textStyle: TextStyle(fontSize: 18.0),
+            minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
           ),
         ),
