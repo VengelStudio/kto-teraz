@@ -48,12 +48,31 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
+                  MaterialPageRoute(builder: (context) => GameOptionsPage()),
+                );
+              },
+              child: Text("Zagraj"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
                   MaterialPageRoute(builder: (context) => Collections()),
                 );
               },
               child: Text("Kolekcje pytań"),
             ),
             SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutPage()),
+                );
+              },
+              child: Text("O aplikacji"),
+            ),
           ],
         ),
       ),
