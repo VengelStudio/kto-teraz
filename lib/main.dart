@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/views/collections_page.dart';
+import 'package:flutter_spinner/views/about_page.dart';
 import 'views/game_options_page.dart';
 
 void main() {
@@ -53,17 +54,27 @@ class HomePage extends StatelessWidget {
                 child: Text("Kolekcje pytań"),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GameOptionsPage()),
-                  );
-                },
-                child: Text("Zagraj"),
-              )
-            ],
-          ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GameOptionsPage()),
+                );
+              },
+              child: Text("Zagraj"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutPage()),
+                );
+              },
+              child: Text("O aplikacji"),
+            )
+          ],
         ),
       ),
     );
