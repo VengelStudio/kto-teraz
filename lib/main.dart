@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Zagraj"),
             ),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
