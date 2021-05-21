@@ -64,11 +64,9 @@ class _GameState extends State<GamePage> {
     openQuestion() {
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => QuestionCard(
-            winner: winner,
-            question: questionManager.next(),
-          ),
+        _questionCardRoute(
+          winner,
+          questionManager,
         ),
       );
       print(winner);
@@ -134,4 +132,23 @@ class _GameState extends State<GamePage> {
       ),
     );
   }
+}
+
+Route _questionCardRoute(winner, questionManager) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        QuestionCard(winner: winner, question: questionManager.next()),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
