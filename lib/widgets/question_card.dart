@@ -3,19 +3,12 @@ import 'package:flutter_spinner/utils/questions.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_spinner/widgets/question_card_block.dart';
 
-class QuestionCard extends StatefulWidget {
+class QuestionCard extends StatelessWidget {
   final Winner winner;
   final Question question;
 
   QuestionCard({Key key, @required this.winner, @required this.question})
       : super(key: key);
-
-  @override
-  _QuestionCardState createState() => _QuestionCardState();
-}
-
-class _QuestionCardState extends State<QuestionCard> {
-  bool isVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +17,7 @@ class _QuestionCardState extends State<QuestionCard> {
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () {
-            setState(() {
-              Navigator.of(context).pop();
-            });
+            Navigator.of(context).pop();
           },
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -38,19 +29,17 @@ class _QuestionCardState extends State<QuestionCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 40.0),
+                    SizedBox(height: 120.0),
                     Flexible(
                         // fit: FlexFit.tight,
-                        child: Transform.scale(
-                            scale: 2, child: widget.winner.emoji)),
+                        child: Transform.scale(scale: 2, child: winner.emoji)),
                     // SizedBox(height: 20.0),
-                    Spacer(),
+                    SizedBox(height: 120.0),
                     Column(
                       children: [
-                        QuestionCardBlock(
-                            text: widget.question.text, inverted: true),
+                        QuestionCardBlock(text: question.text, inverted: true),
                         SizedBox(height: 20.0),
-                        QuestionCardBlock(text: widget.question.text),
+                        QuestionCardBlock(text: question.text),
                       ],
                     ),
                     Spacer(),
