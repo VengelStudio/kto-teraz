@@ -1,18 +1,21 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 
 class QuestionBox extends StatefulWidget {
-  final String title;
-  final Function onDelete;
   final bool autofocus;
+  final Question question;
+  final Function onDelete;
+  final ValueChanged<String> onChanged;
 
-  QuestionBox({
-    Key key,
-    @required this.title,
-    @required this.onDelete,
-    @required this.autofocus,
-  }) : super(key: key);
+  QuestionBox(
+      {Key key,
+      @required this.autofocus,
+      @required this.question,
+      @required this.onDelete,
+      @required this.onChanged})
+      : super(key: key);
 
   @override
   _QuestionBoxState createState() => _QuestionBoxState();
@@ -23,9 +26,11 @@ class _QuestionBoxState extends State<QuestionBox> {
 
   @override
   void initState() {
-    textFieldController.text = widget.title;
+    textFieldController.text = widget.question.text;
     return super.initState();
   }
+
+  void onUpdate(String text) {}
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +44,7 @@ class _QuestionBoxState extends State<QuestionBox> {
             child: TextField(
                 autofocus: widget.autofocus,
                 controller: textFieldController,
-                onChanged: (text) {
-                  print(text);
-                },
+                onChanged: widget.onChanged,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Pytanie",
