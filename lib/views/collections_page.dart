@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinner/views/tabu_selection_page.dart';
 import 'package:flutter_spinner/widgets/collection_card.dart';
 
-class Collections extends StatefulWidget {
+class CollectionsPage extends StatefulWidget {
   @override
   _CollectionsState createState() => _CollectionsState();
 }
 
-class _CollectionsState extends State<Collections> {
+class _CollectionsState extends State<CollectionsPage> {
   List<String> collections = [
     "Kto teraz",
     "Impreza",

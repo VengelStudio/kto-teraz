@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Collections()),
+                    MaterialPageRoute(builder: (context) => CollectionsPage()),
                   );
                 },
                 child: Text("Kolekcje pytań"),

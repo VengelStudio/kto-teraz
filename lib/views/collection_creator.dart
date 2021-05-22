@@ -3,6 +3,8 @@ import 'package:flutter_spinner/utils/collection.model.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
 import 'package:flutter/foundation.dart';
 
+import 'collections_page.dart';
+
 class CollectionCreator extends StatefulWidget {
   final bool isTabu;
 
@@ -57,8 +59,32 @@ class _CollectionCreatorState extends State<CollectionCreator> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: questions.length,
+                itemCount: questions.length + 1,
                 itemBuilder: (context, index) {
+                  if (index == questions.length) {
+                    return ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            questions.add(questionController.text);
+                            questionController.clear();
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  questions.add(questionController.text);
+                                  questionController.clear();
+                                });
+                              },
+                              icon: Icon(Icons.add),
+                            ),
+                            Text("Dodaj pytanie"),
+                          ],
+                        ));
+                  }
+
                   return QuestionBox(
                       title: questions[index],
                       callback: () {
@@ -69,37 +95,20 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                 },
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
-              child: Form(
-                key: _formKey,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: questionController,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Wpisz pytanie',
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 16.0),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          questions.add(questionController.text);
-                          questionController.clear();
-                        });
-                      },
-                      icon: Icon(Icons.add),
-                    ),
-                  ],
-                ),
-              ),
-            )
           ],
         ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
+        child: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CollectionsPage()),
+              );
+            },
+            icon: Icon(Icons.save),
+            label: Text("Zapisz")),
       ),
     );
   }
