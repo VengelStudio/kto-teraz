@@ -73,26 +73,27 @@ class _CollectionEditorState extends State<CollectionEditor> {
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: questions.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index == questions.length) {
-                        return TextButton(
-                            onPressed: onAddQuestion,
-                            child: Container(
-                                margin: EdgeInsets.only(top: 16, bottom: 32),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.add),
-                                    Text("Dodaj pytanie"),
-                                  ],
-                                )));
-                      }
+                shrinkWrap: true,
+                itemCount: questions.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == questions.length) {
+                    return TextButton(
+                        onPressed: onAddQuestion,
+                        child: Container(
+                            margin:
+                                EdgeInsets.only(top: 16, bottom: 32, left: 16),
+                            child: Row(
+                              children: [
+                                Icon(Icons.add),
+                                Text("Dodaj pytanie"),
+                              ],
+                            )));
+                  }
 
-                      return QuestionBox(
+                  return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: QuestionBox(
                           question: questions[index],
                           autofocus: questions[index].text.isEmpty,
                           onChanged: (text) {
@@ -104,11 +105,9 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             setState(() {
                               questions.removeAt(index);
                             });
-                          });
-                    },
-                  ),
-                ),
-              )
+                          }));
+                },
+              ))
             ],
           ),
         ),
