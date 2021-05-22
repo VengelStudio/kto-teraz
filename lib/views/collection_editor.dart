@@ -5,12 +5,12 @@ import 'package:flutter_spinner/widgets/question_box.dart';
 
 import 'collections_page.dart';
 
-class CollectionCreator extends StatefulWidget {
+class CollectionEditor extends StatefulWidget {
   @override
-  _CollectionCreatorState createState() => _CollectionCreatorState();
+  _CollectionEditorState createState() => _CollectionEditorState();
 }
 
-class _CollectionCreatorState extends State<CollectionCreator> {
+class _CollectionEditorState extends State<CollectionEditor> {
   List<Question> questions = [];
   Collection collection;
 
@@ -82,8 +82,8 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                       if (index == questions.length) {
                         return TextButton(
                             onPressed: onAddQuestion,
-                            child: Padding(
-                                padding: EdgeInsets.only(top: 16, bottom: 32),
+                            child: Container(
+                                margin: EdgeInsets.only(top: 16, bottom: 32),
                                 child: Row(
                                   children: [
                                     Icon(Icons.add),

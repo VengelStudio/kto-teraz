@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinner/utils/questions.dart';
 
 class QuestionBox extends StatefulWidget {
@@ -26,8 +27,15 @@ class _QuestionBoxState extends State<QuestionBox> {
 
   @override
   void initState() {
+    super.initState();
+
     textFieldController.text = widget.question.text;
-    return super.initState();
+
+    SchedulerBinding.instance.addPostFrameCallback((Duration _) {
+      if (textFieldController.text.isEmpty) {
+        widget.question.focusNode.requestFocus();
+      }
+    });
   }
 
   void onUpdate(String text) {}
@@ -42,7 +50,8 @@ class _QuestionBoxState extends State<QuestionBox> {
         children: [
           Flexible(
             child: TextField(
-                autofocus: widget.autofocus,
+                // autofocus: widget.autofocus,
+                focusNode: widget.question.focusNode,
                 controller: textFieldController,
                 onChanged: widget.onChanged,
                 decoration: InputDecoration(
