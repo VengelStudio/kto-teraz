@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 class QuestionBox extends StatefulWidget {
   final String title;
-  final Function callback;
+  final Function onDelete;
   final bool autofocus;
 
   QuestionBox({
     Key key,
     @required this.title,
-    @required this.callback,
+    @required this.onDelete,
     @required this.autofocus,
   }) : super(key: key);
 
@@ -50,7 +50,7 @@ class _QuestionBoxState extends State<QuestionBox> {
           SizedBox(width: 16),
           IconButton(
               icon: Icon(Icons.close, color: Colors.black45),
-              onPressed: widget.callback)
+              onPressed: widget.onDelete)
         ],
       ),
     );

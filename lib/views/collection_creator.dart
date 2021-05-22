@@ -93,7 +93,7 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                   return QuestionBox(
                       title: questions[index].text,
                       autofocus: questions[index].text.isEmpty,
-                      callback: () {
+                      onDelete: () {
                         setState(() {
                           questions.removeAt(index);
                         });
