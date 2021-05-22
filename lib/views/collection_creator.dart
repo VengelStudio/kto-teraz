@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.model.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
 import 'package:flutter/foundation.dart';
 
 import 'collections_page.dart';
 
 class CollectionCreator extends StatefulWidget {
-  final bool isTabu;
+  // final bool isTabu;
 
-  CollectionCreator({Key key, @required this.isTabu}) : super(key: key);
+  // CollectionCreator({Key key, @required this.isTabu}) : super(key: key);
 
   @override
   _CollectionCreatorState createState() => _CollectionCreatorState();
@@ -17,11 +18,10 @@ class CollectionCreator extends StatefulWidget {
 class _CollectionCreatorState extends State<CollectionCreator> {
   @override
   void initState() {
-    print(widget.isTabu);
     super.initState();
   }
 
-  List<String> questions = [];
+  List<Question> questions = [];
   final questionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   Collection collection;
@@ -62,31 +62,26 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                 itemCount: questions.length + 1,
                 itemBuilder: (context, index) {
                   if (index == questions.length) {
-                    return ElevatedButton(
+                    return TextButton(
                         onPressed: () {
                           setState(() {
-                            questions.add(questionController.text);
+                            Question newQuestion = new Question(
+                                isTabu: false, probability: 0.5, text: "");
+                            questions.add(newQuestion);
                             questionController.clear();
                           });
                         },
                         child: Row(
                           children: [
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  questions.add(questionController.text);
-                                  questionController.clear();
-                                });
-                              },
-                              icon: Icon(Icons.add),
-                            ),
+                            Icon(Icons.add),
                             Text("Dodaj pytanie"),
                           ],
                         ));
                   }
 
                   return QuestionBox(
-                      title: questions[index],
+                      title: questions[index].text,
+                      autofocus: questions[index].text.isEmpty,
                       callback: () {
                         setState(() {
                           questions.removeAt(index);

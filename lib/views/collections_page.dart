@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/views/tabu_selection_page.dart';
 import 'package:flutter_spinner/widgets/collection_card.dart';
+
+import 'collection_creator.dart';
 
 class CollectionsPage extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _CollectionsState extends State<CollectionsPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TabuSelection()),
+              MaterialPageRoute(builder: (context) => CollectionCreator()),
             );
           },
           shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),
