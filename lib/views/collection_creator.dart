@@ -1,10 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.model.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_spinner/utils/collections.model.dart';
 
 class CollectionCreator extends StatefulWidget {
   final bool isTabu;
@@ -25,7 +22,7 @@ class _CollectionCreatorState extends State<CollectionCreator> {
   List<String> questions = [];
   final questionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final Collection collection;
+  Collection collection;
 
   @override
   Widget build(BuildContext context) {
