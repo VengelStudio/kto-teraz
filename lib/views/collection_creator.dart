@@ -116,7 +116,9 @@ class _CollectionCreatorState extends State<CollectionCreator> {
               );
             },
             icon: Icon(Icons.save),
-            label: Text("Zapisz")),
+            label: Text(
+              "ZAPISZ",
+            )),
       ),
     );
   }
