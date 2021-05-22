@@ -34,90 +34,98 @@ class _CollectionCreatorState extends State<CollectionCreator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(width: 1, color: Colors.black54),
-              )),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                      child: Text(
-                    'Nazwa kolekcji pytań długa',
-                    style: TextStyle(fontSize: 26.0),
-                    overflow: TextOverflow.ellipsis,
-                  )),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text("18+"),
-                        Switch(
-                          value: true,
-                          onChanged: (value) {
-                            setState(() {
-                              // gameOptions.isTabuEnabled = value;
-                            });
-                          },
-                          activeColor: Colors.blue,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+        body: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                decoration: BoxDecoration(
+                    border: Border(
+                  bottom: BorderSide(width: 1, color: Colors.black54),
+                )),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                        child: Text(
+                      'Nazwa kolekcji pytań długa',
+                      style: TextStyle(fontSize: 26.0),
+                      overflow: TextOverflow.ellipsis,
+                    )),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text("18+"),
+                          Switch(
+                            value: true,
+                            onChanged: (value) {
+                              setState(() {
+                                // gameOptions.isTabuEnabled = value;
+                              });
+                            },
+                            activeColor: Colors.blue,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: questions.length + 1,
-                itemBuilder: (context, index) {
-                  if (index == questions.length) {
-                    return TextButton(
-                        onPressed: onAddQuestion,
-                        child: Padding(
-                            padding: EdgeInsets.only(top: 16, bottom: 32),
-                            child: Row(
-                              children: [
-                                Icon(Icons.add),
-                                Text("Dodaj pytanie"),
-                              ],
-                            )));
-                  }
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: questions.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == questions.length) {
+                      return TextButton(
+                          onPressed: onAddQuestion,
+                          child: Padding(
+                              padding: EdgeInsets.only(top: 16, bottom: 32),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.add),
+                                  Text("Dodaj pytanie"),
+                                ],
+                              )));
+                    }
 
-                  return QuestionBox(
-                      title: questions[index].text,
-                      autofocus: questions[index].text.isEmpty,
-                      onDelete: () {
-                        setState(() {
-                          questions.removeAt(index);
+                    return QuestionBox(
+                        question: questions[index],
+                        autofocus: questions[index].text.isEmpty,
+                        onChanged: (text) {
+                          setState(() {
+                            questions.elementAt(index).setText(text);
+                          });
+                        },
+                        onDelete: () {
+                          setState(() {
+                            questions.removeAt(index);
+                          });
                         });
-                      });
-                },
-              ),
-            )
-          ],
+                  },
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
-        child: FloatingActionButton.extended(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CollectionsPage()),
-              );
-            },
-            icon: Icon(Icons.save),
-            label: Text(
-              "ZAPISZ",
-            )),
-      ),
-    );
+        floatingActionButton: Visibility(
+            visible: MediaQuery.of(context).viewInsets.bottom == 0,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
+              child: FloatingActionButton.extended(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CollectionsPage()),
+                    );
+                  },
+                  icon: Icon(Icons.save),
+                  label: Text(
+                    "ZAPISZ",
+                  )),
+            )));
   }
 }
