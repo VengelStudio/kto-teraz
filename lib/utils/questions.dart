@@ -18,7 +18,7 @@ List<Question> parseQuestions(String rawJson) {
 }
 
 class Question {
-  final String text;
+  String text;
   final double probability;
   final bool isTabu;
   final focusNode = FocusNode();
@@ -31,6 +31,10 @@ class Question {
       probability: json['probability'] as double,
       isTabu: json['isTabu'] as bool,
     );
+  }
+
+  setText(String text) {
+    this.text = text;
   }
 }
 
