@@ -73,37 +73,40 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: questions.length + 1,
-                  itemBuilder: (context, index) {
-                    if (index == questions.length) {
-                      return TextButton(
-                          onPressed: onAddQuestion,
-                          child: Padding(
-                              padding: EdgeInsets.only(top: 16, bottom: 32),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.add),
-                                  Text("Dodaj pytanie"),
-                                ],
-                              )));
-                    }
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: questions.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index == questions.length) {
+                        return TextButton(
+                            onPressed: onAddQuestion,
+                            child: Padding(
+                                padding: EdgeInsets.only(top: 16, bottom: 32),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.add),
+                                    Text("Dodaj pytanie"),
+                                  ],
+                                )));
+                      }
 
-                    return QuestionBox(
-                        question: questions[index],
-                        autofocus: questions[index].text.isEmpty,
-                        onChanged: (text) {
-                          setState(() {
-                            questions.elementAt(index).setText(text);
+                      return QuestionBox(
+                          question: questions[index],
+                          autofocus: questions[index].text.isEmpty,
+                          onChanged: (text) {
+                            setState(() {
+                              questions.elementAt(index).setText(text);
+                            });
+                          },
+                          onDelete: () {
+                            setState(() {
+                              questions.removeAt(index);
+                            });
                           });
-                        },
-                        onDelete: () {
-                          setState(() {
-                            questions.removeAt(index);
-                          });
-                        });
-                  },
+                    },
+                  ),
                 ),
               )
             ],
