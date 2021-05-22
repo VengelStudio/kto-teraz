@@ -11,7 +11,9 @@ class CollectionEditor extends StatefulWidget {
 }
 
 class _CollectionEditorState extends State<CollectionEditor> {
+  String collectionName = '';
   List<Question> questions = [];
+
   Collection collection;
 
   void onAddQuestion() {
@@ -29,6 +31,19 @@ class _CollectionEditorState extends State<CollectionEditor> {
           new Question(isTabu: false, probability: 0.5, text: "");
       questions.add(newQuestion);
     });
+  }
+
+  void onSave() {
+    print(this.questions.where((q) => q.text.isNotEmpty));
+
+    // TODO: Send updated collection to the collections page
+    // collection.setName(this.collectionName);
+    // collection.setQuestions(this.questions.where((q) => q.text.isNotEmpty));
+    // Navigator.push(
+    //                   context,
+    //                   MaterialPageRoute(
+    //                       builder: (context) => CollectionsPage(collection)),
+    //                 );
   }
 
   @override
@@ -117,13 +132,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
               child: FloatingActionButton.extended(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CollectionsPage()),
-                    );
-                  },
+                  onPressed: onSave,
                   icon: Icon(Icons.save),
                   label: Text(
                     "ZAPISZ",
