@@ -21,6 +21,7 @@ class Question {
   final String text;
   final double probability;
   final bool isTabu;
+  final focusNode = FocusNode();
 
   Question({this.text, this.probability, this.isTabu});
 

@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class QuestionBox extends StatefulWidget {
   final String title;
   final Function callback;
+  final bool autofocus;
 
   QuestionBox({
     Key key,
     @required this.title,
     @required this.callback,
+    @required this.autofocus,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class _QuestionBoxState extends State<QuestionBox> {
         children: [
           Flexible(
             child: TextField(
+                autofocus: widget.autofocus,
                 controller: textFieldController,
                 onChanged: (text) {
                   print(text);
