@@ -33,24 +33,35 @@ class _CollectionCreatorState extends State<CollectionCreator> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               decoration: BoxDecoration(
                   border: Border(
                 bottom: BorderSide(width: 1.0, color: Color(0xFF000000)),
               )),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  Expanded(
+                      child: Text(
                     'Nazwa kolekcji',
                     style: TextStyle(fontSize: 26.0),
-                  ),
-                  Spacer(),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "ZAPISZ",
-                      style: TextStyle(fontSize: 26.0, color: Colors.black),
+                    overflow: TextOverflow.ellipsis,
+                  )),
+                  Container(
+                    child: Row(
+                      children: [
+                        Text("18+"),
+                        Switch(
+                          value: true,
+                          onChanged: (value) {
+                            setState(() {
+                              // gameOptions.isTabuEnabled = value;
+                            });
+                          },
+                          activeColor: Colors.blue,
+                        ),
+                      ],
                     ),
                   )
                 ],
@@ -71,12 +82,14 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                             questionController.clear();
                           });
                         },
-                        child: Row(
-                          children: [
-                            Icon(Icons.add),
-                            Text("Dodaj pytanie"),
-                          ],
-                        ));
+                        child: Padding(
+                            padding: EdgeInsets.only(bottom: 32),
+                            child: Row(
+                              children: [
+                                Icon(Icons.add),
+                                Text("Dodaj pytanie"),
+                              ],
+                            )));
                   }
 
                   return QuestionBox(
@@ -89,7 +102,7 @@ class _CollectionCreatorState extends State<CollectionCreator> {
                       });
                 },
               ),
-            ),
+            )
           ],
         ),
       ),
