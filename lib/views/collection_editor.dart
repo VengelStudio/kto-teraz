@@ -13,6 +13,7 @@ class CollectionEditor extends StatefulWidget {
 class _CollectionEditorState extends State<CollectionEditor> {
   String collectionName = '';
   List<Question> questions = [];
+  bool isForAdults = false;
 
   Collection collection;
 
@@ -73,9 +74,10 @@ class _CollectionEditorState extends State<CollectionEditor> {
                         children: [
                           Text("18+"),
                           Switch(
-                            value: true,
+                            value: isForAdults,
                             onChanged: (value) {
                               setState(() {
+                                isForAdults = !isForAdults;
                                 // gameOptions.isTabuEnabled = value;
                               });
                             },
