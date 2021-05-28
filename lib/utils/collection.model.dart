@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
@@ -43,18 +44,18 @@ class Collection {
     }
   }
 
-  static Future readCollectionsFromFile() async {
+  static Future<List<Collection>> readCollectionsFromFile() async {
     try {
       final file = await _localFile;
 
       // Read the file
       final contents = await file.readAsString();
 
-      return contents;
+      return List.from(json.decode(contents));
     } catch (e) {
       print(e);
       // If encountering an error, return 0
-      return 0;
+      return [];
     }
   }
 

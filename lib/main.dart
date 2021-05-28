@@ -16,8 +16,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    Collection.createDefaultsIfMissing().then((value) =>
-        Collection.readCollectionsFromFile().then((value) => print(value)));
+    Collection.createDefaultsIfMissing()
+        .then((value) => Collection.readCollectionsFromFile());
 
     super.initState();
   }

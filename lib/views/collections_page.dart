@@ -10,11 +10,18 @@ class CollectionsPage extends StatefulWidget {
 }
 
 class _CollectionsState extends State<CollectionsPage> {
-  List<String> collections = [
-    "Kto teraz",
-    "Impreza",
-    "Randka",
-  ];
+  List<Collection> collections = [];
+
+  @override
+  void initState() {
+    super.initState();
+    this.loadCollections();
+  }
+
+  void loadCollections() async {
+    this.collections = await Collection.readCollectionsFromFile();
+    print(this.collections);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,7 @@ class _CollectionsState extends State<CollectionsPage> {
                 );
               }
               index -= 1;
-              return CollectionCard(title: collections[index]);
+              return CollectionCard(title: collections[index].name);
             }),
       ),
       floatingActionButton: Padding(
