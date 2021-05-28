@@ -28,8 +28,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
     }
 
     setState(() {
-      Question newQuestion =
-          new Question(isTabu: false, probability: 0.5, text: "");
+      Question newQuestion = new Question(isTabu: false, text: "");
       questions.add(newQuestion);
     });
   }

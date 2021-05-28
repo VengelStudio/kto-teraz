@@ -19,16 +19,14 @@ List<Question> parseQuestions(String rawJson) {
 
 class Question {
   String text;
-  final double probability;
   final bool isTabu;
   final focusNode = FocusNode();
 
-  Question({this.text, this.probability, this.isTabu});
+  Question({this.text, this.isTabu});
 
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
       text: json['text'] as String,
-      probability: json['probability'] as double,
       isTabu: json['isTabu'] as bool,
     );
   }
