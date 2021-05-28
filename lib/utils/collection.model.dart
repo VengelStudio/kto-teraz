@@ -4,13 +4,14 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinner/utils/questions.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Collection {
   String uuid = "";
   String name = "";
   bool isTabu = false;
-  List questions = [];
+  List<Question> questions = [];
 
   Collection({this.uuid, this.name, this.isTabu, this.questions});
 
@@ -73,11 +74,11 @@ class Collection {
 
   factory Collection.fromJson(Map<String, dynamic> json) {
     return Collection(
-      uuid: json['uuid'],
-      name: json['name'],
-      isTabu: json['isTabu'],
-      questions: json['questions'],
-    );
+        uuid: json['uuid'],
+        name: json['name'],
+        isTabu: json['isTabu'],
+        questions:
+            List.from(json["questions"].map((x) => Question.fromJson(x))));
   }
 
   static List<Collection> parseCollections(String rawJson) {

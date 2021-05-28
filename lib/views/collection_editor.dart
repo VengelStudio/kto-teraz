@@ -6,6 +6,19 @@ import 'package:flutter_spinner/widgets/question_box.dart';
 import 'collections_page.dart';
 
 class CollectionEditor extends StatefulWidget {
+  final String uuid;
+  final String name;
+  final bool isTabu;
+  final List<Question> questions;
+
+  CollectionEditor({
+    Key key,
+    @required this.uuid,
+    @required this.name,
+    @required this.isTabu,
+    @required this.questions,
+  });
+
   @override
   _CollectionEditorState createState() => _CollectionEditorState();
 }
@@ -15,7 +28,12 @@ class _CollectionEditorState extends State<CollectionEditor> {
   List<Question> questions = [];
   bool isForAdults = false;
 
-  Collection collection;
+  @override
+  void initState() {
+    super.initState();
+
+    questions = widget.questions;
+  }
 
   void onAddQuestion() {
     var existingEmptyQuestion = this
@@ -64,7 +82,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
                   children: [
                     Expanded(
                         child: Text(
-                      'Nazwa kolekcji pytań długa',
+                      widget.name,
                       style: TextStyle(fontSize: 26.0),
                       overflow: TextOverflow.ellipsis,
                     )),

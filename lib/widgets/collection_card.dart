@@ -1,20 +1,30 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/collection.model.dart';
+import 'package:flutter_spinner/views/collection_editor.dart';
 
 class CollectionCard extends StatelessWidget {
-  final String title;
+  final Collection collection;
 
   CollectionCard({
     Key key,
-    @required this.title,
+    @required this.collection,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(title);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CollectionEditor(
+                  uuid: collection.uuid,
+                  name: collection.name,
+                  isTabu: collection.isTabu,
+                  questions: collection.questions)),
+        );
       },
       child: Container(
         alignment: Alignment.center,
@@ -24,7 +34,7 @@ class CollectionCard extends StatelessWidget {
         decoration:
             BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
         child: Text(
-          title,
+          collection.name,
           style: TextStyle(fontSize: 20.0),
         ),
       ),

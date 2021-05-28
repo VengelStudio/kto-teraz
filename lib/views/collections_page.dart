@@ -36,7 +36,7 @@ class _CollectionsState extends State<CollectionsPage> {
                     }
                     index -= 1;
                     print(snapshot.data[index]);
-                    return CollectionCard(title: snapshot.data[index].name);
+                    return CollectionCard(collection: snapshot.data[index]);
                   });
             } else {
               child = Container(
@@ -58,7 +58,9 @@ class _CollectionsState extends State<CollectionsPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CollectionEditor()),
+              MaterialPageRoute(
+                  builder: (context) => CollectionEditor(
+                      uuid: "", name: "", isTabu: false, questions: [])),
             );
           },
           shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),
