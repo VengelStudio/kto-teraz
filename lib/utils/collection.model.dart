@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Collection {
@@ -8,6 +11,8 @@ class Collection {
   String name = "";
   bool isTabu = false;
   List questions = [];
+
+  Collection({this.uuid, this.name, this.isTabu, this.questions});
 
   void setUuid(String uuid) {
     this.uuid = uuid;
@@ -57,6 +62,35 @@ class Collection {
       // If encountering an error, return 0
       return [];
     }
+  }
+
+  static Future<List<Collection>> readDefaultCollections() async {
+    final data =
+        await rootBundle.loadString('assets/json/defaultCollections.json');
+
+    return compute(parseCollections, data);
+  }
+
+  factory Collection.fromJson(Map<String, dynamic> json) {
+    return Collection(
+      uuid: json['uuid'],
+      name: json['name'],
+      isTabu: json['isTabu'],
+      questions: json['questions'],
+    );
+  }
+
+  static List<Collection> parseCollections(String rawJson) {
+    final parsed = jsonDecode(rawJson);
+
+    return parsed.map<Collection>((json) => Collection.fromJson(json)).toList();
+  }
+
+  static Future<List<Collection>> readAllCollections() async {
+    final builtInCollections = await readDefaultCollections();
+    final customCollections = await readCollectionsFromFile();
+
+    return [...builtInCollections, ...customCollections];
   }
 
   Future<File> saveCollection() async {

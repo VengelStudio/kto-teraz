@@ -10,37 +10,47 @@ class CollectionsPage extends StatefulWidget {
 }
 
 class _CollectionsState extends State<CollectionsPage> {
-  List<Collection> collections = [];
-
-  @override
-  void initState() {
-    super.initState();
-    this.loadCollections();
-  }
-
-  void loadCollections() async {
-    this.collections = await Collection.readCollectionsFromFile();
-    print(this.collections);
-  }
+  final _collections = Collection.readAllCollections();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: collections.length + 1, //add room for the title
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return new Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(vertical: 20.0),
-                  child: Text('Kolekcje', style: TextStyle(fontSize: 32.0)),
-                );
-              }
-              index -= 1;
-              return CollectionCard(title: collections[index].name);
-            }),
+        child: FutureBuilder<List<Collection>>(
+          future: _collections,
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Collection>> snapshot) {
+            Widget child;
+            if (snapshot.hasData) {
+              child = ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.length + 1, //add room for the title
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return new Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.symmetric(vertical: 20.0),
+                        child:
+                            Text('Kolekcje', style: TextStyle(fontSize: 32.0)),
+                      );
+                    }
+                    index -= 1;
+                    print(snapshot.data[index]);
+                    return CollectionCard(title: snapshot.data[index].name);
+                  });
+            } else {
+              child = Container(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 60,
+                  height: 60,
+                ),
+              );
+            }
+            return Expanded(child: child);
+          },
+        ),
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),

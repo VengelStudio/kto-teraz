@@ -1,919 +1,583 @@
 [
   {
-    "text": "Na czym najbardziej by ci zależało, gdybyś stał się sławny i bogaty?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co robisz podczas stresujących rozmów telefonicznych, żeby się uspokoić?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kiedy ostatni raz śpiewałeś i ktoś Cię słyszał?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co robisz gdy zauważasz, że ktoś Cię obserwuje?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wolałbyś stracić wzrok czy rękę?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Najważniejsza zasada w wychowaniu dziecka to…?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jaką najbardziej spontaniczną decyzję podjąłeś w życiu?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Gdybyś mógł na jeden dzień stać się jedną z obecnych osób, kto by to był i dlaczego?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Komu jesteś za coś bardzo wdzięczny, ale on o tym nie wie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co głupiego zrobiłeś będąc dzieckiem?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co najdziwniejszego znajduje się na Twojej liście rzeczy do zrobienia przed śmiercią?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czego nikt z obecnych o Tobie nie wie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Opowiedz o jednym z momentów, gdy chciałeś zapaść się pod ziemię.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Twoja dziwna umiejętność to...?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jaką rzecz zrobiłeś w przypływie emocji, której nie żałujesz ale dziś byś nie powtórzył?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Możesz popełnić jedno przestępstwo bez konsekwencji, anonimowo. Co byś zrobił?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Za chwilę zabijesz wszystkich ludzi z danego rocznika na świecie. W jakim wieku byliby ci ludzie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kto z obecnych osób ma najładniejsze oczy?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wolałbyś być brzydki/a ale myśleć że jesteś ładny/a, czy odwrotnie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek coś ukradłeś?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy ukradłeś kiedyś pieniądze swoim rodzicom?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Stajesz się duchem, możesz obserwować życie dowolnej osoby. Kogo wybierasz?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {"text": "Ile partnerów już miałeś?", "probability": 0.5, "isTabu": true},
-  {
-    "text": "Osoby o jakich cechach cię intrygują?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek wysyłałeś/aś swoje nagie zdjęcia/filmy?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Możesz dostać nową osobowość, życie, znajomych. Kim byś się stał?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Spotkałeś się kiedyś z osobą poznaną przez internet?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy osobiście miałeś kontakt z jakimikolwiek narkotykami?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kiedykolwiek urwał ci się film?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Najgłupsza rzecz zrobiona po alkoholu?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Patrzysz do muszli klozetowej przed spłukaniem? ",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Na myśl o czym chciałbyś zapaść się pod ziemię?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Twój najgenialniejszy pomysł życia.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy gdy nagle musisz zawrócić na ulicy wyciągasz telefon i udajesz że przeczytałeś wiadomość, która zmieniła twoje plany?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jakie było twoje ostatnie kłamstwo?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {"text": "Sikasz pod prysznicem?", "probability": 0.5, "isTabu": true},
-  {
-    "text": "Opisz swojego najgorszego nauczyciela.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek podobała ci się osoba, której teraz nienawidzisz?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Opisz swoje genitalia jako produkt.",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Zepsułeś kiedyś coś i zrzuciłeś winę na kogoś innego?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "O czym ostatnio rozmawiałeś ze samym sobą?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz tajne hasło, które powiedziałbyś sam sobie z przyszłości/przeszłości aby mieć pewność że to ty?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czego nie zrobiłeś bo „co powiedzą inni”?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy jest coś co robisz zupełnie inaczej niż większość ludzi?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz jakieś „nienormalne” nawyki, których nie mają inni? Jakie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Z kim spędzasz najwięcej czasu?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kto najczęściej do ciebie dzwoni?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Do kogo najczęściej dzwonisz?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {"text": "Żałujesz jakiejś imprezy?", "probability": 0.5, "isTabu": true},
-  {
-    "text": "Jak opisałbyś swój styl bycia?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Którą z obecnych osób uważasz za najmądrzejszą?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Którą z obecnych osób uważasz za najładniejszą?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Którą z obecnych osób uważasz za najbardziej szaloną?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Którą z obecnych osób uważasz za najniebezpieczniejszą?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Którą z obecnych osób uważasz za najbardziej niewinną?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz konto na jakimś portalu randkowym?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {"text": "O czym teraz myślisz?", "probability": 0.5, "isTabu": false},
-  {
-    "text": "Najbardziej niebezpieczna rzecz jaką zrobiłeś.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedyś prawie zginąłeś przez swoją głupotę?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Stajesz się dyrektorem udanej, dochodowej firmy. Czym miałaby się zajmować?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kiedy ostatnio przeglądałeś cudze wiadomości w telefonie?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Kogo wśród obecnych osób lubisz najmniej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Opowiedz o tym jak coś sobie złamałeś.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wszedłeś kiedyś na coś i nie umiałeś zejść? Opowiedz.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Twoja najbardziej satysfakcjonująca zemsta na kimś?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Twoja najlepsza riposta, którą powiedziałeś od razu?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy uśmiechasz się i potakujesz, gdy nie zrozumiesz co ktoś do ciebie powiedział?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy udajesz czasami, że kogoś słuchasz?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jak dajesz znać komuś że siedzi u ciebie już za długo i chcesz, żeby wyszedł?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek udawałeś, że nie ma cię w domu aby nie wpuścić kogoś znajomego?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wymyśliłeś kiedyś jakiś powód tylko po to, by wyjść wcześniej ze spotkania lub imprezy?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Twoja najgłupsza uwaga w dzienniczku.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wrzuciłeś kiedyś komuś coś do jedzenia lub picia?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Wkradłeś się gdzieś kiedyś unikając płacenia za wstęp?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Dostałeś kiedyś mandat? Za co?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {"text": "Śledziłeś kiedyś kogoś?", "probability": 0.5, "isTabu": false},
-  {
-    "text": "Pisałeś kiedyś do znajomego z fałszywego konta na portalu społecznościowym?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Do czego używałeś/aś fałszywego konta na portalu społecznościowym?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy gdzieś w internecie jest jakieś twoje zdjęcie lub nagranie, którego upublicznienia się boisz?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Zrobiłeś kiedyś komuś zdjęcie z ukrycia? Komu i dlaczego?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy pomyliłeś się kiedyś podczas mówienia ciekawostki i zostałeś poprawiony?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {"text": "Na czym zostałeś przyłapany?", "probability": 0.5, "isTabu": false},
-  {
-    "text": "Skąd dowiedziałeś się skąd się biorą dzieci?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaka jest twoja ulubiona scena lub cytat z filmu?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy nasikałeś kiedyś do basenu?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy przyznałeś się kiedyś do zrobienia czegoś, czego nie zrobiłeś? ",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jakie komplementy lubisz słyszeć najbardziej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek piłeś alkohol sam ze sobą?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {"text": "Od czego jesteś uzależniony?", "probability": 0.5, "isTabu": true},
-  {
-    "text": "Czy jest tu osoba, której wolałbyś aby tu nie było dzisiaj?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy wyplułeś kiedyś jakieś jedzenie, bo ci nie smakowało?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy poddałeś się kiedyś w czymś i ktoś inny osiągnął to za ciebie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Osoby o jakich cechach Cię przyciągają?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy miałeś w życiu kogoś, kogo nazwałbyś swoim „mentorem”?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy chciał(a)byś lub miałeś/aś one-night standa?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy myślałeś/aś kiedyś że wpadłeś/aś?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś seks bez zabezpieczenia?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś seks w miejscu publicznym?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś seks w pokoju gdzie ktoś jeszcze był?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy zrobiłeś kiedyś striptiz przed swoim partnerem?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy wysłałeś komuś nagie zdjęcia?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś seks analny?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kiedykolwiek uprawiałeś albo chciałeś uprawiać seks w trójkącie?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy posiadasz jakieś gadżety erotyczne?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kiedykolwiek kupiłeś coś w sex-shopie?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy golisz miejsca intymne?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś seks podczas okresu?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jakie jest najdziwniejsze miejsce w którym uprawiałeś seks?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy byłeś w klubie ze striptizem?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy nagrałeś kiedyś swój seks?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy miałeś erotyczny sen z kimś z graczy?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy fantazjowałeś kiedyś o seksie z osobą tej samej płci?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Do jakich rzeczy (filmów, zdjęć) najczęściej się masturbujesz?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kiedykolwiek przymierzałeś ubrania płci przeciwnej?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy zdradziłeś lub miałeś ochotę zdradzić swojego partnera?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaka jest twoja najdziwniejsze fantazja erotyczna?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Co najdziwniejszego Cię podnieciło?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Z którym ze swoich nauczycieli/wykładowców chciałbyś uprawiać seks?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy często przeglądasz się nago w lustrze?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaki ubiór Cię kręci?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Wolisz już nigdy nie uprawiać seksu, czy już nigdy nic nie mówić?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uprawiałeś kiedyś seks przed lustrem?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaki rodzaj tańca Cię kręci?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy oglądałeś kiedyś hentai?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy masz jakiś fetysz, a jeśli tak to jaki?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Co chciałbyś zlizywać z partnera/partnerki?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy fantazjowałaś/eś kiedyś o ciąży?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kręci Cię niedoświadczony partner?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kręcą Cię pytania z podtekstem?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kręci Cię bycie zdominowanym?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy gadałeś/aś do siebie myśląc że nikt Cię nie usłyszy, ale okazało się inaczej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy skłamałeś/aś kiedyś w tej grze?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Najdziwniejsza sytuacja, w której się zsikałeś/aś?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Kto z graczy ostatnio Cię zdenerwował?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy kiedykolwiek zrobiłeś/aś komuś poważną krzywdę?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kogo z obecnych tu osób myśli chciałbyś poznać?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz na ciele pieprzyk z włosem?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jaki jest najdziwniejszy dźwięk jaki słyszałeś?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Pisałaś/eś kiedyś pamiętnik lub bloga?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Poznałaś/eś kiedyś kogoś przez Internet?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy przeklinasz, a jak tak to czy często?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Gdybyś nie musiał/a spać, to co byś zrobił/a z zaoszczędzonym czasem?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co denerwuje Cię w płci przeciwnej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Co podoba Ci się w płci przeciwnej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy paliłeś kiedyś 'po studencku'?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Na co zwracasz bardziej uwagę, na intelekt czy na wygląd?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy robisz coś zupełnie inaczej niż inni, jak tak to co?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz jakieś zainteresowanie uważane przez innych za dziwne?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy byłeś/łaś kiedyś EMO?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Wolisz spędzać wolny czas pasywnie czy aktywnie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy często dzielisz się swoimi problemami, czy tłumisz je w sobie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy zrobiłeś/łaś sobie fryzurę, której potem żałowałeś/łaś?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy masz jakieś swoje powiedzonko, jak tak to jakie?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Bierzesz prysznic rano czy wieczorem?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Wolisz uprawiać seks nago czy z jakimiś elementami ubioru?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy wolisz mieć młodszą czy starszą drugą połówkę?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy patrzysz na jakość czy na cene przy kupnie alkoholu?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy uważasz się za osobę atrakcyjną dla płci przeciwnej?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Kogo z graczy chciał(a)byś zobaczyć nago?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Do jakiego kraju chciał(a)byś się przeprowadzić?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy wstydzisz się zaczynać rozmowę z nieznajomymi?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jaką umiejętność chciał(a)byś opanować do perfekcji?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jaka jest twoja najbardziej sprośna fantazja?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Z iloma partnerami spałeś?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "W jakim najdziwniejszym miejscu się kochałeś?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy kiedykolwiek uprawiałeś stosunek analny?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy fantazjujesz o seksie ze znaną osobą?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy spałeś kiedyś z nieznajomą?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy zdarzało ci się płakać po stosunku?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaki jest twój największy fetysz?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy wierzysz w miłość do grobowej deski?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy wierzysz w miłość od pierwszego wejrzenia?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy byłbyś/łabyś w stanie zmienić się dla drugiej połówki?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Ile miałeś/łaś lat podczas pierwszego pocałunku?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Ile miałeś/łaś lat podczas pierwszego stosunku?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Jaka była najdziwniejsza rzecz jaką zrobiłeś/łaś aby komuś zaimponować?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy jesteś w relacji Friends With Benefits?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy chciałbyś uczestniczyć w stosunku z więcej niż jedną osobą?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy podobał ci się kiedyś partner twojego kolegi/koleżanki?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Czy całowałeś się kiedyś z zajętą osobą?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Na wakacjach wolisz zwiedzać, czy odpoczywać?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Masz lub myślisz o tatuażu? Jaki/jakim?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy podoba/ła Ci się jakaś osoba, której wcześniej nie lubiłeś?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Gdybyś został zmuszony, jaką część ciała osoby z obecnych zjadłbyś?",
-    "probability": 0.5,
-    "isTabu": true
-  },
-  {
-    "text": "Z kim z obecnych spędziłbyś miesiąc egzotycznych wakacji?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Opowiedz o najgorszej randce, na której byłeś.",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Czy powiedziałbyś swojemu przyjacielowi, gdybyś nie znosił jego/jej partnera?",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Jakiej muzyki słuchasz po kryjomu? ",
-    "probability": 0.5,
-    "isTabu": false
-  },
-  {
-    "text": "Przez ile dni najdłużej się nie myłeś?",
-    "probability": 0.5,
-    "isTabu": true
+    "uuid": "kto-teraz-original",
+    "name": "Pytania \"Kto teraz\"",
+    "isTabu": false,
+    "questions": [
+      {
+        "text": "Na czym najbardziej by ci zależało, gdybyś stał się sławny i bogaty?"
+      },
+      {
+        "text": "Co robisz podczas stresujących rozmów telefonicznych, żeby się uspokoić?"
+      },
+      {
+        "text": "Kiedy ostatni raz śpiewałeś i ktoś Cię słyszał?"
+      },
+      {
+        "text": "Co robisz gdy zauważasz, że ktoś Cię obserwuje?"
+      },
+      {
+        "text": "Wolałbyś stracić wzrok czy rękę?"
+      },
+      {
+        "text": "Najważniejsza zasada w wychowaniu dziecka to…?"
+      },
+      {
+        "text": "Jaką najbardziej spontaniczną decyzję podjąłeś w życiu?"
+      },
+      {
+        "text": "Gdybyś mógł na jeden dzień stać się jedną z obecnych osób, kto by to był i dlaczego?"
+      },
+      {
+        "text": "Komu jesteś za coś bardzo wdzięczny, ale on o tym nie wie?"
+      },
+      {
+        "text": "Co głupiego zrobiłeś będąc dzieckiem?"
+      },
+      {
+        "text": "Co najdziwniejszego znajduje się na Twojej liście rzeczy do zrobienia przed śmiercią?"
+      },
+      {
+        "text": "Czego nikt z obecnych o Tobie nie wie?"
+      },
+      {
+        "text": "Opowiedz o jednym z momentów, gdy chciałeś zapaść się pod ziemię."
+      },
+      {
+        "text": "Twoja dziwna umiejętność to...?"
+      },
+      {
+        "text": "Jaką rzecz zrobiłeś w przypływie emocji, której nie żałujesz ale dziś byś nie powtórzył?"
+      },
+      {
+        "text": "Możesz popełnić jedno przestępstwo bez konsekwencji, anonimowo. Co byś zrobił?"
+      },
+      {
+        "text": "Za chwilę zabijesz wszystkich ludzi z danego rocznika na świecie. W jakim wieku byliby ci ludzie?"
+      },
+      {
+        "text": "Kto z obecnych osób ma najładniejsze oczy?"
+      },
+      {
+        "text": "Wolałbyś być brzydki/a ale myśleć że jesteś ładny/a, czy odwrotnie?"
+      },
+      {
+        "text": "Czy kiedykolwiek coś ukradłeś?"
+      },
+      {
+        "text": "Czy ukradłeś kiedyś pieniądze swoim rodzicom?"
+      },
+      {
+        "text": "Stajesz się duchem, możesz obserwować życie dowolnej osoby. Kogo wybierasz?"
+      },
+      {
+        "text": "Osoby o jakich cechach cię intrygują?"
+      },
+      {
+        "text": "Możesz dostać nową osobowość, życie, znajomych. Kim byś się stał?"
+      },
+      {
+        "text": "Spotkałeś się kiedyś z osobą poznaną przez internet?"
+      },
+      {
+        "text": "Na myśl o czym chciałbyś zapaść się pod ziemię?"
+      },
+      {
+        "text": "Twój najgenialniejszy pomysł życia."
+      },
+      {
+        "text": "Czy gdy nagle musisz zawrócić na ulicy wyciągasz telefon i udajesz że przeczytałeś wiadomość, która zmieniła twoje plany?"
+      },
+      {
+        "text": "Jakie było twoje ostatnie kłamstwo?"
+      },
+      {
+        "text": "Opisz swojego najgorszego nauczyciela."
+      },
+      {
+        "text": "Czy kiedykolwiek podobała ci się osoba, której teraz nienawidzisz?"
+      },
+      {
+        "text": "Zepsułeś kiedyś coś i zrzuciłeś winę na kogoś innego?"
+      },
+      {
+        "text": "O czym ostatnio rozmawiałeś ze samym sobą?"
+      },
+      {
+        "text": "Czy masz tajne hasło, które powiedziałbyś sam sobie z przyszłości/przeszłości aby mieć pewność że to ty?"
+      },
+      {
+        "text": "Czego nie zrobiłeś bo „co powiedzą inni”?"
+      },
+      {
+        "text": "Czy jest coś co robisz zupełnie inaczej niż większość ludzi?"
+      },
+      {
+        "text": "Czy masz jakieś „nienormalne” nawyki, których nie mają inni? Jakie?"
+      },
+      {
+        "text": "Z kim spędzasz najwięcej czasu?"
+      },
+      {
+        "text": "Kto najczęściej do ciebie dzwoni?"
+      },
+      {
+        "text": "Do kogo najczęściej dzwonisz?"
+      },
+      {
+        "text": "Jak opisałbyś swój styl bycia?"
+      },
+      {
+        "text": "Którą z obecnych osób uważasz za najmądrzejszą?"
+      },
+      {
+        "text": "Którą z obecnych osób uważasz za najładniejszą?"
+      },
+      {
+        "text": "Którą z obecnych osób uważasz za najbardziej szaloną?"
+      },
+      {
+        "text": "Którą z obecnych osób uważasz za najniebezpieczniejszą?"
+      },
+      {
+        "text": "Którą z obecnych osób uważasz za najbardziej niewinną?"
+      },
+      {
+        "text": "O czym teraz myślisz?"
+      },
+      {
+        "text": "Najbardziej niebezpieczna rzecz jaką zrobiłeś."
+      },
+      {
+        "text": "Czy kiedyś prawie zginąłeś przez swoją głupotę?"
+      },
+      {
+        "text": "Stajesz się dyrektorem udanej, dochodowej firmy. Czym miałaby się zajmować?"
+      },
+      {
+        "text": "Kogo wśród obecnych osób lubisz najmniej?"
+      },
+      {
+        "text": "Opowiedz o tym jak coś sobie złamałeś."
+      },
+      {
+        "text": "Wszedłeś kiedyś na coś i nie umiałeś zejść? Opowiedz."
+      },
+      {
+        "text": "Twoja najbardziej satysfakcjonująca zemsta na kimś?"
+      },
+      {
+        "text": "Twoja najlepsza riposta, którą powiedziałeś od razu?"
+      },
+      {
+        "text": "Czy uśmiechasz się i potakujesz, gdy nie zrozumiesz co ktoś do ciebie powiedział?"
+      },
+      {
+        "text": "Czy udajesz czasami, że kogoś słuchasz?"
+      },
+      {
+        "text": "Jak dajesz znać komuś że siedzi u ciebie już za długo i chcesz, żeby wyszedł?"
+      },
+      {
+        "text": "Czy kiedykolwiek udawałeś, że nie ma cię w domu aby nie wpuścić kogoś znajomego?"
+      },
+      {
+        "text": "Wymyśliłeś kiedyś jakiś powód tylko po to, by wyjść wcześniej ze spotkania lub imprezy?"
+      },
+      {
+        "text": "Twoja najgłupsza uwaga w dzienniczku."
+      },
+      {
+        "text": "Wkradłeś się gdzieś kiedyś unikając płacenia za wstęp?"
+      },
+      {
+        "text": "Dostałeś kiedyś mandat? Za co?"
+      },
+      {
+        "text": "Śledziłeś kiedyś kogoś?"
+      },
+      {
+        "text": "Pisałeś kiedyś do znajomego z fałszywego konta na portalu społecznościowym?"
+      },
+      {
+        "text": "Do czego używałeś/aś fałszywego konta na portalu społecznościowym?"
+      },
+      {
+        "text": "Czy gdzieś w internecie jest jakieś twoje zdjęcie lub nagranie, którego upublicznienia się boisz?"
+      },
+      {
+        "text": "Zrobiłeś kiedyś komuś zdjęcie z ukrycia? Komu i dlaczego?"
+      },
+      {
+        "text": "Czy pomyliłeś się kiedyś podczas mówienia ciekawostki i zostałeś poprawiony?"
+      },
+      {
+        "text": "Na czym zostałeś przyłapany?"
+      },
+      {
+        "text": "Jaka jest twoja ulubiona scena lub cytat z filmu?"
+      },
+      {
+        "text": "Czy przyznałeś się kiedyś do zrobienia czegoś, czego nie zrobiłeś? "
+      },
+      {
+        "text": "Jakie komplementy lubisz słyszeć najbardziej?"
+      },
+      {
+        "text": "Czy jest tu osoba, której wolałbyś aby tu nie było dzisiaj?"
+      },
+      {
+        "text": "Czy wyplułeś kiedyś jakieś jedzenie, bo ci nie smakowało?"
+      },
+      {
+        "text": "Czy poddałeś się kiedyś w czymś i ktoś inny osiągnął to za ciebie?"
+      },
+      {
+        "text": "Osoby o jakich cechach Cię przyciągają?"
+      },
+      {
+        "text": "Czy miałeś w życiu kogoś, kogo nazwałbyś swoim „mentorem”?"
+      },
+      {
+        "text": "Czy gadałeś/aś do siebie myśląc że nikt Cię nie usłyszy, ale okazało się inaczej?"
+      },
+      {
+        "text": "Czy skłamałeś/aś kiedyś w tej grze?"
+      },
+      {
+        "text": "Kto z graczy ostatnio Cię zdenerwował?"
+      },
+      {
+        "text": "Czy kiedykolwiek zrobiłeś/aś komuś poważną krzywdę?"
+      },
+      {
+        "text": "Kogo z obecnych tu osób myśli chciałbyś poznać?"
+      },
+      {
+        "text": "Czy masz na ciele pieprzyk z włosem?"
+      },
+      {
+        "text": "Jaki jest najdziwniejszy dźwięk jaki słyszałeś?"
+      },
+      {
+        "text": "Pisałaś/eś kiedyś pamiętnik lub bloga?"
+      },
+      {
+        "text": "Poznałaś/eś kiedyś kogoś przez Internet?"
+      },
+      {
+        "text": "Czy przeklinasz, a jak tak to czy często?"
+      },
+      {
+        "text": "Gdybyś nie musiał/a spać, to co byś zrobił/a z zaoszczędzonym czasem?"
+      },
+      {
+        "text": "Co denerwuje Cię w płci przeciwnej?"
+      },
+      {
+        "text": "Co podoba Ci się w płci przeciwnej?"
+      },
+      {
+        "text": "Na co zwracasz bardziej uwagę, na intelekt czy na wygląd?"
+      },
+      {
+        "text": "Czy robisz coś zupełnie inaczej niż inni, jak tak to co?"
+      },
+      {
+        "text": "Czy masz jakieś zainteresowanie uważane przez innych za dziwne?"
+      },
+      {
+        "text": "Czy byłeś/łaś kiedyś EMO?"
+      },
+      {
+        "text": "Wolisz spędzać wolny czas pasywnie czy aktywnie?"
+      },
+      {
+        "text": "Czy często dzielisz się swoimi problemami, czy tłumisz je w sobie?"
+      },
+      {
+        "text": "Czy zrobiłeś/łaś sobie fryzurę, której potem żałowałeś/łaś?"
+      },
+      {
+        "text": "Czy masz jakieś swoje powiedzonko, jak tak to jakie?"
+      },
+      {
+        "text": "Czy wolisz mieć młodszą czy starszą drugą połówkę?"
+      },
+      {
+        "text": "Czy uważasz się za osobę atrakcyjną dla płci przeciwnej?"
+      },
+      {
+        "text": "Do jakiego kraju chciał(a)byś się przeprowadzić?"
+      },
+      {
+        "text": "Czy wstydzisz się zaczynać rozmowę z nieznajomymi?"
+      },
+      {
+        "text": "Jaką umiejętność chciał(a)byś opanować do perfekcji?"
+      },
+      {
+        "text": "Czy wierzysz w miłość do grobowej deski?"
+      },
+      {
+        "text": "Czy wierzysz w miłość od pierwszego wejrzenia?"
+      },
+      {
+        "text": "Czy byłbyś/łabyś w stanie zmienić się dla drugiej połówki?"
+      },
+      {
+        "text": "Jaka była najdziwniejsza rzecz jaką zrobiłeś/łaś aby komuś zaimponować?"
+      },
+      {
+        "text": "Na wakacjach wolisz zwiedzać, czy odpoczywać?"
+      },
+      {
+        "text": "Masz lub myślisz o tatuażu? Jaki/jakim?"
+      },
+      {
+        "text": "Czy podoba/ła Ci się jakaś osoba, której wcześniej nie lubiłeś?"
+      },
+      {
+        "text": "Z kim z obecnych spędziłbyś miesiąc egzotycznych wakacji?"
+      },
+      {
+        "text": "Opowiedz o najgorszej randce, na której byłeś."
+      },
+      {
+        "text": "Czy powiedziałbyś swojemu przyjacielowi, gdybyś nie znosił jego/jej partnera?"
+      },
+      {
+        "text": "Jakiej muzyki słuchasz po kryjomu? "
+      }
+    ]
+  },
+  {
+    "uuid": "kto-teraz-tabu",
+    "name": "Pytania tabu \"Kto teraz\"",
+    "isTabu": false,
+    "questions": [
+      {
+        "text": "Ile partnerów już miałeś?"
+      },
+      {
+        "text": "Czy kiedykolwiek wysyłałeś/aś swoje nagie zdjęcia/filmy?"
+      },
+      {
+        "text": "Czy osobiście miałeś kontakt z jakimikolwiek narkotykami?"
+      },
+      {
+        "text": "Czy kiedykolwiek urwał ci się film?"
+      },
+      {
+        "text": "Najgłupsza rzecz zrobiona po alkoholu?"
+      },
+      {
+        "text": "Patrzysz do muszli klozetowej przed spłukaniem? "
+      },
+      {
+        "text": "Sikasz pod prysznicem?"
+      },
+      {
+        "text": "Opisz swoje genitalia jako produkt."
+      },
+      {
+        "text": "Żałujesz jakiejś imprezy?"
+      },
+      {
+        "text": "Czy masz konto na jakimś portalu randkowym?"
+      },
+      {
+        "text": "Kiedy ostatnio przeglądałeś cudze wiadomości w telefonie?"
+      },
+      {
+        "text": "Wrzuciłeś kiedyś komuś coś do jedzenia lub picia?"
+      },
+      {
+        "text": "Skąd dowiedziałeś się skąd się biorą dzieci?"
+      },
+      {
+        "text": "Czy nasikałeś kiedyś do basenu?"
+      },
+      {
+        "text": "Czy kiedykolwiek piłeś alkohol sam ze sobą?"
+      },
+      {
+        "text": "Od czego jesteś uzależniony?"
+      },
+      {
+        "text": "Czy chciał(a)byś lub miałeś/aś one-night standa?"
+      },
+      {
+        "text": "Czy myślałeś/aś kiedyś że wpadłeś/aś?"
+      },
+      {
+        "text": "Czy uprawiałeś seks bez zabezpieczenia?"
+      },
+      {
+        "text": "Czy uprawiałeś seks w miejscu publicznym?"
+      },
+      {
+        "text": "Czy uprawiałeś seks w pokoju gdzie ktoś jeszcze był?"
+      },
+      {
+        "text": "Czy zrobiłeś kiedyś striptiz przed swoim partnerem?"
+      },
+      {
+        "text": "Czy wysłałeś komuś nagie zdjęcia?"
+      },
+      {
+        "text": "Czy uprawiałeś seks analny?"
+      },
+      {
+        "text": "Czy kiedykolwiek uprawiałeś albo chciałeś uprawiać seks w trójkącie?"
+      },
+      {
+        "text": "Czy posiadasz jakieś gadżety erotyczne?"
+      },
+      {
+        "text": "Czy kiedykolwiek kupiłeś coś w sex-shopie?"
+      },
+      {
+        "text": "Czy golisz miejsca intymne?"
+      },
+      {
+        "text": "Czy uprawiałeś seks podczas okresu?"
+      },
+      {
+        "text": "Jakie jest najdziwniejsze miejsce w którym uprawiałeś seks?"
+      },
+      {
+        "text": "Czy byłeś w klubie ze striptizem?"
+      },
+      {
+        "text": "Czy nagrałeś kiedyś swój seks?"
+      },
+      {
+        "text": "Czy miałeś erotyczny sen z kimś z graczy?"
+      },
+      {
+        "text": "Czy fantazjowałeś kiedyś o seksie z osobą tej samej płci?"
+      },
+      {
+        "text": "Do jakich rzeczy (filmów, zdjęć) najczęściej się masturbujesz?"
+      },
+      {
+        "text": "Czy kiedykolwiek przymierzałeś ubrania płci przeciwnej?"
+      },
+      {
+        "text": "Czy zdradziłeś lub miałeś ochotę zdradzić swojego partnera?"
+      },
+      {
+        "text": "Jaka jest twoja najdziwniejsze fantazja erotyczna?"
+      },
+      {
+        "text": "Co najdziwniejszego Cię podnieciło?"
+      },
+      {
+        "text": "Z którym ze swoich nauczycieli/wykładowców chciałbyś uprawiać seks?"
+      },
+      {
+        "text": "Czy często przeglądasz się nago w lustrze?"
+      },
+      {
+        "text": "Jaki ubiór Cię kręci?"
+      },
+      {
+        "text": "Wolisz już nigdy nie uprawiać seksu, czy już nigdy nic nie mówić?"
+      },
+      {
+        "text": "Czy uprawiałeś kiedyś seks przed lustrem?"
+      },
+      {
+        "text": "Jaki rodzaj tańca Cię kręci?"
+      },
+      {
+        "text": "Czy oglądałeś kiedyś hentai?"
+      },
+      {
+        "text": "Czy masz jakiś fetysz, a jeśli tak to jaki?"
+      },
+      {
+        "text": "Co chciałbyś zlizywać z partnera/partnerki?"
+      },
+      {
+        "text": "Czy fantazjowałaś/eś kiedyś o ciąży?"
+      },
+      {
+        "text": "Czy kręci Cię niedoświadczony partner?"
+      },
+      {
+        "text": "Czy kręcą Cię pytania z podtekstem?"
+      },
+      {
+        "text": "Czy kręci Cię bycie zdominowanym?"
+      },
+      {
+        "text": "Najdziwniejsza sytuacja, w której się zsikałeś/aś?"
+      },
+      {
+        "text": "Czy paliłeś kiedyś 'po studencku'?"
+      },
+      {
+        "text": "Bierzesz prysznic rano czy wieczorem?"
+      },
+      {
+        "text": "Wolisz uprawiać seks nago czy z jakimiś elementami ubioru?"
+      },
+      {
+        "text": "Czy patrzysz na jakość czy na cene przy kupnie alkoholu?"
+      },
+      {
+        "text": "Kogo z graczy chciał(a)byś zobaczyć nago?"
+      },
+      {
+        "text": "Jaka jest twoja najbardziej sprośna fantazja?"
+      },
+      {
+        "text": "Z iloma partnerami spałeś?"
+      },
+      {
+        "text": "W jakim najdziwniejszym miejscu się kochałeś?"
+      },
+      {
+        "text": "Czy kiedykolwiek uprawiałeś stosunek analny?"
+      },
+      {
+        "text": "Czy fantazjujesz o seksie ze znaną osobą?"
+      },
+      {
+        "text": "Czy spałeś kiedyś z nieznajomą?"
+      },
+      {
+        "text": "Czy zdarzało ci się płakać po stosunku?"
+      },
+      {
+        "text": "Jaki jest twój największy fetysz?"
+      },
+      {
+        "text": "Ile miałeś/łaś lat podczas pierwszego pocałunku?"
+      },
+      {
+        "text": "Ile miałeś/łaś lat podczas pierwszego stosunku?"
+      },
+      {
+        "text": "Czy jesteś w relacji Friends With Benefits?"
+      },
+      {
+        "text": "Czy chciałbyś uczestniczyć w stosunku z więcej niż jedną osobą?"
+      },
+      {
+        "text": "Czy podobał ci się kiedyś partner twojego kolegi/koleżanki?"
+      },
+      {
+        "text": "Czy całowałeś się kiedyś z zajętą osobą?"
+      },
+      {
+        "text": "Gdybyś został zmuszony, jaką część ciała osoby z obecnych zjadłbyś?"
+      },
+      {
+        "text": "Przez ile dni najdłużej się nie myłeś?"
+      }
+    ]
   }
 ]
