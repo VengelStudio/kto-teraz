@@ -36,7 +36,10 @@ class _CollectionsState extends State<CollectionsPage> {
                     }
                     index -= 1;
                     print(snapshot.data[index]);
-                    return CollectionCard(collection: snapshot.data[index]);
+                    return CollectionCard(
+                      collection: snapshot.data[index],
+                      readonly: index < 2,
+                    );
                   });
             } else {
               child = Container(

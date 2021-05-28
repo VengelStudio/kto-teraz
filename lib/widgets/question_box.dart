@@ -9,13 +9,15 @@ class QuestionBox extends StatefulWidget {
   final Question question;
   final Function onDelete;
   final ValueChanged<String> onChanged;
+  final bool readonly;
 
   QuestionBox(
       {Key key,
       @required this.autofocus,
       @required this.question,
       @required this.onDelete,
-      @required this.onChanged})
+      @required this.onChanged,
+      this.readonly})
       : super(key: key);
 
   @override
@@ -57,12 +59,15 @@ class _QuestionBoxState extends State<QuestionBox> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Pytanie",
-                )),
+                ),
+                readOnly: widget.readonly != null),
           ),
-          SizedBox(width: 16),
-          IconButton(
-              icon: Icon(Icons.close, color: Colors.black45),
-              onPressed: widget.onDelete)
+          widget.readonly == null ? SizedBox(width: 16) : Container(),
+          widget.readonly == null
+              ? IconButton(
+                  icon: Icon(Icons.close, color: Colors.black45),
+                  onPressed: widget.onDelete)
+              : Container()
         ],
       ),
     );

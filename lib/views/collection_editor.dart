@@ -10,14 +10,15 @@ class CollectionEditor extends StatefulWidget {
   final String name;
   final bool isTabu;
   final List<Question> questions;
+  final bool readonly;
 
-  CollectionEditor({
-    Key key,
-    @required this.uuid,
-    @required this.name,
-    @required this.isTabu,
-    @required this.questions,
-  });
+  CollectionEditor(
+      {Key key,
+      @required this.uuid,
+      @required this.name,
+      @required this.isTabu,
+      @required this.questions,
+      this.readonly});
 
   @override
   _CollectionEditorState createState() => _CollectionEditorState();
@@ -138,7 +139,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             setState(() {
                               questions.removeAt(index);
                             });
-                          }));
+                          },
+                          readonly: widget.readonly));
                 },
               ))
             ],
