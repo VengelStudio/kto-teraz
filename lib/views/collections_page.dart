@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/collection.model.dart';
 import 'package:flutter_spinner/widgets/collection_card.dart';
 
 import 'collection_editor.dart';

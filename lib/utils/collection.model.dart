@@ -35,25 +35,34 @@ class Collection {
     return File('$path/collections.json');
   }
 
-  static Future<int> readCollectionsFromFile() async {
+  static Future<File> createDefaultsIfMissing() async {
+    final file = await _localFile;
+
+    if (!(await file.exists())) {
+      file.writeAsString('[]');
+    }
+  }
+
+  static Future readCollectionsFromFile() async {
     try {
       final file = await _localFile;
 
       // Read the file
       final contents = await file.readAsString();
 
-      return int.parse(contents);
+      return contents;
     } catch (e) {
+      print(e);
       // If encountering an error, return 0
       return 0;
     }
   }
 
-  Future<File> saveCollection(int counter) async {
+  Future<File> saveCollection() async {
     final file = await _localFile;
 
     // Write the file
-    return file.writeAsString('$questions');
+    return file.writeAsString('xd');
   }
 }
 

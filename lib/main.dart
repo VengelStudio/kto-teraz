@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/collection.model.dart';
 import 'package:flutter_spinner/views/collections_page.dart';
 import 'package:flutter_spinner/views/about_page.dart';
 import 'views/game_options_page.dart';
@@ -7,7 +8,20 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    Collection.createDefaultsIfMissing().then((value) =>
+        Collection.readCollectionsFromFile().then((value) => print(value)));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
