@@ -78,7 +78,6 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             onChanged: (value) {
                               setState(() {
                                 isForAdults = !isForAdults;
-                                // gameOptions.isTabuEnabled = value;
                               });
                             },
                             activeColor: Colors.blue,

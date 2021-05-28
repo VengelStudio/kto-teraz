@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 Future<List<Question>> loadQuestions(BuildContext context) async {
   final data = await DefaultAssetBundle.of(context)
-      .loadString('assets/json/questions.json');
+      .loadString('assets/json/defaultCollections.json');
 
   return compute(parseQuestions, data);
 }

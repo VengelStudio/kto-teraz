@@ -3,22 +3,39 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class Collection {
+  String uuid = "";
   String name = "";
   bool isTabu = false;
   List questions = [];
 
-  Future<String> get _localPath async {
+  void setUuid(String uuid) {
+    this.uuid = uuid;
+  }
+
+  void setName(String name) {
+    this.name = name;
+  }
+
+  void setQuestions(List questions) {
+    this.questions = questions;
+  }
+
+  void setTabu(bool isTabu) {
+    this.isTabu = isTabu;
+  }
+
+  static Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
 
     return directory.path;
   }
 
-  Future<File> get _localFile async {
+  static Future<File> get _localFile async {
     final path = await _localPath;
-    return File('$path/collection.txt');
+    return File('$path/collections.json');
   }
 
-  Future<int> readCollection() async {
+  static Future<int> readCollectionsFromFile() async {
     try {
       final file = await _localFile;
 
@@ -32,10 +49,12 @@ class Collection {
     }
   }
 
-  Future<File> saveCollections(int counter) async {
+  Future<File> saveCollection(int counter) async {
     final file = await _localFile;
 
     // Write the file
     return file.writeAsString('$questions');
   }
 }
+
+//Saving collection into a json file
