@@ -71,12 +71,11 @@ class _CollectionsState extends State<CollectionsPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CollectionEditor(
-                    uuid: UniqueKey().toString(),
-                    name: "test",
-                    isTabu: false,
-                    questions: []),
-              ),
+                  builder: (context) => CollectionEditor(
+                      uuid: UniqueKey().toString(),
+                      name: "",
+                      isTabu: false,
+                      questions: [])),
             );
           },
           shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),
