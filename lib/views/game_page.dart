@@ -156,7 +156,6 @@ class _GameState extends State<GamePage> {
                         left: 20.0,
                         bottom: 20),
                     child: new Container(
-                      // height: MediaQuery.of(context).size.height * .38,
                       width: MediaQuery.of(context).size.width,
                       child: new Container(
                         child: new Card(
