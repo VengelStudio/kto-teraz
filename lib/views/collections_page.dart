@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../utils/collection.dart';
 import '../widgets/collection_card.dart';
@@ -70,11 +71,12 @@ class _CollectionsState extends State<CollectionsPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CollectionEditor(
-                      uuid: UniqueKey().toString(),
-                      name: "test",
-                      isTabu: false,
-                      questions: [])),
+                builder: (context) => CollectionEditor(
+                    uuid: UniqueKey().toString(),
+                    name: "test",
+                    isTabu: false,
+                    questions: []),
+              ),
             );
           },
           shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/views/collection_editor.dart';
@@ -68,24 +69,62 @@ class CollectionCard extends StatelessWidget {
           ),
           if (!readonly)
             Expanded(
-                flex: 0,
-                child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.black45),
-                    onPressed: () {
-                      collection.deleteCollection();
-                      refresh();
-                    }))
+              flex: 0,
+              child: IconButton(
+                  icon: Icon(Icons.close, color: Colors.black45),
+                  onPressed: () {
+                    showAlertDialog(context);
+                    // collection.deleteCollection();
+                    // refresh();
+                  }),
+            )
           else
             Opacity(
               opacity: 0,
               child: Expanded(
-                  flex: 0,
-                  child: IconButton(
-                      icon: Icon(Icons.close, color: Colors.black45),
-                      onPressed: () {})),
+                flex: 0,
+                child: IconButton(
+                    icon: Icon(Icons.close, color: Colors.black45),
+                    onPressed: () {}),
+              ),
             )
         ],
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    CupertinoAlertDialog alert = CupertinoAlertDialog(
+      title: Text("Uwaga"),
+      content: Text("Czy na pewno chcesz usunąć kolekcje pytań?"),
+      actions: [
+        CupertinoDialogAction(
+          child: TextButton(
+            onPressed: () {
+              collection.deleteCollection();
+              Navigator.of(context).pop();
+              refresh();
+            },
+            child: Text("Tak"),
+          ),
+        ),
+        CupertinoDialogAction(
+          child: TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("Nie"),
+          ),
+        ),
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
