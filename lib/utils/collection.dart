@@ -2,11 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/question.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:path_provider/path_provider.dart';
 
+part 'collection.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Collection {
   String uuid = "";
   String name = "";
@@ -54,29 +57,16 @@ class Collection {
   static Future<List<Collection>> readCollectionsFromFile() async {
     try {
       final file = await _localFile;
-
-      print(file.path);
-
-      // Read the file
       final contents = await file.readAsString();
-
-      // var decodedContents = json.decode(contents);
-      // var test = Collection.fromJson(json.decode(contents));
-
-      var test = json.decode(contents).cast<List<Collection>>();
-      // var test2 = new Map<String, dynamic>.from(contents);
 
       var list = List<Collection>.from(
         json.decode(contents).map<Collection>(
               (dynamic item) => Collection.fromJson(item),
             ),
       );
+
       return list;
-      // return List<Collection>.from(test);
-      // return List<Collection>.from(
-      //     json.decode(contents).cast<List<Collection>>());
     } catch (e) {
-      print(e);
       return [];
     }
   }
@@ -88,29 +78,10 @@ class Collection {
     return compute(parseCollections, data);
   }
 
-  factory Collection.fromJson(Map<String, dynamic> json) {
-    var questions = jsonDecode(json["questions"]);
-    var questions2 = jsonDecode(json["questions"])
-        .map<Question>((item) => Question.fromJson(item))
-        .toList();
-    // var questions3 = jsonDecode(json["questions"])
-    //     .map((item) => Question.fromJson(item))
-    //     .toList() as List<Question>;
+  factory Collection.fromJson(Map<String, dynamic> data) =>
+      _$CollectionFromJson(data);
 
-    return Collection(
-        uuid: json['uuid'],
-        name: json['name'],
-        isTabu: json['isTabu'],
-        questions: questions2 as List<Question>);
-  }
-
-  Map<String, dynamic> toJson() => {
-        "uuid": uuid,
-        "name": name,
-        "isTabu": isTabu,
-        "questions":
-            jsonEncode(questions.map((i) => i.toJson()).toList()).toString()
-      };
+  Map<String, dynamic> toJson() => _$CollectionToJson(this);
 
   static List<Collection> parseCollections(String rawJson) {
     final parsed = jsonDecode(rawJson);
@@ -139,10 +110,7 @@ class Collection {
       customCollections.add(this);
     }
 
-    var json2 = this.toJson();
-    var json3 = jsonEncode(json2);
     var cc = jsonEncode(customCollections);
-    // file.writeAsString('[{"_id": "60b1e514ed8f7953d92c8248","index": 0, "guid": "7afdda74-88d2-4c80-b5f2-ba5a7d449a30","isActive": false,"balance": "232"}]');
 
     return file.writeAsString(cc);
   }

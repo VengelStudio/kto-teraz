@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.model.dart';
+import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/views/collection_editor.dart';
 
 class CollectionCard extends StatelessWidget {

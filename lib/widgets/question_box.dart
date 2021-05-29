@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/question.dart';
 
 class QuestionBox extends StatefulWidget {
   final bool autofocus;

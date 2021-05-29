@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'question.g.dart';
 
 Future<List<Question>> loadQuestions(BuildContext context) async {
   final data = await DefaultAssetBundle.of(context)
@@ -17,21 +20,17 @@ List<Question> parseQuestions(String rawJson) {
   return parsed.map<Question>((json) => Question.fromJson(json)).toList();
 }
 
+@JsonSerializable()
 class Question {
   String text;
   final focusNode = FocusNode();
 
   Question({this.text});
 
-  factory Question.fromJson(Map<String, dynamic> json) {
-    return Question(
-      text: json['text'] as String,
-    );
-  }
+  factory Question.fromJson(Map<String, dynamic> data) =>
+      _$QuestionFromJson(data);
 
-  Map<String, dynamic> toJson() {
-    return {"text": text};
-  }
+  Map<String, dynamic> toJson() => _$QuestionToJson(this);
 
   setText(String text) {
     this.text = text;

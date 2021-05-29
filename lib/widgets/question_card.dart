@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_spinner/widgets/question_card_block.dart';
 

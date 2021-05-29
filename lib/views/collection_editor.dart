@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.model.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/collection.dart';
+import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
 
 import 'collections_page.dart';

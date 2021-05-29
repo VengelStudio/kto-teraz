@@ -7,7 +7,7 @@ import 'package:flutter_spinner/widgets/question_card.dart';
 import 'package:flutter_spinner/utils/emojis.dart';
 import 'package:flutter_spinner/utils/options.model.dart';
 import 'package:flutter_spinner/utils/players.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/question.dart';
 
 class GamePage extends StatefulWidget {
   final GameOptions gameOptions;

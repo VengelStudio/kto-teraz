@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.model.dart';
+import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/views/collections_page.dart';
 import 'package:flutter_spinner/views/about_page.dart';
 import 'views/game_options_page.dart';
