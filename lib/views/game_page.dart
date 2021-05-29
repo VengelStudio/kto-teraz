@@ -26,6 +26,7 @@ class _GameState extends State<GamePage> {
   QuestionManager? questionManager;
   Winner? winner;
   var controller = StreamController<int>();
+  bool isInstructionVisible = true;
 
   _loadQuestions() async {
     var createdManager =
@@ -79,62 +80,111 @@ class _GameState extends State<GamePage> {
     }
 
     return Scaffold(
-      body: GestureDetector(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.only(left: 10, right: 10),
-                  child: questionManager != null
-                      ? PhysicalShape(
-                          color: Colors.transparent,
-                          shadowColor: Colors.black,
-                          elevation: 8,
-                          clipper: ShapeBorderClipper(shape: CircleBorder()),
-                          child: FortuneWheel(
-                            physics: CircularPanPhysics(
-                              duration: Duration(seconds: nextDurationInS),
-                              curve: Curves.ease,
-                            ),
-                            onFling: spinWheel,
-                            onAnimationEnd: openQuestion,
-                            animateFirst: false,
-                            selected: controller.stream,
-                            indicators: <FortuneIndicator>[wheelIndicator],
-                            items: [
-                              for (var player in players)
-                                FortuneItem(
-                                  child:
-                                      Emojis.getTransformedEmoji(player.emoji),
-                                  style: FortuneItemStyle(
-                                    color: player
-                                        .color, // <-- custom circle slice fill color
-                                    borderColor: Colors
-                                        .black38, // <-- custom circle slice stroke color
-                                    borderWidth:
-                                        1, // <-- custom circle slice stroke width
+      body: Stack(
+        children: [
+          GestureDetector(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(left: 10, right: 10),
+                      child: questionManager != null
+                          ? PhysicalShape(
+                              color: Colors.transparent,
+                              shadowColor: Colors.black,
+                              elevation: 8,
+                              clipper:
+                                  ShapeBorderClipper(shape: CircleBorder()),
+                              child: FortuneWheel(
+                                physics: CircularPanPhysics(
+                                  duration: Duration(seconds: nextDurationInS),
+                                  curve: Curves.ease,
+                                ),
+                                onFling: spinWheel,
+                                onAnimationEnd: openQuestion,
+                                animateFirst: false,
+                                selected: controller.stream,
+                                indicators: <FortuneIndicator>[wheelIndicator],
+                                items: [
+                                  for (var player in players)
+                                    FortuneItem(
+                                      child: Emojis.getTransformedEmoji(
+                                          player.emoji),
+                                      style: FortuneItemStyle(
+                                        color: player
+                                            .color, // <-- custom circle slice fill color
+                                        borderColor: Colors
+                                            .black38, // <-- custom circle slice stroke color
+                                        borderWidth:
+                                            1, // <-- custom circle slice stroke width
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Color(0xffD30C7B)),
+                                ),
+                                SizedBox(height: 20.0),
+                                Text("Ładowanie...")
+                              ],
+                            )),
+                ),
+              ],
+            ),
+          ),
+          isInstructionVisible
+              ? Container(
+                  alignment: Alignment.topCenter,
+                  padding: new EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * .68,
+                      right: 20.0,
+                      left: 20.0,
+                      bottom: 20),
+                  child: new Container(
+                    // height: MediaQuery.of(context).size.height * .38,
+                    width: MediaQuery.of(context).size.width,
+                    child: new Container(
+                      child: new Card(
+                        color: Colors.white,
+                        elevation: 4.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: InkWell(
+                              onTap: () {
+                                print("TAP");
+                                setState(() {
+                                  isInstructionVisible = false;
+                                });
+                              },
+                              child: Column(children: [
+                                Text(
+                                  "❯ Każdy wybiera swoje pole\n❯ Wylosowany gracz odpowiada na pytanie",
+                                  style: TextStyle(
+                                    fontSize: 24.0,
                                   ),
                                 ),
-                            ],
-                          ),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(
-                              valueColor:
-                                  AlwaysStoppedAnimation(Color(0xffD30C7B)),
-                            ),
-                            SizedBox(height: 20.0),
-                            Text("Ładowanie...")
-                          ],
-                        )),
-            ),
-          ],
-        ),
+                                Spacer(),
+                                Text(
+                                  '(kliknij aby zamknąć)',
+                                  style: TextStyle(
+                                      fontSize: 15.0, color: Color(0xff555555)),
+                                ),
+                              ])),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : Container()
+        ],
       ),
     );
   }
