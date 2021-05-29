@@ -41,13 +41,27 @@ class CollectionCard extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 2)),
-                child: Text(
-                  collection.name,
-                  style: TextStyle(fontSize: 20.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Row(
+                    children: [
+                      collection.isTabu
+                          ? Opacity(opacity: 1.0, child: Text('18+'))
+                          : Opacity(opacity: 0, child: Text('18+')),
+                      SizedBox(width: 16.0),
+                      Expanded(
+                        child: Text(
+                          collection.name,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

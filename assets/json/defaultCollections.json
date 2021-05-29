@@ -354,7 +354,7 @@
   {
     "uuid": "kto-teraz-tabu",
     "name": "Pytania tabu \"Kto teraz\"",
-    "isTabu": false,
+    "isTabu": true,
     "questions": [
       {
         "text": "Ile partnerów już miałeś?"
