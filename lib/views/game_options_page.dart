@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/options.model.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 
@@ -11,6 +12,43 @@ class GameOptionsPage extends StatefulWidget {
 
 class _GameOptionsPageState extends State<GameOptionsPage> {
   GameOptions gameOptions = new GameOptions();
+  List<Collection>? _allCollections;
+
+  @override
+  void initState() {
+    super.initState();
+
+    loadAllCollections();
+  }
+
+  void loadAllCollections() async {
+    var allCollections = await Collection.readAllCollections();
+    setState(() {
+      _allCollections = allCollections;
+    });
+  }
+
+  List<Collection> selectedCollections = [];
+
+  void _toggleCollection(bool? value, Collection collection) {
+    var newSelectedCollections = [...selectedCollections];
+
+    if (value == null) {
+      return;
+    }
+
+    if (value) {
+      newSelectedCollections.add(collection);
+    } else {
+      newSelectedCollections.remove(collection);
+    }
+
+    print(newSelectedCollections);
+
+    setState(() {
+      selectedCollections = newSelectedCollections;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +94,28 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                   SizedBox(height: 20),
                 ],
               )),
+              Flexible(
+                  child: _allCollections == null
+                      ? Container(
+                          alignment: Alignment.center,
+                          child: SizedBox(
+                            child: CircularProgressIndicator(),
+                            width: 60,
+                            height: 60,
+                          ),
+                        )
+                      : ListView(
+                          children: _allCollections!
+                              .map((collection) => new Container(
+                                    child: CheckboxListTile(
+                                      title: new Text(collection.name),
+                                      value: selectedCollections
+                                          .contains(collection),
+                                      onChanged: (bool? value) =>
+                                          _toggleCollection(value, collection),
+                                    ),
+                                  ))
+                              .toList())),
               Container(
                 margin: const EdgeInsets.only(top: 60),
                 width: MediaQuery.of(context).size.width / 3,
@@ -72,17 +132,6 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       },
                       child: Text(
                         'Start',
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Powrót',
                       ),
                     ),
                   ],
