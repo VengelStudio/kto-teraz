@@ -112,11 +112,13 @@ class _CollectionEditorState extends State<CollectionEditor> {
                           Text("18+"),
                           Switch(
                             value: isForAdults,
-                            onChanged: (value) {
-                              setState(() {
-                                isForAdults = !isForAdults;
-                              });
-                            },
+                            onChanged: widget.readonly
+                                ? null
+                                : (value) {
+                                    setState(() {
+                                      isForAdults = !isForAdults;
+                                    });
+                                  },
                             activeColor: Colors.blue,
                           ),
                         ],
