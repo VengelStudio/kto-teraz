@@ -8,11 +8,7 @@ class Player {
   Color color;
   SvgPicture emoji;
 
-  Player({int id, Color color, SvgPicture emoji}) {
-    this.id = id;
-    this.color = color;
-    this.emoji = emoji;
-  }
+  Player({required this.id, required this.color, required this.emoji});
 
   static List<Player> generate(int playerCount) {
     List colors = new List.generate(playerCount,

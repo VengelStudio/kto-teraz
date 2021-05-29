@@ -25,7 +25,7 @@ class Question {
   String text;
   final focusNode = FocusNode();
 
-  Question({this.text});
+  Question({required this.text});
 
   factory Question.fromJson(Map<String, dynamic> data) =>
       _$QuestionFromJson(data);

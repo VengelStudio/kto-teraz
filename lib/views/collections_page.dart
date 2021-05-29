@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.dart';
-import 'package:flutter_spinner/widgets/collection_card.dart';
+import '../utils/collection.dart';
+import '../widgets/collection_card.dart';
 
 import 'collection_editor.dart';
 
@@ -24,7 +24,7 @@ class _CollectionsState extends State<CollectionsPage> {
             if (snapshot.hasData) {
               child = ListView.builder(
                   shrinkWrap: true,
-                  itemCount: snapshot.data.length + 1, //add room for the title
+                  itemCount: snapshot.data!.length + 1, //add room for the title
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return new Container(
@@ -36,7 +36,7 @@ class _CollectionsState extends State<CollectionsPage> {
                     }
                     index -= 1;
                     return CollectionCard(
-                      collection: snapshot.data[index],
+                      collection: snapshot.data![index],
                       readonly: index < 2,
                     );
                   });

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
-
+import 'package:collection/collection.dart';
 import 'collections_page.dart';
 
 class CollectionEditor extends StatefulWidget {
@@ -13,12 +13,12 @@ class CollectionEditor extends StatefulWidget {
   final bool readonly;
 
   CollectionEditor(
-      {Key key,
-      @required this.uuid,
-      @required this.name,
-      @required this.isTabu,
-      @required this.questions,
-      this.readonly});
+      {Key? key,
+      required this.uuid,
+      required this.name,
+      required this.isTabu,
+      required this.questions,
+      this.readonly = false});
 
   @override
   _CollectionEditorState createState() => _CollectionEditorState();
@@ -39,9 +39,9 @@ class _CollectionEditorState extends State<CollectionEditor> {
   }
 
   void onAddQuestion() {
-    var existingEmptyQuestion = this
-        .questions
-        .firstWhere((element) => element.text.isEmpty, orElse: () => null);
+    Question? existingEmptyQuestion = this.questions.firstWhereOrNull(
+          (element) => element.text.isEmpty,
+        );
 
     if (existingEmptyQuestion != null) {
       existingEmptyQuestion.focusNode.requestFocus();

@@ -7,7 +7,7 @@ class QuestionCard extends StatelessWidget {
   final Winner winner;
   final Question question;
 
-  QuestionCard({Key key, @required this.winner, @required this.question})
+  QuestionCard({Key? key, required this.winner, required this.question})
       : super(key: key);
 
   @override

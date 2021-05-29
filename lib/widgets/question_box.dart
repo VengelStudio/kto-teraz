@@ -4,20 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinner/utils/question.dart';
 
+typedef DeleteCallback = void Function();
+
 class QuestionBox extends StatefulWidget {
   final bool autofocus;
   final Question question;
-  final Function onDelete;
+  final DeleteCallback onDelete;
   final ValueChanged<String> onChanged;
   final bool readonly;
 
   QuestionBox(
-      {Key key,
-      @required this.autofocus,
-      @required this.question,
-      @required this.onDelete,
-      @required this.onChanged,
-      this.readonly})
+      {Key? key,
+      required this.autofocus,
+      required this.question,
+      required this.onDelete,
+      required this.onChanged,
+      this.readonly = false})
       : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class _QuestionBoxState extends State<QuestionBox> {
 
     textFieldController.text = widget.question.text;
 
-    SchedulerBinding.instance.addPostFrameCallback((Duration _) {
+    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
       if (textFieldController.text.isEmpty) {
         widget.question.focusNode.requestFocus();
       }
@@ -60,10 +62,10 @@ class _QuestionBoxState extends State<QuestionBox> {
                   border: OutlineInputBorder(),
                   hintText: "Pytanie",
                 ),
-                readOnly: widget.readonly != null),
+                readOnly: widget.readonly),
           ),
-          widget.readonly == null ? SizedBox(width: 16) : Container(),
-          widget.readonly == null
+          widget.readonly ? SizedBox(width: 16) : Container(),
+          widget.readonly
               ? IconButton(
                   icon: Icon(Icons.close, color: Colors.black45),
                   onPressed: widget.onDelete)

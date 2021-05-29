@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -20,8 +21,9 @@ class GamePage extends StatefulWidget {
 
 class _GameState extends State<GamePage> {
   int nextDurationInS = 4;
-  QuestionManager questionManager;
-  Winner winner = new Winner();
+  QuestionManager? questionManager;
+  Winner? winner;
+  var controller = StreamController<int>();
 
   _loadQuestions() async {
     var createdManager =
@@ -35,6 +37,7 @@ class _GameState extends State<GamePage> {
   @override
   void initState() {
     super.initState();
+    controller.add(0);
     _loadQuestions();
   }
 
@@ -55,9 +58,12 @@ class _GameState extends State<GamePage> {
         nextDurationInS = Random().nextInt(4) + 1;
 
         int winnerId = Random().nextInt(players.length);
-        winner.id = winnerId;
-        winner.color = players[winnerId].color;
-        winner.emoji = players[winnerId].emoji;
+        controller.add(winnerId);
+
+        winner = new Winner(
+            id: winnerId,
+            color: players[winnerId].color,
+            emoji: players[winnerId].emoji);
       });
     }
 
@@ -94,7 +100,7 @@ class _GameState extends State<GamePage> {
                             onFling: spinWheel,
                             onAnimationEnd: openQuestion,
                             animateFirst: false,
-                            selected: winner.id == null ? 0 : winner.id,
+                            selected: controller.stream,
                             indicators: <FortuneIndicator>[wheelIndicator],
                             items: [
                               for (var player in players)

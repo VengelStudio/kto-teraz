@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.dart';
-import 'package:flutter_spinner/views/collections_page.dart';
-import 'package:flutter_spinner/views/about_page.dart';
+import 'utils/collection.dart';
+import 'views/collections_page.dart';
+import 'views/about_page.dart';
 import 'views/game_options_page.dart';
 
 void main() {
@@ -16,10 +16,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    Collection.createDefaultsIfMissing()
-        .then((value) => Collection.readCollectionsFromFile());
-
     super.initState();
+
+    Collection.createDefaultsIfMissing();
+    Collection.readCollectionsFromFile();
   }
 
   @override

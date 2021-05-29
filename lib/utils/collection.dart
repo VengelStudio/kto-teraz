@@ -11,12 +11,16 @@ part 'collection.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Collection {
-  String uuid = "";
-  String name = "";
-  bool isTabu = false;
-  List<Question> questions = [];
+  String uuid;
+  String name;
+  bool isTabu;
+  List<Question> questions;
 
-  Collection({this.uuid, this.name, this.isTabu, this.questions});
+  Collection(
+      {required this.uuid,
+      required this.name,
+      required this.isTabu,
+      required this.questions});
 
   void setUuid(String uuid) {
     this.uuid = uuid;
@@ -26,7 +30,7 @@ class Collection {
     this.name = name;
   }
 
-  void setQuestions(List questions) {
+  void setQuestions(List<Question> questions) {
     this.questions = questions;
   }
 
@@ -45,7 +49,7 @@ class Collection {
     return File('$path/collections.json');
   }
 
-  static Future<File> createDefaultsIfMissing() async {
+  static void createDefaultsIfMissing() async {
     final file = await _localFile;
 
     if (!(await file.exists())) {

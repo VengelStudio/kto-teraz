@@ -28,7 +28,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -161,7 +161,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.3"
   dart_style:
     dependency: transitive
     description:
@@ -182,7 +182,7 @@ packages:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.1"
   file:
     dependency: transitive
     description:
@@ -208,7 +208,7 @@ packages:
       name: flutter_fortune_wheel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.2"
+    version: "1.0.0"
   flutter_hooks:
     dependency: transitive
     description:
@@ -360,21 +360,21 @@ packages:
       name: path_drawing
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.1"
   path_parsing:
     dependency: transitive
     description:
       name: path_parsing
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.1"
   path_provider:
     dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   path_provider_linux:
     dependency: transitive
     description:
@@ -498,7 +498,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   stack_trace:
     dependency: transitive
     description:
@@ -540,7 +540,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.19"
+    version: "0.3.0"
   timing:
     dependency: transitive
     description:
@@ -596,7 +596,7 @@ packages:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.0"
+    version: "5.1.1"
   yaml:
     dependency: transitive
     description:

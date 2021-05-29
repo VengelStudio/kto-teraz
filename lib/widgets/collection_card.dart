@@ -9,7 +9,7 @@ class CollectionCard extends StatelessWidget {
   final Collection collection;
   final bool readonly;
 
-  CollectionCard({Key key, @required this.collection, this.readonly})
+  CollectionCard({Key? key, required this.collection, this.readonly = false})
       : super(key: key);
 
   @override
