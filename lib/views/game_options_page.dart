@@ -43,8 +43,6 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
       newSelectedCollections.remove(collection);
     }
 
-    print(newSelectedCollections);
-
     setState(() {
       selectedCollections = newSelectedCollections;
     });
@@ -59,7 +57,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(bottom: 60),
+                margin: const EdgeInsets.only(bottom: 30, top: 30),
                 child: Text(
                   'Opcje gry',
                   style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
@@ -74,7 +72,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 30.0),
                         child: Text(
-                          "Liczba osób",
+                          "Liczba osób:",
                           style: TextStyle(fontSize: 28),
                         ),
                       ),
@@ -91,7 +89,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                 ],
               )),
               Flexible(
@@ -121,7 +119,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 30, bottom: 30),
                 width: MediaQuery.of(context).size.width / 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
