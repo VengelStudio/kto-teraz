@@ -28,6 +28,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
   String collectionName = '';
   List<Question> questions = [];
   bool isForAdults = false;
+  final TextEditingController nameFieldController = new TextEditingController();
 
   @override
   void initState() {
@@ -36,8 +37,11 @@ class _CollectionEditorState extends State<CollectionEditor> {
     collectionName = widget.name;
     isForAdults = widget.isTabu;
     questions = widget.questions;
+    nameFieldController.text = widget.name;
+  }
 
-    print(widget.readonly);
+  void onNameChanged(String updatedName) {
+    this.collectionName = updatedName;
   }
 
   void onAddQuestion() {
@@ -84,11 +88,18 @@ class _CollectionEditorState extends State<CollectionEditor> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                        child: Text(
-                      widget.name,
-                      style: TextStyle(fontSize: 26.0),
-                      overflow: TextOverflow.ellipsis,
-                    )),
+                        child: TextField(
+                            controller: nameFieldController,
+                            // style: TextStyle(
+                            //   height: 0.5,
+                            // ),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Nazwa kolekcji",
+                            ),
+                            onChanged: onNameChanged,
+                            readOnly: widget.readonly)),
+                    SizedBox(width: 16),
                     Container(
                       child: Row(
                         children: [

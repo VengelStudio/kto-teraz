@@ -42,8 +42,6 @@ class _QuestionBoxState extends State<QuestionBox> {
     });
   }
 
-  void onUpdate(String text) {}
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,7 +58,7 @@ class _QuestionBoxState extends State<QuestionBox> {
                 onChanged: widget.onChanged,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Pytanie",
+                  hintText: "Treść pytania",
                 ),
                 readOnly: !widget.readonly),
           ),

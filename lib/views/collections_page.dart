@@ -30,8 +30,8 @@ class _CollectionsState extends State<CollectionsPage> {
                       return new Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(vertical: 20.0),
-                        child:
-                            Text('Kolekcje', style: TextStyle(fontSize: 32.0)),
+                        child: Text('Kolekcje pytań',
+                            style: TextStyle(fontSize: 32.0)),
                       );
                     }
                     index -= 1;
