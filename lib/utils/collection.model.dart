@@ -55,12 +55,28 @@ class Collection {
     try {
       final file = await _localFile;
 
+      print(file.path);
+
       // Read the file
       final contents = await file.readAsString();
 
-      return List.from(json.decode(contents));
+      // var decodedContents = json.decode(contents);
+      // var test = Collection.fromJson(json.decode(contents));
+
+      var test = json.decode(contents).cast<List<Collection>>();
+      // var test2 = new Map<String, dynamic>.from(contents);
+
+      var list = List<Collection>.from(
+        json.decode(contents).map<Collection>(
+              (dynamic item) => Collection.fromJson(item),
+            ),
+      );
+      return list;
+      // return List<Collection>.from(test);
+      // return List<Collection>.from(
+      //     json.decode(contents).cast<List<Collection>>());
     } catch (e) {
-      // If encountering an error, return 0
+      print(e);
       return [];
     }
   }
@@ -73,12 +89,19 @@ class Collection {
   }
 
   factory Collection.fromJson(Map<String, dynamic> json) {
+    var questions = jsonDecode(json["questions"]);
+    var questions2 = jsonDecode(json["questions"])
+        .map<Question>((item) => Question.fromJson(item))
+        .toList();
+    // var questions3 = jsonDecode(json["questions"])
+    //     .map((item) => Question.fromJson(item))
+    //     .toList() as List<Question>;
+
     return Collection(
         uuid: json['uuid'],
         name: json['name'],
         isTabu: json['isTabu'],
-        questions:
-            List.from(json["questions"].map((x) => Question.fromJson(x))));
+        questions: questions2 as List<Question>);
   }
 
   Map<String, dynamic> toJson() => {
