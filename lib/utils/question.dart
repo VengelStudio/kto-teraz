@@ -25,16 +25,15 @@ class QuestionManager {
   int questionIndex = 0;
   List<Question> _questions = [];
 
-  static Future<QuestionManager> create(BuildContext context) async {
+  static Future<QuestionManager> create(
+      BuildContext context, List<Collection> collections) async {
     var component = QuestionManager();
 
-    component._questions =
-        (await Collection.readCollectionsFromFile())[0].questions;
-
-    // if (!isTabuEnabled) {
-    //   component._questions =
-    //       component._questions.where((question) => !question.isTabu).toList();
-    // }
+    component._questions = collections
+        .map((collection) => collection.questions)
+        .toList()
+        .expand((i) => i)
+        .toList();
 
     component._questions.shuffle();
 

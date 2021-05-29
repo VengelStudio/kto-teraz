@@ -95,27 +95,31 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                 ],
               )),
               Flexible(
-                  child: _allCollections == null
-                      ? Container(
-                          alignment: Alignment.center,
-                          child: SizedBox(
-                            child: CircularProgressIndicator(),
-                            width: 60,
-                            height: 60,
-                          ),
-                        )
-                      : ListView(
-                          children: _allCollections!
-                              .map((collection) => new Container(
-                                    child: CheckboxListTile(
-                                      title: new Text(collection.name),
-                                      value: selectedCollections
-                                          .contains(collection),
-                                      onChanged: (bool? value) =>
-                                          _toggleCollection(value, collection),
-                                    ),
-                                  ))
-                              .toList())),
+                child: _allCollections == null
+                    ? Container(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          child: CircularProgressIndicator(),
+                          width: 60,
+                          height: 60,
+                        ),
+                      )
+                    : ListView(
+                        children: _allCollections!
+                            .map(
+                              (collection) => new Container(
+                                child: CheckboxListTile(
+                                  title: new Text(collection.name),
+                                  value:
+                                      selectedCollections.contains(collection),
+                                  onChanged: (bool? value) =>
+                                      _toggleCollection(value, collection),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 60),
                 width: MediaQuery.of(context).size.width / 3,
@@ -127,7 +131,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GamePage(gameOptions)),
+                              builder: (context) => GamePage(
+                                  gameOptions: gameOptions,
+                                  collections: selectedCollections)),
                         );
                       },
                       child: Text(

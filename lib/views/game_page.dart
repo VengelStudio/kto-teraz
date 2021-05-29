@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_spinner/widgets/question_card.dart';
 import 'package:flutter_spinner/utils/emojis.dart';
@@ -12,8 +13,9 @@ import 'package:flutter_spinner/utils/question.dart';
 
 class GamePage extends StatefulWidget {
   final GameOptions gameOptions;
+  final List<Collection> collections;
 
-  const GamePage(this.gameOptions);
+  const GamePage({required this.gameOptions, required this.collections});
 
   @override
   _GameState createState() => _GameState();
@@ -26,7 +28,8 @@ class _GameState extends State<GamePage> {
   var controller = StreamController<int>();
 
   _loadQuestions() async {
-    var createdManager = await QuestionManager.create(context);
+    var createdManager =
+        await QuestionManager.create(context, widget.collections);
 
     setState(() {
       questionManager = createdManager;
