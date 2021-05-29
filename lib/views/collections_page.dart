@@ -35,9 +35,11 @@ class _CollectionsState extends State<CollectionsPage> {
                       );
                     }
                     index -= 1;
+                    var collection = snapshot.data![index];
                     return CollectionCard(
-                      collection: snapshot.data![index],
-                      readonly: index < 2,
+                      collection: collection,
+                      readonly: collection.uuid == "kto-teraz-original" ||
+                          collection.uuid == "kto-teraz-tabu",
                     );
                   });
             } else {

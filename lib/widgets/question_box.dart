@@ -62,7 +62,7 @@ class _QuestionBoxState extends State<QuestionBox> {
                   border: OutlineInputBorder(),
                   hintText: "Pytanie",
                 ),
-                readOnly: widget.readonly),
+                readOnly: !widget.readonly),
           ),
           widget.readonly ? SizedBox(width: 16) : Container(),
           widget.readonly

@@ -36,6 +36,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
     collectionName = widget.name;
     isForAdults = widget.isTabu;
     questions = widget.questions;
+
+    print(widget.readonly);
   }
 
   void onAddQuestion() {
@@ -140,14 +142,15 @@ class _CollectionEditorState extends State<CollectionEditor> {
                               questions.removeAt(index);
                             });
                           },
-                          readonly: widget.readonly));
+                          readonly: !widget.readonly));
                 },
               ))
             ],
           ),
         ),
         floatingActionButton: Visibility(
-            visible: MediaQuery.of(context).viewInsets.bottom == 0,
+            visible: !widget.readonly &&
+                MediaQuery.of(context).viewInsets.bottom == 0,
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
