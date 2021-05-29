@@ -10,7 +10,13 @@ class CollectionsPage extends StatefulWidget {
 }
 
 class _CollectionsState extends State<CollectionsPage> {
-  final _collections = Collection.readAllCollections();
+  var _collections = Collection.readAllCollections();
+
+  refresCollections() {
+    setState(() {
+      _collections = Collection.readAllCollections();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +44,7 @@ class _CollectionsState extends State<CollectionsPage> {
                     var collection = snapshot.data![index];
                     return CollectionCard(
                       collection: collection,
+                      refresh: refresCollections,
                       readonly: collection.uuid == "kto-teraz-original" ||
                           collection.uuid == "kto-teraz-tabu",
                     );

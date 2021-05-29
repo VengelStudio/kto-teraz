@@ -114,9 +114,21 @@ class Collection {
       customCollections.add(this);
     }
 
-    var cc = jsonEncode(customCollections);
+    var newCustomCollections = jsonEncode(customCollections);
 
-    return file.writeAsString(cc);
+    return file.writeAsString(newCustomCollections);
+  }
+
+  Future<File> deleteCollection() async {
+    final file = await _localFile;
+
+    final customCollections = await readCollectionsFromFile();
+
+    customCollections.removeWhere((element) => element.uuid == this.uuid);
+
+    var newCustomCollections = jsonEncode(customCollections);
+
+    return file.writeAsString(newCustomCollections);
   }
 }
 
