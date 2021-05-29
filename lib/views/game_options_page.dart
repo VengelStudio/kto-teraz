@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/options.model.dart';
@@ -70,9 +72,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 30.0),
+                        padding: const EdgeInsets.only(right: 8.0),
                         child: Text(
-                          "Liczba osób:",
+                          "Liczba graczy:",
                           style: TextStyle(fontSize: 28),
                         ),
                       ),
@@ -82,7 +84,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                           TextButton(
                               child: Text(
                                 gameOptions.numberOfPeople.toString(),
-                                style: TextStyle(fontSize: 38.0),
+                                style: TextStyle(
+                                    fontSize: 38.0,
+                                    decoration: TextDecoration.underline),
                               ),
                               onPressed: () => showPickerNumber(context)),
                         ],
@@ -126,6 +130,13 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        if (selectedCollections.isEmpty) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(new SnackBar(
+                            content: Text('Wybierz kolekcje pytań!'),
+                          ));
+                          return;
+                        }
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -154,9 +165,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
           NumberPickerColumn(begin: 2, end: 12),
         ]),
         hideHeader: true,
-        title: new Text("Liczba osób"),
+        title: new Text("Wybierz liczbę graczy"),
         textAlign: TextAlign.center,
-        confirmText: "Wybierz",
+        confirmText: "Zapisz",
         cancelText: "Anuluj",
         itemExtent: 60.0,
         textStyle: TextStyle(fontSize: 30.0, color: Colors.black),
