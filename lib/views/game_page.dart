@@ -141,43 +141,44 @@ class _GameState extends State<GamePage> {
             ),
           ),
           isInstructionVisible
-              ? Container(
-                  alignment: Alignment.topCenter,
-                  padding: new EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * .68,
-                      right: 20.0,
-                      left: 20.0,
-                      bottom: 20),
-                  child: new Container(
-                    // height: MediaQuery.of(context).size.height * .38,
-                    width: MediaQuery.of(context).size.width,
+              ? InkWell(
+                  onTap: () {
+                    setState(() {
+                      isInstructionVisible = false;
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.black45),
+                    alignment: Alignment.topCenter,
+                    padding: new EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * .68,
+                        right: 20.0,
+                        left: 20.0,
+                        bottom: 20),
                     child: new Container(
-                      child: new Card(
-                        color: Colors.white,
-                        elevation: 4.0,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: InkWell(
-                              onTap: () {
-                                print("TAP");
-                                setState(() {
-                                  isInstructionVisible = false;
-                                });
-                              },
-                              child: Column(children: [
-                                Text(
-                                  "❯ Każdy wybiera swoje pole\n❯ Wylosowany gracz odpowiada na pytanie",
-                                  style: TextStyle(
-                                    fontSize: 24.0,
-                                  ),
+                      // height: MediaQuery.of(context).size.height * .38,
+                      width: MediaQuery.of(context).size.width,
+                      child: new Container(
+                        child: new Card(
+                          color: Colors.white,
+                          elevation: 4.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(children: [
+                              Text(
+                                "❯ Każdy wybiera swoje pole\n❯ Wylosowany gracz odpowiada na pytanie",
+                                style: TextStyle(
+                                  fontSize: 24.0,
                                 ),
-                                Spacer(),
-                                Text(
-                                  '(kliknij aby zamknąć)',
-                                  style: TextStyle(
-                                      fontSize: 15.0, color: Color(0xff555555)),
-                                ),
-                              ])),
+                              ),
+                              Spacer(),
+                              Text(
+                                '(kliknij aby zamknąć)',
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xff555555)),
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
                     ),
