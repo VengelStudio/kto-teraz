@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
@@ -29,6 +30,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
   List<Question> questions = [];
   bool isForAdults = false;
   final TextEditingController nameFieldController = new TextEditingController();
+  final nameFieldFocusNode = FocusNode();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -38,6 +41,12 @@ class _CollectionEditorState extends State<CollectionEditor> {
     isForAdults = widget.isTabu;
     questions = widget.questions;
     nameFieldController.text = widget.name;
+
+    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
+      if (nameFieldController.text.isEmpty) {
+        nameFieldFocusNode.requestFocus();
+      }
+    });
   }
 
   void onNameChanged(String updatedName) {
@@ -61,6 +70,10 @@ class _CollectionEditorState extends State<CollectionEditor> {
   }
 
   void onSave() {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
     Collection newCollection = new Collection(
       uuid: widget.uuid,
       name: collectionName,
@@ -94,17 +107,27 @@ class _CollectionEditorState extends State<CollectionEditor> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                        child: TextField(
+                      child: Form(
+                          key: _formKey,
+                          child: TextFormField(
+                            focusNode: nameFieldFocusNode,
                             controller: nameFieldController,
-                            // style: TextStyle(
-                            //   height: 0.5,
-                            // ),
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(),
+                              border: new OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.red)),
                               hintText: "Nazwa kolekcji",
                             ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Nazwa kolekcji nie może być pusta';
+                              }
+                              return null;
+                            },
                             onChanged: onNameChanged,
-                            readOnly: widget.readonly)),
+                            readOnly: widget.readonly,
+                          )),
+                    ),
                     SizedBox(width: 16),
                     Container(
                       child: Row(

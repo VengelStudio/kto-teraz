@@ -1,24 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinner/utils/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'question.g.dart';
-
-Future<List<Question>> loadQuestions(BuildContext context) async {
-  final data = await DefaultAssetBundle.of(context)
-      .loadString('assets/json/defaultCollections.json');
-
-  return compute(parseQuestions, data);
-}
-
-// A function that converts a response body into a List<Photo>.
-List<Question> parseQuestions(String rawJson) {
-  final parsed = jsonDecode(rawJson);
-
-  return parsed.map<Question>((json) => Question.fromJson(json)).toList();
-}
 
 @JsonSerializable()
 class Question {
@@ -42,15 +26,14 @@ class QuestionManager {
   List<Question> _questions = [];
 
   static Future<QuestionManager> create(
-      BuildContext context, bool isTabuEnabled) async {
+      BuildContext context, List<Collection> collections) async {
     var component = QuestionManager();
 
-    component._questions = (await loadQuestions(context));
-
-    // if (!isTabuEnabled) {
-    //   component._questions =
-    //       component._questions.where((question) => !question.isTabu).toList();
-    // }
+    component._questions = collections
+        .map((collection) => collection.questions)
+        .toList()
+        .expand((i) => i)
+        .toList();
 
     component._questions.shuffle();
 
