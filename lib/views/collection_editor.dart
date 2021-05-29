@@ -96,9 +96,6 @@ class _CollectionEditorState extends State<CollectionEditor> {
                     Expanded(
                         child: TextField(
                             controller: nameFieldController,
-                            // style: TextStyle(
-                            //   height: 0.5,
-                            // ),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               hintText: "Nazwa kolekcji",
