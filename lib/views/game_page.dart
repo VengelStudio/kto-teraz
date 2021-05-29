@@ -26,8 +26,7 @@ class _GameState extends State<GamePage> {
   var controller = StreamController<int>();
 
   _loadQuestions() async {
-    var createdManager =
-        await QuestionManager.create(context, widget.gameOptions.isTabuEnabled);
+    var createdManager = await QuestionManager.create(context);
 
     setState(() {
       questionManager = createdManager;
@@ -37,7 +36,6 @@ class _GameState extends State<GamePage> {
   @override
   void initState() {
     super.initState();
-    controller.add(0);
     _loadQuestions();
   }
 

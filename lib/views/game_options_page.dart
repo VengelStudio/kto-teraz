@@ -54,28 +54,6 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30.0),
-                        child: Text(
-                          "Pytania tabu?",
-                          style: TextStyle(fontSize: 28),
-                        ),
-                      ),
-                      Flexible(
-                          child: Switch(
-                        value: gameOptions.isTabuEnabled,
-                        onChanged: (value) {
-                          setState(() {
-                            gameOptions.isTabuEnabled = value;
-                          });
-                        },
-                        activeColor: Colors.blue,
-                      ))
-                    ],
-                  ),
                 ],
               )),
               Container(
