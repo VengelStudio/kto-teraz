@@ -65,6 +65,11 @@ class _CollectionEditorState extends State<CollectionEditor> {
     );
 
     newCollection.saveCollection();
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CollectionsPage()),
+    );
   }
 
   @override
