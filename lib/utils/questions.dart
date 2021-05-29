@@ -19,10 +19,9 @@ List<Question> parseQuestions(String rawJson) {
 
 class Question {
   String text;
-  final bool isTabu;
   final focusNode = FocusNode();
 
-  Question({this.text, this.isTabu});
+  Question({this.text});
 
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
@@ -49,10 +48,10 @@ class QuestionManager {
 
     component._questions = (await loadQuestions(context));
 
-    if (!isTabuEnabled) {
-      component._questions =
-          component._questions.where((question) => !question.isTabu).toList();
-    }
+    // if (!isTabuEnabled) {
+    //   component._questions =
+    //       component._questions.where((question) => !question.isTabu).toList();
+    // }
 
     component._questions.shuffle();
 

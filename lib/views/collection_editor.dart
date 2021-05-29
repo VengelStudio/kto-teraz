@@ -49,7 +49,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
     }
 
     setState(() {
-      Question newQuestion = new Question(isTabu: false, text: "");
+      Question newQuestion = new Question(text: "");
       questions.add(newQuestion);
     });
   }
