@@ -1,34 +1,73 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinner/utils/question.dart';
 
-class QuestionBox extends StatelessWidget {
-  final String title;
-  final Function callback;
+typedef DeleteCallback = void Function();
 
-  QuestionBox({
-    Key key,
-    @required this.title,
-    @required this.callback,
-  }) : super(key: key);
+class QuestionBox extends StatefulWidget {
+  final bool autofocus;
+  final Question question;
+  final DeleteCallback onDelete;
+  final ValueChanged<String> onChanged;
+  final bool readonly;
+
+  QuestionBox(
+      {Key? key,
+      required this.autofocus,
+      required this.question,
+      required this.onDelete,
+      required this.onChanged,
+      this.readonly = false})
+      : super(key: key);
+
+  @override
+  _QuestionBoxState createState() => _QuestionBoxState();
+}
+
+class _QuestionBoxState extends State<QuestionBox> {
+  final TextEditingController textFieldController = new TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    textFieldController.text = widget.question.text;
+
+    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
+      if (textFieldController.text.isEmpty) {
+        widget.question.focusNode.requestFocus();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(16.0),
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 40.0),
+      margin: EdgeInsets.only(top: 16.0),
       width: MediaQuery.of(context).size.width,
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
       child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 20.0),
+          Flexible(
+            child: TextField(
+                // autofocus: widget.autofocus,
+                focusNode: widget.question.focusNode,
+                controller: textFieldController,
+                onChanged: widget.onChanged,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Treść pytania",
+                ),
+                readOnly: !widget.readonly),
           ),
-          Spacer(),
-          IconButton(icon: Icon(Icons.delete), onPressed: this.callback)
+          widget.readonly ? SizedBox(width: 16) : Container(),
+          widget.readonly
+              ? IconButton(
+                  icon: Icon(Icons.close, color: Colors.black45),
+                  onPressed: widget.onDelete)
+              : Container()
         ],
       ),
     );

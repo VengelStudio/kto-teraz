@@ -3,8 +3,8 @@ import 'dart:math' as math;
 
 class QuestionCardBlock extends StatelessWidget {
   const QuestionCardBlock({
-    Key key,
-    this.text,
+    Key? key,
+    required this.text,
     this.inverted = false,
   }) : super(key: key);
 

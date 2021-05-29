@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/questions.dart';
+import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/utils/winner.model.dart';
 import 'package:flutter_spinner/widgets/question_card_block.dart';
 
@@ -7,7 +7,7 @@ class QuestionCard extends StatelessWidget {
   final Winner winner;
   final Question question;
 
-  QuestionCard({Key key, @required this.winner, @required this.question})
+  QuestionCard({Key? key, required this.winner, required this.question})
       : super(key: key);
 
   @override

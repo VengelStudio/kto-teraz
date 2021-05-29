@@ -91,9 +91,6 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                           MaterialPageRoute(
                               builder: (context) => GamePage(gameOptions)),
                         );
-                        // Navigator.pop(context);
-                        // print('Number of people: $numberOfPeople');
-                        // print('Is tabu enabled: $isTabuEnabled');
                       },
                       child: Text(
                         'Start',
