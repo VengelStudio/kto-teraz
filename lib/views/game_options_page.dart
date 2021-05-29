@@ -16,6 +16,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
   GameOptions gameOptions = new GameOptions();
   List<Collection>? _allCollections;
 
+  List<Collection> selectedCollections = [];
+
   @override
   void initState() {
     super.initState();
@@ -27,10 +29,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
     var allCollections = await Collection.readAllCollections();
     setState(() {
       _allCollections = allCollections;
+      selectedCollections = allCollections.getRange(0, 2).toList();
     });
   }
-
-  List<Collection> selectedCollections = [];
 
   void _toggleCollection(bool? value, Collection collection) {
     var newSelectedCollections = [...selectedCollections];
@@ -75,7 +76,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Text(
                           "Liczba graczy:",
-                          style: TextStyle(fontSize: 28),
+                          style: TextStyle(fontSize: 24),
                         ),
                       ),
                       Row(
@@ -96,6 +97,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                   SizedBox(height: 30),
                 ],
               )),
+              Text("Kolekcje pytań:", style: TextStyle(fontSize: 24)),
               Flexible(
                 child: _allCollections == null
                     ? Container(
