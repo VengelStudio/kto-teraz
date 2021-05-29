@@ -35,7 +35,6 @@ class _CollectionsState extends State<CollectionsPage> {
                       );
                     }
                     index -= 1;
-                    print(snapshot.data[index]);
                     return CollectionCard(
                       collection: snapshot.data[index],
                       readonly: index < 2,
@@ -63,7 +62,10 @@ class _CollectionsState extends State<CollectionsPage> {
               context,
               MaterialPageRoute(
                   builder: (context) => CollectionEditor(
-                      uuid: "", name: "", isTabu: false, questions: [])),
+                      uuid: UniqueKey().toString(),
+                      name: "test",
+                      isTabu: false,
+                      questions: [])),
             );
           },
           shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),

@@ -33,6 +33,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
   void initState() {
     super.initState();
 
+    collectionName = widget.name;
+    isForAdults = widget.isTabu;
     questions = widget.questions;
   }
 
@@ -53,16 +55,14 @@ class _CollectionEditorState extends State<CollectionEditor> {
   }
 
   void onSave() {
-    print(this.questions.where((q) => q.text.isNotEmpty));
+    Collection newCollection = new Collection(
+      uuid: widget.uuid,
+      name: collectionName,
+      isTabu: isForAdults,
+      questions: questions,
+    );
 
-    // TODO: Send updated collection to the collections page
-    // collection.setName(this.collectionName);
-    // collection.setQuestions(this.questions.where((q) => q.text.isNotEmpty));
-    // Navigator.push(
-    //                   context,
-    //                   MaterialPageRoute(
-    //                       builder: (context) => CollectionsPage(collection)),
-    //                 );
+    newCollection.saveCollection();
   }
 
   @override

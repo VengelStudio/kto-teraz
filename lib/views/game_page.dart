@@ -69,7 +69,6 @@ class _GameState extends State<GamePage> {
           questionManager,
         ),
       );
-      print(winner);
     }
 
     return Scaffold(

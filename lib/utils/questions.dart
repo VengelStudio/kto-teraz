@@ -30,6 +30,10 @@ class Question {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {"text": text};
+  }
+
   setText(String text) {
     this.text = text;
   }

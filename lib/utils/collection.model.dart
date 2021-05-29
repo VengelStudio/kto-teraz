@@ -46,6 +46,7 @@ class Collection {
     final file = await _localFile;
 
     if (!(await file.exists())) {
+      print("File missing, creating defaults");
       file.writeAsString('[]');
     }
   }
@@ -59,7 +60,6 @@ class Collection {
 
       return List.from(json.decode(contents));
     } catch (e) {
-      print(e);
       // If encountering an error, return 0
       return [];
     }
@@ -81,6 +81,14 @@ class Collection {
             List.from(json["questions"].map((x) => Question.fromJson(x))));
   }
 
+  Map<String, dynamic> toJson() => {
+        "uuid": uuid,
+        "name": name,
+        "isTabu": isTabu,
+        "questions":
+            jsonEncode(questions.map((i) => i.toJson()).toList()).toString()
+      };
+
   static List<Collection> parseCollections(String rawJson) {
     final parsed = jsonDecode(rawJson);
 
@@ -97,8 +105,23 @@ class Collection {
   Future<File> saveCollection() async {
     final file = await _localFile;
 
-    // Write the file
-    return file.writeAsString('xd');
+    final customCollections = await readCollectionsFromFile();
+
+    var isExisting =
+        customCollections.indexWhere((element) => element.uuid == this.uuid);
+
+    if (isExisting != -1) {
+      customCollections[isExisting] = this;
+    } else {
+      customCollections.add(this);
+    }
+
+    var json2 = this.toJson();
+    var json3 = jsonEncode(json2);
+    var cc = jsonEncode(customCollections);
+    // file.writeAsString('[{"_id": "60b1e514ed8f7953d92c8248","index": 0, "guid": "7afdda74-88d2-4c80-b5f2-ba5a7d449a30","isActive": false,"balance": "232"}]');
+
+    return file.writeAsString(cc);
   }
 }
 
