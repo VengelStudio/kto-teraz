@@ -72,7 +72,7 @@ class _CollectionsState extends State<CollectionsPage> {
               MaterialPageRoute(
                   builder: (context) => CollectionEditor(
                       uuid: UniqueKey().toString(),
-                      name: "test",
+                      name: "",
                       isTabu: false,
                       questions: [])),
             );
