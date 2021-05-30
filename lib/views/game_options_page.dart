@@ -60,23 +60,17 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(bottom: 30, top: 30),
-                child: Text(
-                  'OPCJE GRY',
-                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
+                margin: EdgeInsets.only(top: 60),
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.only(left: 24),
                           child: Text(
                             "Liczba graczy:",
-                            style: TextStyle(fontSize: 24),
+                            style: TextStyle(fontSize: 28),
                           ),
                         ),
                         Row(
@@ -100,15 +94,15 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                   ],
                 ),
               ),
-              Divider(),
-              SizedBox(height: 8),
+              // Divider(),
+              // SizedBox(height: 8),
               Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 24),
                     child: Text(
                       "Kolekcje pytań:",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(fontSize: 28),
                       textAlign: TextAlign.start,
                     ),
                   )
@@ -132,7 +126,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                 child: CheckboxListTile(
                                   contentPadding:
                                       EdgeInsets.symmetric(horizontal: 24),
-                                  title: new Text(collection.name),
+                                  title: new Text(collection.name,
+                                      style: TextStyle(fontSize: 18)),
                                   value:
                                       selectedCollections.contains(collection),
                                   onChanged: (bool? value) =>
@@ -143,7 +138,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                             .toList(),
                       ),
               ),
-              Divider(),
+              // Divider(),
               Container(
                 margin: const EdgeInsets.only(top: 30, bottom: 30),
                 width: MediaQuery.of(context).size.width / 3,

@@ -164,10 +164,35 @@ class _GameState extends State<GamePage> {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(children: [
-                              Text(
-                                "❯ Każdy wybiera swoje pole\n❯ Wylosowany gracz odpowiada na pytanie",
-                                style: TextStyle(
-                                  fontSize: 24.0,
+                              SizedBox(
+                                height: 8,
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  style: TextStyle(fontSize: 24),
+                                  children: [
+                                    TextSpan(
+                                      text: "❯ ",
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                    TextSpan(
+                                      text: "Każdy wybiera swoje pole\n",
+                                      style: TextStyle(color: Colors.black87),
+                                    ),
+                                    TextSpan(
+                                      text: "❯ ",
+                                      style: TextStyle(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          "Wylosowany gracz odpowiada na pytanie",
+                                      style: TextStyle(color: Colors.black87),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Spacer(),
