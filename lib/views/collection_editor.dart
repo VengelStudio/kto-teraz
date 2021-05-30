@@ -4,6 +4,7 @@ import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/question.dart';
 import 'package:flutter_spinner/widgets/question_box.dart';
 import 'package:collection/collection.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'collections_page.dart';
 
 class CollectionEditor extends StatefulWidget {
@@ -114,8 +115,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             controller: nameFieldController,
                             decoration: InputDecoration(
                               border: new OutlineInputBorder(
-                                  borderSide:
-                                      new BorderSide(color: Colors.red)),
+                                  borderSide: new BorderSide(
+                                      color: Theme.of(context).primaryColor)),
                               hintText: "Nazwa kolekcji",
                             ),
                             validator: (value) {
@@ -132,7 +133,10 @@ class _CollectionEditorState extends State<CollectionEditor> {
                     Container(
                       child: Row(
                         children: [
-                          Text("18+"),
+                          Text(
+                            "18+",
+                            style: GoogleFonts.lato(),
+                          ),
                           Switch(
                             value: isForAdults,
                             onChanged: widget.readonly
@@ -142,7 +146,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
                                       isForAdults = !isForAdults;
                                     });
                                   },
-                            activeColor: Colors.blue,
+                            activeColor: Theme.of(context).primaryColor,
                           ),
                         ],
                       ),
@@ -163,8 +167,13 @@ class _CollectionEditorState extends State<CollectionEditor> {
                                 EdgeInsets.only(top: 16, bottom: 32, left: 16),
                             child: Row(
                               children: [
-                                Icon(Icons.add),
-                                Text("Dodaj pytanie"),
+                                Icon(Icons.add,
+                                    color: Theme.of(context).primaryColor),
+                                Text(
+                                  "Dodaj pytanie",
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor),
+                                ),
                               ],
                             )));
                   }

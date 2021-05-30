@@ -65,7 +65,7 @@ class _QuestionBoxState extends State<QuestionBox> {
           widget.readonly ? SizedBox(width: 16) : Container(),
           widget.readonly
               ? IconButton(
-                  icon: Icon(Icons.close, color: Colors.black45),
+                  icon: Icon(Icons.close, color: Colors.black87),
                   onPressed: widget.onDelete)
               : Container()
         ],
