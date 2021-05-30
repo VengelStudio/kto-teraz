@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/views/collection_editor.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CollectionCard extends StatelessWidget {
   final Collection collection;
@@ -21,7 +22,7 @@ class CollectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           Expanded(
@@ -41,18 +42,25 @@ class CollectionCard extends StatelessWidget {
               },
               child: Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(16.0),
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2)),
+                  border: Border.all(color: Colors.black38, width: 0.5),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10.0),
                   child: Row(
                     children: [
-                      collection.isTabu
-                          ? Opacity(opacity: 1.0, child: Text('18+'))
-                          : Opacity(opacity: 0, child: Text('18+')),
+                      Opacity(
+                        opacity: collection.isTabu ? 1.0 : 0,
+                        child: Text(
+                          '18+',
+                          style: GoogleFonts.lato(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
                       SizedBox(width: 16.0),
                       Expanded(
                         child: Text(
@@ -71,11 +79,9 @@ class CollectionCard extends StatelessWidget {
             Expanded(
               flex: 0,
               child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black45),
+                  icon: Icon(Icons.close, color: Colors.black87),
                   onPressed: () {
                     showAlertDialog(context);
-                    // collection.deleteCollection();
-                    // refresh();
                   }),
             )
           else
@@ -84,7 +90,7 @@ class CollectionCard extends StatelessWidget {
               child: Expanded(
                 flex: 0,
                 child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.black45),
+                    icon: Icon(Icons.close, color: Colors.black26),
                     onPressed: () {}),
               ),
             )
@@ -96,7 +102,7 @@ class CollectionCard extends StatelessWidget {
   showAlertDialog(BuildContext context) {
     CupertinoAlertDialog alert = CupertinoAlertDialog(
       title: Text("Uwaga"),
-      content: Text("Czy na pewno chcesz usunąć kolekcje pytań?"),
+      content: Text("Czy na pewno chcesz usunąć kolekcję pytań?"),
       actions: [
         CupertinoDialogAction(
           child: TextButton(

@@ -53,6 +53,8 @@ class _MyAppState extends State<MyApp> {
         ),
         primaryColor: Color(0xffD30C7B),
         toggleableActiveColor: Color(0xffD30C7B),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: Color(0xffD30C7B)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

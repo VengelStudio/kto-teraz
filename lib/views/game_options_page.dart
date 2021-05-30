@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinner/utils/collection.dart';
 import 'package:flutter_spinner/utils/options.model.dart';
 import 'package:flutter_picker/flutter_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'game_page.dart';
 
@@ -126,8 +127,27 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                 child: CheckboxListTile(
                                   contentPadding:
                                       EdgeInsets.symmetric(horizontal: 24),
-                                  title: new Text(collection.name,
-                                      style: TextStyle(fontSize: 18)),
+                                  title: Row(
+                                    children: [
+                                      Opacity(
+                                        opacity: collection.isTabu ? 1.0 : 0,
+                                        child: Text(
+                                          '18+',
+                                          style: GoogleFonts.lato(
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 16.0),
+                                      Expanded(
+                                        child: Text(
+                                          collection.name,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(fontSize: 20.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                   value:
                                       selectedCollections.contains(collection),
                                   onChanged: (bool? value) =>

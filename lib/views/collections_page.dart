@@ -78,10 +78,6 @@ class _CollectionsState extends State<CollectionsPage> {
                       questions: [])),
             );
           },
-          shape: StadiumBorder(side: BorderSide(color: Colors.black, width: 3)),
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
-          elevation: 0,
           child: const Icon(
             Icons.add,
             size: 40,
