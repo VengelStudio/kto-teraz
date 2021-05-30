@@ -62,7 +62,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
               Container(
                 margin: const EdgeInsets.only(bottom: 30, top: 30),
                 child: Text(
-                  'Opcje gry',
+                  'OPCJE GRY',
                   style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -97,7 +97,16 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                   SizedBox(height: 30),
                 ],
               )),
-              Text("Kolekcje pytań:", style: TextStyle(fontSize: 24)),
+              Row(
+                children: [
+                  Text(
+                    "Kolekcje pytań:",
+                    style: TextStyle(fontSize: 24),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
               Flexible(
                 child: _allCollections == null
                     ? Container(
@@ -148,7 +157,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                         );
                       },
                       child: Text(
-                        'Start',
+                        'START',
                       ),
                     ),
                   ],

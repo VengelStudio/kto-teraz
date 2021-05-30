@@ -3,6 +3,7 @@ import 'utils/collection.dart';
 import 'views/collections_page.dart';
 import 'views/about_page.dart';
 import 'views/game_options_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +34,22 @@ class _MyAppState extends State<MyApp> {
             textStyle: TextStyle(fontSize: 18.0),
             minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+            primary: Color(0xffD30C7B),
+            shape: StadiumBorder(),
           ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            textStyle: TextStyle(fontSize: 18.0),
+            minimumSize: Size(220, 60),
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+            primary: Color(0xffD30C7B),
+            shape:
+                StadiumBorder(side: BorderSide(width: 8, color: Colors.black)),
+          ),
+        ),
+        textTheme: GoogleFonts.ralewayTextTheme(
+          Theme.of(context).textTheme,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -54,8 +70,14 @@ class HomePage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(bottom: 40),
                 child: Text(
-                  'Kto teraz?',
-                  style: TextStyle(fontSize: 50.0),
+                  'KTO\nTERAZ?',
+                  style: GoogleFonts.bebasNeue(
+                      height: 0.9,
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      fontSize: 80,
+                      color: Color(0xffD30C7B)
+                      // fontWeight: FontWeight.w700,
+                      ),
                 ),
               ),
               ElevatedButton(
@@ -65,27 +87,27 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => GameOptionsPage()),
                   );
                 },
-                child: Text("Zagraj"),
+                child: Text("ZAGRAJ"),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
+              OutlinedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => CollectionsPage()),
                   );
                 },
-                child: Text("Kolekcje pytań"),
+                child: Text("KOLEKCJE PYTAŃ"),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
+              OutlinedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AboutPage()),
                   );
                 },
-                child: Text("O aplikacji"),
+                child: Text("O GRZE"),
               ),
             ],
           ),
