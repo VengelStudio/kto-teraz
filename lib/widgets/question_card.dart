@@ -37,9 +37,9 @@ class QuestionCard extends StatelessWidget {
                     SizedBox(height: 120.0),
                     Column(
                       children: [
-                        QuestionCardBlock(text: question.text, inverted: true),
-                        SizedBox(height: 20.0),
                         QuestionCardBlock(text: question.text),
+                        SizedBox(height: 20.0),
+                        QuestionCardBlock(text: question.text, inverted: true),
                       ],
                     ),
                     Spacer(),
