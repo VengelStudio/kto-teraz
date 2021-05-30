@@ -51,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         textTheme: GoogleFonts.ralewayTextTheme(
           Theme.of(context).textTheme,
         ),
+        toggleableActiveColor: Color(0xffD30C7B),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

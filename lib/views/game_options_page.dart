@@ -67,46 +67,54 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                 ),
               ),
               Container(
-                  child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Text(
-                          "Liczba graczy:",
-                          style: TextStyle(fontSize: 24),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            "Liczba graczy:",
+                            style: TextStyle(fontSize: 24),
+                          ),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton(
-                              child: Text(
-                                gameOptions.numberOfPeople.toString(),
-                                style: TextStyle(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                                child: Text(
+                                  gameOptions.numberOfPeople.toString(),
+                                  style: TextStyle(
                                     fontSize: 38.0,
-                                    decoration: TextDecoration.underline),
-                              ),
-                              onPressed: () => showPickerNumber(context)),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                ],
-              )),
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xffD30C7B),
+                                  ),
+                                ),
+                                onPressed: () => showPickerNumber(context)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              ),
+              Divider(),
+              SizedBox(height: 8),
               Row(
                 children: [
-                  Text(
-                    "Kolekcje pytań:",
-                    style: TextStyle(fontSize: 24),
-                    textAlign: TextAlign.start,
-                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 24),
+                    child: Text(
+                      "Kolekcje pytań:",
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.start,
+                    ),
+                  )
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 8),
               Flexible(
                 child: _allCollections == null
                     ? Container(
@@ -122,6 +130,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                             .map(
                               (collection) => new Container(
                                 child: CheckboxListTile(
+                                  contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 24),
                                   title: new Text(collection.name),
                                   value:
                                       selectedCollections.contains(collection),
@@ -133,6 +143,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                             .toList(),
                       ),
               ),
+              Divider(),
               Container(
                 margin: const EdgeInsets.only(top: 30, bottom: 30),
                 width: MediaQuery.of(context).size.width / 3,
