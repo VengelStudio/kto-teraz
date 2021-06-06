@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.dart';
+import '../utils/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'question.g.dart';

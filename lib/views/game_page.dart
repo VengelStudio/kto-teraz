@@ -3,13 +3,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-import 'package:flutter_spinner/utils/collection.dart';
-import 'package:flutter_spinner/utils/winner.model.dart';
-import 'package:flutter_spinner/widgets/question_card.dart';
-import 'package:flutter_spinner/utils/emojis.dart';
-import 'package:flutter_spinner/utils/options.model.dart';
-import 'package:flutter_spinner/utils/players.dart';
-import 'package:flutter_spinner/utils/question.dart';
+import '../utils/collection.dart';
+import '../utils/winner.model.dart';
+import '../widgets/question_card.dart';
+import '../utils/emojis.dart';
+import '../utils/options.model.dart';
+import '../utils/players.dart';
+import '../utils/question.dart';
 
 class GamePage extends StatefulWidget {
   final GameOptions gameOptions;
