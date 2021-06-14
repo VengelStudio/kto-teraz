@@ -20,3 +20,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Generate launcher icons 
 `flutter pub run flutter_launcher_icons:main`
+
+## Building for Play Store
+`flutter build appbundle`
