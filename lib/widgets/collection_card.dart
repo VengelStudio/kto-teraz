@@ -87,12 +87,9 @@ class CollectionCard extends StatelessWidget {
           else
             Opacity(
               opacity: 0,
-              child: Expanded(
-                flex: 0,
-                child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.black26),
-                    onPressed: () {}),
-              ),
+              child: IconButton(
+                  icon: Icon(Icons.close, color: Colors.black26),
+                  onPressed: () {}),
             )
         ],
       ),

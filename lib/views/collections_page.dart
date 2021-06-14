@@ -50,6 +50,11 @@ class _CollectionsState extends State<CollectionsPage> {
                           collection.uuid == "kto-teraz-tabu",
                     );
                   });
+            } else if (snapshot.hasError) {
+              child = Container(
+                  alignment: Alignment.center,
+                  child: Text(snapshot.error.toString(),
+                      style: TextStyle(fontSize: 24.0)));
             } else {
               child = Container(
                 alignment: Alignment.center,
@@ -60,7 +65,7 @@ class _CollectionsState extends State<CollectionsPage> {
                 ),
               );
             }
-            return Expanded(child: child);
+            return child;
           },
         ),
       ),
