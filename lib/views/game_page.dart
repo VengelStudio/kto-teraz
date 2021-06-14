@@ -169,7 +169,7 @@ class _GameState extends State<GamePage> {
                               ),
                               RichText(
                                 text: TextSpan(
-                                  style: TextStyle(fontSize: 24),
+                                  style: TextStyle(fontSize: 16),
                                   children: [
                                     TextSpan(
                                       text: "❯ ",
@@ -199,7 +199,7 @@ class _GameState extends State<GamePage> {
                               Text(
                                 '(kliknij aby zamknąć)',
                                 style: TextStyle(
-                                    fontSize: 15.0, color: Color(0xff555555)),
+                                    fontSize: 12.0, color: Color(0xff555555)),
                               ),
                             ]),
                           ),
