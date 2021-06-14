@@ -28,6 +28,17 @@ class _GameState extends State<GamePage> {
   var controller = StreamController<int>();
   bool isInstructionVisible = true;
 
+  List<Player> players = [];
+  List<FortuneItem> fortuneWheelItems = [];
+
+  final wheelIndicator = FortuneIndicator(
+    alignment: Alignment.topCenter,
+    child: Transform.translate(
+      child: new TriangleIndicator(color: const Color(0xff2f2f2f)),
+      offset: const Offset(0, -11),
+    ),
+  );
+
   _loadQuestions() async {
     var createdManager =
         await QuestionManager.create(context, widget.collections);
@@ -41,44 +52,46 @@ class _GameState extends State<GamePage> {
   void initState() {
     super.initState();
     _loadQuestions();
+    players = Player.generate(widget.gameOptions.numberOfPeople);
+    fortuneWheelItems = players
+        .map((player) => FortuneItem(
+              child: Emojis.getTransformedEmoji(player.emoji),
+              style: FortuneItemStyle(
+                color: player.color, // <-- custom circle slice fill color
+                borderColor:
+                    Colors.black38, // <-- custom circle slice stroke color
+                borderWidth: 1, // <-- custom circle slice stroke width
+              ),
+            ))
+        .toList();
+  }
+
+  spinWheel() {
+    setState(() {
+      nextDurationInS = Random().nextInt(4) + 1;
+
+      int winnerId = Random().nextInt(players.length);
+      controller.add(winnerId);
+
+      winner = new Winner(
+          id: winnerId,
+          color: players[winnerId].color,
+          emoji: players[winnerId].emoji);
+    });
+  }
+
+  openQuestion() {
+    Navigator.push(
+      context,
+      _questionCardRoute(
+        winner,
+        questionManager,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final players = Player.generate(widget.gameOptions.numberOfPeople);
-
-    final wheelIndicator = FortuneIndicator(
-      alignment: Alignment.topCenter,
-      child: Transform.translate(
-        child: new TriangleIndicator(color: const Color(0xff2f2f2f)),
-        offset: const Offset(0, -11),
-      ),
-    );
-
-    spinWheel() {
-      setState(() {
-        nextDurationInS = Random().nextInt(4) + 1;
-
-        int winnerId = Random().nextInt(players.length);
-        controller.add(winnerId);
-
-        winner = new Winner(
-            id: winnerId,
-            color: players[winnerId].color,
-            emoji: players[winnerId].emoji);
-      });
-    }
-
-    openQuestion() {
-      Navigator.push(
-        context,
-        _questionCardRoute(
-          winner,
-          questionManager,
-        ),
-      );
-    }
-
     return Scaffold(
       body: Stack(
         children: [
@@ -107,21 +120,7 @@ class _GameState extends State<GamePage> {
                                 animateFirst: false,
                                 selected: controller.stream,
                                 indicators: <FortuneIndicator>[wheelIndicator],
-                                items: [
-                                  for (var player in players)
-                                    FortuneItem(
-                                      child: Emojis.getTransformedEmoji(
-                                          player.emoji),
-                                      style: FortuneItemStyle(
-                                        color: player
-                                            .color, // <-- custom circle slice fill color
-                                        borderColor: Colors
-                                            .black38, // <-- custom circle slice stroke color
-                                        borderWidth:
-                                            1, // <-- custom circle slice stroke width
-                                      ),
-                                    ),
-                                ],
+                                items: fortuneWheelItems,
                               ),
                             )
                           : Column(

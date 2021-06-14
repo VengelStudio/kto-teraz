@@ -6,7 +6,7 @@ import 'emojis.dart';
 class Player {
   int id;
   Color color;
-  SvgPicture emoji;
+  Image emoji;
 
   Player({required this.id, required this.color, required this.emoji});
 
