@@ -8,7 +8,7 @@ class Emojis {
     return Transform.translate(
       offset: const Offset(60.0, 0.0),
       child: Transform.rotate(
-        child: Transform.scale(child: emoji, scale: 0.8),
+        child: Transform.scale(child: emoji, scale: 0.4),
         angle: -pi / 2,
       ),
     );
