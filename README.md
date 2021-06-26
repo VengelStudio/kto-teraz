@@ -17,3 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ## JSON serialization build runner
 `flutter pub run build_runner build`
+
+## Generate launcher icons 
+`flutter pub run flutter_launcher_icons:main`
+
+## Building for Play Store
+`flutter build appbundle`

@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinner/utils/collection.dart';
-import 'package:flutter_spinner/views/collection_editor.dart';
+import '../utils/collection.dart';
+import '../views/collection_editor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CollectionCard extends StatelessWidget {
@@ -87,12 +87,9 @@ class CollectionCard extends StatelessWidget {
           else
             Opacity(
               opacity: 0,
-              child: Expanded(
-                flex: 0,
-                child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.black26),
-                    onPressed: () {}),
-              ),
+              child: IconButton(
+                  icon: Icon(Icons.close, color: Colors.black26),
+                  onPressed: () {}),
             )
         ],
       ),

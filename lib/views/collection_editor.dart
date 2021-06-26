@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinner/utils/collection.dart';
-import 'package:flutter_spinner/utils/question.dart';
-import 'package:flutter_spinner/widgets/question_box.dart';
+import '../utils/collection.dart';
+import '../utils/question.dart';
+import '../widgets/question_box.dart';
 import 'package:collection/collection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'collections_page.dart';
