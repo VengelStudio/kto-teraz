@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kto_teraz/widgets/number_picker.dart';
 import '../utils/collection.dart';
 import '../utils/options.model.dart';
 import 'package:flutter_picker/flutter_picker.dart';
@@ -63,134 +64,142 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
       )),
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 60),
-                child: Column(
-                  children: [
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 24),
-                          child: Text(
-                            "Liczba graczy:",
-                            style: TextStyle(fontSize: 28),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
-                                child: Text(
-                                  gameOptions.numberOfPeople.toString(),
-                                  style: TextStyle(
-                                    fontSize: 38.0,
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xffD30C7B),
-                                  ),
-                                ),
-                                onPressed: () => showPickerNumber(context)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                  ],
-                ),
-              ),
-              // Divider(),
-              // SizedBox(height: 8),
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 24),
-                    child: Text(
-                      "Kolekcje pytań:",
-                      style: TextStyle(fontSize: 28),
-                      textAlign: TextAlign.start,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: 8),
-              Flexible(
-                child: _allCollections == null
-                    ? Container(
-                        alignment: Alignment.center,
-                        child: SizedBox(
-                          child: CircularProgressIndicator(),
-                          width: 60,
-                          height: 60,
-                        ),
-                      )
-                    : ListView(
-                        children: _allCollections!
-                            .map(
-                              (collection) => new Container(
-                                child: CheckboxListTile(
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 24),
-                                  title: Row(
-                                    children: [
-                                      Opacity(
-                                        opacity: collection.isTabu ? 1.0 : 0,
-                                        child: Text(
-                                          '18+',
-                                          style: GoogleFonts.lato(
-                                            color: Colors.red,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 16.0),
-                                      Expanded(
-                                        child: Text(
-                                          collection.name,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(fontSize: 20.0),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  value:
-                                      selectedCollections.contains(collection),
-                                  onChanged: (bool? value) =>
-                                      _toggleCollection(value, collection),
-                                ),
-                              ),
-                            )
-                            .toList(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Liczba graczy",
+                            style: Theme.of(context).textTheme.headline4,
+                          )
+                        ],
                       ),
-              ),
-              // Divider(),
-              Container(
-                alignment: Alignment.topRight,
-                padding: EdgeInsets.only(bottom: 34, right: 28),
-                child: FloatingActionButton(
-                  onPressed: () {
-                    if (selectedCollections.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                        content: Text('Wybierz kolekcje pytań!'),
-                      ));
-                      return;
-                    }
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => GamePage(
-                              gameOptions: gameOptions,
-                              collections: selectedCollections)),
-                    );
-                  },
-                  child: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 24,
+                      Row(
+                        children: [
+                          // TextButton(
+                          //     child: Text(
+                          //       gameOptions.numberOfPeople.toString(),
+                          //       style: TextStyle(
+                          //         fontSize: 38.0,
+                          //         decoration: TextDecoration.underline,
+                          //         color: Color(0xffD30C7B),
+                          //       ),
+                          //     ),
+                          //     onPressed: () => showPickerNumber(context)),
+                          NumberPicker(
+                              onChanged: (value) =>
+                                  handlePlayerCountChange(value)),
+                        ],
+                      ),
+                      SizedBox(height: 30),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Text(
+                      "Zakres pytań",
+                      style: Theme.of(context).textTheme.headline4,
+                      textAlign: TextAlign.start,
+                    )
+                  ],
+                ),
+                SizedBox(height: 5),
+                Flexible(
+                  child: _allCollections == null
+                      ? Container(
+                          alignment: Alignment.center,
+                          child: SizedBox(
+                            child: CircularProgressIndicator(),
+                            width: 60,
+                            height: 60,
+                          ),
+                        )
+                      : ListView(
+                          children: _allCollections!
+                              .map(
+                                (collection) => new Container(
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Color(0xff212121)
+                                                  .withOpacity(0.08),
+                                              width: 1))),
+                                  child: CheckboxListTile(
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 0),
+                                    title: Row(
+                                      children: [
+                                        Text(
+                                          collection.name,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1,
+                                        ),
+                                        SizedBox(width: 5.0),
+                                        Opacity(
+                                          opacity: collection.isTabu ? 1.0 : 0,
+                                          child: Text(
+                                            '18+',
+                                            style: GoogleFonts.signika(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: -0.2,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    value: selectedCollections
+                                        .contains(collection),
+                                    onChanged: (bool? value) =>
+                                        _toggleCollection(value, collection),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                ),
+                // Divider(),
+                Container(
+                  alignment: Alignment.topRight,
+                  padding: EdgeInsets.only(bottom: 34, right: 28),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      if (selectedCollections.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                          content: Text('Wybierz kolekcje pytań!'),
+                        ));
+                        return;
+                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GamePage(
+                                gameOptions: gameOptions,
+                                collections: selectedCollections)),
+                      );
+                    },
+                    child: const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 24,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -218,4 +227,6 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
           });
         }).showDialog(context);
   }
+
+  handlePlayerCountChange(int value) {}
 }

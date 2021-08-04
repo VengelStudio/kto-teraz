@@ -70,8 +70,11 @@ class _MyAppState extends State<MyApp> {
               fontSize: 61, fontWeight: FontWeight.w300, letterSpacing: -0.5),
           headline3:
               GoogleFonts.roboto(fontSize: 48, fontWeight: FontWeight.w400),
-          headline4: GoogleFonts.roboto(
-              fontSize: 34, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+          headline4: GoogleFonts.signika(
+              fontSize: 24,
+              fontWeight: FontWeight.normal,
+              letterSpacing: 0.14,
+              color: Color(0xff383838)),
           headline5:
               GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.w400),
           headline6: GoogleFonts.roboto(
@@ -80,8 +83,8 @@ class _MyAppState extends State<MyApp> {
               fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
           subtitle2: GoogleFonts.roboto(
               fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
-          bodyText1: GoogleFonts.roboto(
-              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+          bodyText1: GoogleFonts.oxygen(
+              fontSize: 14, fontWeight: FontWeight.normal, letterSpacing: 0.15),
           bodyText2: GoogleFonts.roboto(
               fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
           button: GoogleFonts.signika(
@@ -170,7 +173,7 @@ class HomePage extends StatelessWidget {
                           builder: (context) => CollectionsPage()),
                     );
                   },
-                  child: Text("KOLEKCJE PYTAŃ"),
+                  child: Text("BAZA PYTAŃ"),
                 ),
                 SizedBox(height: 20),
                 TextButton(
