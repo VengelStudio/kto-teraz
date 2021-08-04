@@ -55,6 +55,12 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        "OPCJE GRY",
+        style: GoogleFonts.signika(
+            fontSize: 28, fontWeight: FontWeight.bold, letterSpacing: 0),
+      )),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -160,33 +166,28 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
               ),
               // Divider(),
               Container(
-                margin: const EdgeInsets.only(top: 30, bottom: 30),
-                width: MediaQuery.of(context).size.width / 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        if (selectedCollections.isEmpty) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(new SnackBar(
-                            content: Text('Wybierz kolekcje pytań!'),
-                          ));
-                          return;
-                        }
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GamePage(
-                                  gameOptions: gameOptions,
-                                  collections: selectedCollections)),
-                        );
-                      },
-                      child: Text(
-                        'START',
-                      ),
-                    ),
-                  ],
+                alignment: Alignment.topRight,
+                padding: EdgeInsets.only(bottom: 34, right: 28),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    if (selectedCollections.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                        content: Text('Wybierz kolekcje pytań!'),
+                      ));
+                      return;
+                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GamePage(
+                              gameOptions: gameOptions,
+                              collections: selectedCollections)),
+                    );
+                  },
+                  child: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 24,
+                  ),
                 ),
               ),
             ],

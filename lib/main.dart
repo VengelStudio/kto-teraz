@@ -60,6 +60,9 @@ class _MyAppState extends State<MyApp> {
             primary: Color(0xff383838),
           ),
         ),
+        appBarTheme: Theme.of(context).appBarTheme.copyWith(
+              backgroundColor: Color(0xff383838),
+            ),
         textTheme: TextTheme(
           headline1: GoogleFonts.roboto(
               fontSize: 97, fontWeight: FontWeight.w300, letterSpacing: -1.5),
