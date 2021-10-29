@@ -175,8 +175,13 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                 // Divider(),
                 Container(
                   alignment: Alignment.topRight,
-                  padding: EdgeInsets.only(bottom: 34, right: 28),
+                  padding: EdgeInsets.only(bottom: 50, right: 28),
                   child: FloatingActionButton(
+                    backgroundColor: selectedCollections.isEmpty
+                        ? Theme.of(context).appBarTheme.backgroundColor
+                        : Theme.of(context)
+                            .floatingActionButtonTheme
+                            .backgroundColor,
                     onPressed: () {
                       if (selectedCollections.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
@@ -192,10 +197,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                 collections: selectedCollections)),
                       );
                     },
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 24,
-                    ),
+                    child: const Icon(Icons.arrow_forward_ios,
+                        size: 24, color: Colors.white),
                   ),
                 ),
               ],
