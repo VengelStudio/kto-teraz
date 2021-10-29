@@ -84,23 +84,16 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                         ],
                       ),
                       Row(
+                        children: [SizedBox(height: 20)],
+                      ),
+                      Row(
                         children: [
-                          // TextButton(
-                          //     child: Text(
-                          //       gameOptions.numberOfPeople.toString(),
-                          //       style: TextStyle(
-                          //         fontSize: 38.0,
-                          //         decoration: TextDecoration.underline,
-                          //         color: Color(0xffD30C7B),
-                          //       ),
-                          //     ),
-                          //     onPressed: () => showPickerNumber(context)),
                           NumberPicker(
                               onChanged: (value) =>
                                   handlePlayerCountChange(value)),
                         ],
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 40),
                     ],
                   ),
                 ),

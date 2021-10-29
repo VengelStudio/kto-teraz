@@ -81,9 +81,14 @@ class _NumberPickerState extends State<NumberPicker> {
           Container(
             width: 48,
             child: TextField(
+                textAlign: TextAlign.center,
                 controller: textFieldController,
                 decoration: InputDecoration(
+                  fillColor: Colors.green,
+                  focusColor: Colors.green,
                   border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.zero)),
+                  focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.zero)),
                 ),
                 readOnly: true),
