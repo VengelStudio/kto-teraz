@@ -65,11 +65,18 @@ class _NumberPickerState extends State<NumberPicker> {
     return Container(
       height: 48,
       alignment: Alignment.center,
+      decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.grey),
+          borderRadius: BorderRadius.all(Radius.circular(4))),
       child: Row(
         children: [
           Container(
             width: 48,
             alignment: Alignment.center,
+            decoration: BoxDecoration(
+                border: Border(
+              right: BorderSide(width: 1.0, color: Colors.grey),
+            )),
             child: IconButton(
                 icon: Icon(
                   Icons.remove,
@@ -83,18 +90,21 @@ class _NumberPickerState extends State<NumberPicker> {
             child: TextField(
                 textAlign: TextAlign.center,
                 controller: textFieldController,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
                 decoration: InputDecoration(
-                  fillColor: Colors.green,
-                  focusColor: Colors.green,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.zero)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.zero)),
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
                 readOnly: true),
           ),
           Container(
             width: 48,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 1.0, color: Colors.grey),
+            )),
             child: IconButton(
                 icon: Icon(Icons.add, color: Colors.black87, size: 24),
                 onPressed: _handleAdd),
