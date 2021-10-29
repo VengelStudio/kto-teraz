@@ -94,66 +94,67 @@ class _CollectionEditorState extends State<CollectionEditor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      focusNode: nameFieldFocusNode,
+                      controller: nameFieldController,
+                      style: TextStyle(
+                        color: Theme.of(context).appBarTheme.backgroundColor,
+                      ),
+                      decoration: InputDecoration(
+                        filled: true,
+                        isDense: true,
+                        fillColor: Colors.white,
+                        contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        enabledBorder: new OutlineInputBorder(),
+                        focusedBorder: new OutlineInputBorder(),
+                        hintText: "Nazwa kolekcji",
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Nazwa kolekcji nie może być pusta';
+                        }
+                        return null;
+                      },
+                      onChanged: onNameChanged,
+                      readOnly: widget.readonly,
+                    )),
+              ),
+              SizedBox(width: 24),
+              Container(
+                child: Row(
+                  children: [
+                    Text(
+                      "18+",
+                      style: GoogleFonts.lato(fontSize: 16),
+                    ),
+                    Switch(
+                      value: isForAdults,
+                      onChanged: widget.readonly
+                          ? null
+                          : (value) {
+                              setState(() {
+                                isForAdults = !isForAdults;
+                              });
+                            },
+                      activeColor: Theme.of(context).primaryColor,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                decoration: BoxDecoration(
-                    border: Border(
-                  bottom: BorderSide(width: 1, color: Colors.black54),
-                )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Form(
-                          key: _formKey,
-                          child: TextFormField(
-                            focusNode: nameFieldFocusNode,
-                            controller: nameFieldController,
-                            decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(
-                                      color: Theme.of(context).primaryColor)),
-                              hintText: "Nazwa kolekcji",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Nazwa kolekcji nie może być pusta';
-                              }
-                              return null;
-                            },
-                            onChanged: onNameChanged,
-                            readOnly: widget.readonly,
-                          )),
-                    ),
-                    SizedBox(width: 16),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            "18+",
-                            style: GoogleFonts.lato(),
-                          ),
-                          Switch(
-                            value: isForAdults,
-                            onChanged: widget.readonly
-                                ? null
-                                : (value) {
-                                    setState(() {
-                                      isForAdults = !isForAdults;
-                                    });
-                                  },
-                            activeColor: Theme.of(context).primaryColor,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
               Expanded(
                   child: ListView.builder(
                 shrinkWrap: true,
@@ -163,17 +164,21 @@ class _CollectionEditorState extends State<CollectionEditor> {
                     return TextButton(
                         onPressed: onAddQuestion,
                         child: Container(
-                            margin:
-                                EdgeInsets.only(top: 16, bottom: 32, left: 16),
+                            margin: EdgeInsets.only(top: 16, bottom: 32),
                             child: Row(
                               children: [
-                                Icon(Icons.add,
-                                    color: Theme.of(context).primaryColor),
-                                Text(
-                                  "Dodaj pytanie",
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor),
+                                Icon(
+                                  Icons.add,
+                                  color: Theme.of(context).primaryColor,
+                                  size: 36,
                                 ),
+                                SizedBox(width: 8),
+                                Text("DODAJ PYTANIE",
+                                    style: GoogleFonts.signika(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ))
                               ],
                             )));
                   }

@@ -63,7 +63,8 @@ class _QuestionBoxState extends State<QuestionBox> {
           widget.readonly ? SizedBox(width: 16) : Container(),
           widget.readonly
               ? IconButton(
-                  icon: Icon(Icons.close, color: Colors.black87),
+                  icon: Icon(Icons.delete_forever,
+                      color: Theme.of(context).appBarTheme.backgroundColor),
                   onPressed: widget.onDelete)
               : Container()
         ],

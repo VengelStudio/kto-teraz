@@ -22,7 +22,7 @@ class CollectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8),
       child: Row(
         children: [
           Expanded(
@@ -48,49 +48,48 @@ class CollectionCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.black38, width: 0.5),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Row(
-                    children: [
-                      Opacity(
-                        opacity: collection.isTabu ? 1.0 : 0,
-                        child: Text(
-                          '18+',
-                          style: GoogleFonts.lato(
-                            color: Colors.red,
-                          ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 8.0),
+                    Opacity(
+                      opacity: collection.isTabu ? 1.0 : 0,
+                      child: Text(
+                        '18+',
+                        style: GoogleFonts.lato(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
                       ),
-                      SizedBox(width: 16.0),
-                      Expanded(
-                        child: Text(
-                          collection.name,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 20.0),
+                    ),
+                    SizedBox(width: 16.0),
+                    Expanded(
+                      child: Text(
+                        collection.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.signika(
+                          fontSize: 20,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Opacity(
+                        opacity: readonly ? 0 : 1,
+                        child: Expanded(
+                          flex: 0,
+                          child: IconButton(
+                              icon: Icon(Icons.delete_forever,
+                                  color: Theme.of(context)
+                                      .appBarTheme
+                                      .backgroundColor),
+                              onPressed: () {
+                                showAlertDialog(context);
+                              }),
+                        ))
+                  ],
                 ),
               ),
             ),
           ),
-          if (!readonly)
-            Expanded(
-              flex: 0,
-              child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black87),
-                  onPressed: () {
-                    showAlertDialog(context);
-                  }),
-            )
-          else
-            Opacity(
-              opacity: 0,
-              child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black26),
-                  onPressed: () {}),
-            )
         ],
       ),
     );
