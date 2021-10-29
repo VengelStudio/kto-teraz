@@ -161,7 +161,13 @@ class HomePage extends StatelessWidget {
                           builder: (context) => GameOptionsPage()),
                     );
                   },
-                  child: Text("ZAGRAJ"),
+                  child: Text(
+                    "ZAGRAJ",
+                    style: GoogleFonts.signika(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0),
+                  ),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
@@ -173,7 +179,13 @@ class HomePage extends StatelessWidget {
                           builder: (context) => CollectionsPage()),
                     );
                   },
-                  child: Text("BAZA PYTAŃ"),
+                  child: Text(
+                    "BAZA PYTAŃ",
+                    style: GoogleFonts.signika(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0),
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextButton(
@@ -183,7 +195,13 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => AboutPage()),
                     );
                   },
-                  child: Text("O GRZE"),
+                  child: Text(
+                    "O GRZE",
+                    style: GoogleFonts.signika(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0),
+                  ),
                 ),
               ],
             ),

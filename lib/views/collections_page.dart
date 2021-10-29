@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../utils/collection.dart';
 import '../widgets/collection_card.dart';
 
@@ -22,6 +23,12 @@ class _CollectionsState extends State<CollectionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        "KOLEKCJE PYTAŃ",
+        style: GoogleFonts.signika(
+            fontSize: 28, fontWeight: FontWeight.bold, letterSpacing: 0),
+      )),
       body: SafeArea(
         child: FutureBuilder<List<Collection>>(
           future: _collections,
@@ -31,17 +38,8 @@ class _CollectionsState extends State<CollectionsPage> {
             if (snapshot.hasData) {
               child = ListView.builder(
                   shrinkWrap: true,
-                  itemCount: snapshot.data!.length + 1, //add room for the title
+                  itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return new Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text('Kolekcje pytań',
-                            style: TextStyle(fontSize: 32.0)),
-                      );
-                    }
-                    index -= 1;
                     var collection = snapshot.data![index];
                     return CollectionCard(
                       collection: collection,
