@@ -168,7 +168,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             child: Row(
                               children: [
                                 Icon(
-                                  Icons.add,
+                                  Icons.add_rounded,
                                   color: Theme.of(context).primaryColor,
                                   size: 36,
                                 ),
@@ -212,10 +212,13 @@ class _CollectionEditorState extends State<CollectionEditor> {
                   const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
               child: FloatingActionButton.extended(
                   onPressed: onSave,
-                  icon: Icon(Icons.save),
-                  label: Text(
-                    "ZAPISZ",
-                  )),
+                  icon: Icon(Icons.save_rounded),
+                  label: Text("ZAPISZ",
+                      style: GoogleFonts.signika(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ))),
             )));
   }
 }

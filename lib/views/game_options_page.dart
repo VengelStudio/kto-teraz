@@ -190,7 +190,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                 collections: selectedCollections)),
                       );
                     },
-                    child: const Icon(Icons.arrow_forward_ios,
+                    child: const Icon(Icons.arrow_forward_ios_rounded,
                         size: 24, color: Colors.white),
                   ),
                 ),

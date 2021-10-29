@@ -74,17 +74,14 @@ class CollectionCard extends StatelessWidget {
                     ),
                     Opacity(
                         opacity: readonly ? 0 : 1,
-                        child: Expanded(
-                          flex: 0,
-                          child: IconButton(
-                              icon: Icon(Icons.delete_forever,
-                                  color: Theme.of(context)
-                                      .appBarTheme
-                                      .backgroundColor),
-                              onPressed: () {
-                                showAlertDialog(context);
-                              }),
-                        ))
+                        child: IconButton(
+                            icon: Icon(Icons.delete_forever_rounded,
+                                color: Theme.of(context)
+                                    .appBarTheme
+                                    .backgroundColor),
+                            onPressed: () {
+                              showAlertDialog(context);
+                            }))
                   ],
                 ),
               ),

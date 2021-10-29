@@ -82,7 +82,7 @@ class _CollectionsState extends State<CollectionsPage> {
             );
           },
           child: const Icon(
-            Icons.add,
+            Icons.add_rounded,
             size: 40,
           ),
         ),
