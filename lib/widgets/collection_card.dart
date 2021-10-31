@@ -19,6 +19,20 @@ class CollectionCard extends StatelessWidget {
       this.readonly = false})
       : super(key: key);
 
+  void navigateToEditor(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => CollectionEditor(
+                uuid: collection.uuid,
+                name: collection.name,
+                isTabu: collection.isTabu,
+                questions: collection.questions,
+                readonly: readonly,
+              )),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,68 +41,85 @@ class CollectionCard extends StatelessWidget {
         children: [
           Expanded(
             child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CollectionEditor(
-                            uuid: collection.uuid,
-                            name: collection.name,
-                            isTabu: collection.isTabu,
-                            questions: collection.questions,
-                            readonly: readonly,
-                          )),
-                );
-              },
+              onTap: () => navigateToEditor(context),
               child: Card(
-                // alignment: Alignment.center,
-
                 elevation: 2,
                 margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                // padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
-                // width: MediaQuery.of(context).size.width,
-                // decoration: BoxDecoration(
-                //   border: Border.all(color: Colors.black38, width: 0.5),
-                // ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          collection.name,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.signika(
-                            fontSize: 20,
+                child: Container(
+                  constraints: BoxConstraints(minHeight: 48),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                    flex: 1,
+                                    child: Text(
+                                      collection.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.signika(
+                                        fontSize: 16,
+                                      ),
+                                    )),
+                                SizedBox(width: 8.0),
+                                collection.isTabu
+                                    ? RawMaterialButton(
+                                        onPressed: () {},
+                                        constraints: BoxConstraints(),
+                                        padding: EdgeInsets.fromLTRB(
+                                            8.0, 4.0, 8.0, 4.0),
+                                        child: Text(
+                                          '18+',
+                                          style: new TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white,
+                                            // fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(18.0),
+                                        ),
+                                        fillColor: Colors.red.shade300,
+                                      )
+                                    : SizedBox.shrink(),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: 8.0),
-                      collection.isTabu
-                          ? Chip(
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor: Colors.red.shade300,
-                              label: Text(
-                                '18+',
-                                style: GoogleFonts.lato(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
-                              ))
-                          : SizedBox.shrink(),
-                      Opacity(
-                          opacity: readonly ? 0 : 1,
-                          child: IconButton(
-                              icon: Icon(Icons.delete_forever_rounded,
-                                  color: Theme.of(context)
-                                      .appBarTheme
-                                      .backgroundColor),
-                              onPressed: () {
-                                showAlertDialog(context);
-                              }))
-                    ],
+                        Row(
+                          children: [
+                            SizedBox(width: 8.0),
+                            readonly
+                                ? SizedBox.shrink()
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                          icon: Icon(Icons.edit_rounded,
+                                              color: Colors.grey.shade600),
+                                          onPressed: () =>
+                                              navigateToEditor(context)),
+                                      IconButton(
+                                          icon: Icon(
+                                              Icons.delete_forever_rounded,
+                                              color: Colors.grey.shade600),
+                                          onPressed: () {
+                                            showAlertDialog(context);
+                                          })
+                                    ],
+                                  )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
