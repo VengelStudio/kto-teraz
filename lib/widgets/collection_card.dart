@@ -40,49 +40,56 @@ class CollectionCard extends StatelessWidget {
                           )),
                 );
               },
-              child: Container(
-                alignment: Alignment.center,
+              child: Card(
+                // alignment: Alignment.center,
+
+                elevation: 2,
                 margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black38, width: 0.5),
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(width: 8.0),
-                    Opacity(
-                      opacity: collection.isTabu ? 1.0 : 0,
-                      child: Text(
-                        '18+',
-                        style: GoogleFonts.lato(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                // padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
+                // width: MediaQuery.of(context).size.width,
+                // decoration: BoxDecoration(
+                //   border: Border.all(color: Colors.black38, width: 0.5),
+                // ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          collection.name,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.signika(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 16.0),
-                    Expanded(
-                      child: Text(
-                        collection.name,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.signika(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Opacity(
-                        opacity: readonly ? 0 : 1,
-                        child: IconButton(
-                            icon: Icon(Icons.delete_forever_rounded,
-                                color: Theme.of(context)
-                                    .appBarTheme
-                                    .backgroundColor),
-                            onPressed: () {
-                              showAlertDialog(context);
-                            }))
-                  ],
+                      SizedBox(width: 8.0),
+                      collection.isTabu
+                          ? Chip(
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              backgroundColor: Colors.red.shade300,
+                              label: Text(
+                                '18+',
+                                style: GoogleFonts.lato(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ))
+                          : SizedBox.shrink(),
+                      Opacity(
+                          opacity: readonly ? 0 : 1,
+                          child: IconButton(
+                              icon: Icon(Icons.delete_forever_rounded,
+                                  color: Theme.of(context)
+                                      .appBarTheme
+                                      .backgroundColor),
+                              onPressed: () {
+                                showAlertDialog(context);
+                              }))
+                    ],
+                  ),
                 ),
               ),
             ),
