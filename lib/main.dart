@@ -180,7 +180,7 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "BAZA PYTAŃ",
+                    "ZESTAWY PYTAŃ",
                     style: GoogleFonts.signika(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,

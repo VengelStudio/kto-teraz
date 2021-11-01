@@ -115,11 +115,11 @@ class _CollectionEditorState extends State<CollectionEditor> {
                         contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                         enabledBorder: new OutlineInputBorder(),
                         focusedBorder: new OutlineInputBorder(),
-                        hintText: "Nazwa kolekcji",
+                        hintText: "Nazwa zestawu pytań",
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Nazwa kolekcji nie może być pusta';
+                          return 'Nazwa zastawu pytań nie może być pusta';
                         }
                         return null;
                       },

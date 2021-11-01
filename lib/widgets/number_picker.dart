@@ -39,6 +39,7 @@ class _NumberPickerState extends State<NumberPicker> {
 
     setState(() {
       _currentNumber = _currentNumber + 1;
+      widget.onChanged(_currentNumber);
     });
 
     _refreshTextField();
@@ -51,6 +52,7 @@ class _NumberPickerState extends State<NumberPicker> {
 
     setState(() {
       _currentNumber = _currentNumber - 1;
+      widget.onChanged(_currentNumber);
     });
 
     _refreshTextField();
@@ -91,8 +93,8 @@ class _NumberPickerState extends State<NumberPicker> {
                 textAlign: TextAlign.center,
                 controller: textFieldController,
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                ),
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,

@@ -128,8 +128,8 @@ class _GameState extends State<GamePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Color(0xffD30C7B)),
+                                  valueColor: AlwaysStoppedAnimation(
+                                      Theme.of(context).primaryColor),
                                 ),
                                 SizedBox(height: 20.0),
                                 Text("Ładowanie...")

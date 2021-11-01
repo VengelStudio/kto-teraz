@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kto_teraz/widgets/collection_card.dart';
 import 'package:kto_teraz/widgets/number_picker.dart';
 import '../utils/collection.dart';
 import '../utils/options.model.dart';
@@ -53,6 +54,12 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
     });
   }
 
+  handlePlayerCountChange(int value) {
+    setState(() {
+      gameOptions.numberOfPeople = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +69,28 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
         style: GoogleFonts.signika(
             fontSize: 28, fontWeight: FontWeight.bold, letterSpacing: 0),
       )),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: selectedCollections.isEmpty
+            ? Theme.of(context).appBarTheme.backgroundColor
+            : Theme.of(context).floatingActionButtonTheme.backgroundColor,
+        onPressed: () {
+          if (selectedCollections.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+              content: Text('Wybierz pytania aby kontynuować!'),
+            ));
+            return;
+          }
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => GamePage(
+                    gameOptions: gameOptions,
+                    collections: selectedCollections)),
+          );
+        },
+        child: const Icon(Icons.arrow_forward_ios_rounded,
+            size: 24, color: Colors.white),
+      ),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -89,6 +118,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       Row(
                         children: [
                           NumberPicker(
+                              initial: gameOptions.numberOfPeople,
+                              min: 2,
+                              max: 20,
                               onChanged: (value) =>
                                   handlePlayerCountChange(value)),
                         ],
@@ -101,7 +133,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                 Row(
                   children: [
                     Text(
-                      "Zakres pytań",
+                      "Wybrane zestawy pytań",
                       style: Theme.of(context).textTheme.headline4,
                       textAlign: TextAlign.start,
                     )
@@ -113,7 +145,9 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                       ? Container(
                           alignment: Alignment.center,
                           child: SizedBox(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation(
+                                    Theme.of(context).primaryColor)),
                             width: 60,
                             height: 60,
                           ),
@@ -129,31 +163,12 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                                   .withOpacity(0.08),
                                               width: 1))),
                                   child: CheckboxListTile(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 0),
-                                    title: Row(
-                                      children: [
-                                        Text(
-                                          collection.name,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1,
-                                        ),
-                                        SizedBox(width: 5.0),
-                                        Opacity(
-                                          opacity: collection.isTabu ? 1.0 : 0,
-                                          child: Text(
-                                            '18+',
-                                            style: GoogleFonts.signika(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                              letterSpacing: -0.2,
-                                              color: Colors.red,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    contentPadding: EdgeInsets.zero,
+                                    title: CollectionCard(
+                                      collection: collection,
+                                      refresh: () => {},
+                                      readonly: true,
+                                      clickable: false,
                                     ),
                                     value: selectedCollections
                                         .contains(collection),
@@ -165,35 +180,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                               .toList(),
                         ),
                 ),
-                // Divider(),
-                Container(
-                  alignment: Alignment.topRight,
-                  padding: EdgeInsets.only(bottom: 50, right: 28),
-                  child: FloatingActionButton(
-                    backgroundColor: selectedCollections.isEmpty
-                        ? Theme.of(context).appBarTheme.backgroundColor
-                        : Theme.of(context)
-                            .floatingActionButtonTheme
-                            .backgroundColor,
-                    onPressed: () {
-                      if (selectedCollections.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                          content: Text('Wybierz kolekcje pytań!'),
-                        ));
-                        return;
-                      }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => GamePage(
-                                gameOptions: gameOptions,
-                                collections: selectedCollections)),
-                      );
-                    },
-                    child: const Icon(Icons.arrow_forward_ios_rounded,
-                        size: 24, color: Colors.white),
-                  ),
-                ),
+                SizedBox(height: 100),
               ],
             ),
           ),
@@ -201,28 +188,4 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
       ),
     );
   }
-
-  showPickerNumber(BuildContext context) {
-    new Picker(
-        adapter: NumberPickerAdapter(data: [
-          NumberPickerColumn(begin: 2, end: 12),
-        ]),
-        hideHeader: true,
-        title: new Text("Wybierz liczbę graczy"),
-        textAlign: TextAlign.center,
-        confirmText: "Zapisz",
-        cancelText: "Anuluj",
-        itemExtent: 60.0,
-        textStyle: TextStyle(fontSize: 30.0, color: Colors.black),
-        selectedTextStyle: TextStyle(fontSize: 40.0),
-        cancelTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
-        confirmTextStyle: TextStyle(fontSize: 20.0, color: Colors.black),
-        onConfirm: (Picker picker, List value) {
-          setState(() {
-            gameOptions.numberOfPeople = picker.getSelectedValues()[0];
-          });
-        }).showDialog(context);
-  }
-
-  handlePlayerCountChange(int value) {}
 }
