@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
             textStyle: TextStyle(fontSize: 18.0),
             minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-            primary: Color(0xffD30C7B),
+            backgroundColor : Color(0xffD30C7B),
             shape: StadiumBorder(),
           ),
         ),
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             textStyle: TextStyle(fontSize: 18.0),
             minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-            primary: Color(0xffD30C7B),
+            backgroundColor : Color(0xffD30C7B),
             shape: StadiumBorder(
               side: BorderSide(width: 8, color: Colors.black),
             ),
@@ -60,7 +60,6 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme,
         ),
         primaryColor: Color(0xffD30C7B),
-        toggleableActiveColor: Color(0xffD30C7B),
         inputDecorationTheme: new InputDecorationTheme(
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -93,7 +92,7 @@ class HomePage extends StatelessWidget {
                   'KTO\nTERAZ?',
                   style: GoogleFonts.bebasNeue(
                       height: 0.9,
-                      textStyle: Theme.of(context).textTheme.headline4,
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
                       fontSize: 80,
                       color: Color(0xffD30C7B)
                       // fontWeight: FontWeight.w700,
@@ -110,7 +109,7 @@ class HomePage extends StatelessWidget {
                 child: Text("ZAGRAJ"),
               ),
               SizedBox(height: 20),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -120,7 +119,7 @@ class HomePage extends StatelessWidget {
                 child: Text("KOLEKCJE PYTAŃ"),
               ),
               SizedBox(height: 20),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,

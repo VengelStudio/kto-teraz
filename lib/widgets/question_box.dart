@@ -33,7 +33,7 @@ class _QuestionBoxState extends State<QuestionBox> {
 
     textFieldController.text = widget.question.text;
 
-    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
+    SchedulerBinding.instance.addPostFrameCallback((Duration _) {
       if (textFieldController.text.isEmpty) {
         widget.question.focusNode.requestFocus();
       }
