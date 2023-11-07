@@ -34,6 +34,7 @@ class CollectionCard extends StatelessWidget {
                             isTabu: collection.isTabu,
                             questions: collection.questions,
                             readonly: readonly,
+                            refresh: refresh
                           )),
                 );
               },
@@ -100,8 +101,8 @@ class CollectionCard extends StatelessWidget {
       actions: [
         CupertinoDialogAction(
           child: TextButton(
-            onPressed: () {
-              collection.deleteCollection();
+            onPressed: () async {
+              await collection.deleteCollection();
               Navigator.of(context).pop();
               refresh();
             },

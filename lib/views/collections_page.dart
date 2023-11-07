@@ -12,7 +12,7 @@ class CollectionsPage extends StatefulWidget {
 class _CollectionsState extends State<CollectionsPage> {
   var _collections = Collection.readAllCollections();
 
-  refresCollections() {
+  refreshCollections() {
     setState(() {
       _collections = Collection.readAllCollections();
     });
@@ -44,7 +44,7 @@ class _CollectionsState extends State<CollectionsPage> {
                     var collection = snapshot.data![index];
                     return CollectionCard(
                       collection: collection,
-                      refresh: refresCollections,
+                      refresh: refreshCollections,
                       readonly: collection.uuid == "kto-teraz-original" ||
                           collection.uuid == "kto-teraz-tabu",
                     );
@@ -79,6 +79,7 @@ class _CollectionsState extends State<CollectionsPage> {
                       uuid: UniqueKey().toString(),
                       name: "",
                       isTabu: false,
+                      refresh: refreshCollections,
                       questions: [])),
             );
           },

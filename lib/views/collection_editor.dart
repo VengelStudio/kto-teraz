@@ -13,6 +13,7 @@ class CollectionEditor extends StatefulWidget {
   final bool isTabu;
   final List<Question> questions;
   final bool readonly;
+  final Function refresh;
 
   CollectionEditor(
       {Key? key,
@@ -20,6 +21,7 @@ class CollectionEditor extends StatefulWidget {
       required this.name,
       required this.isTabu,
       required this.questions,
+      required this.refresh,
       this.readonly = false});
 
   @override
@@ -41,9 +43,10 @@ class _CollectionEditorState extends State<CollectionEditor> {
     collectionName = widget.name;
     isForAdults = widget.isTabu;
     questions = widget.questions;
+    
     nameFieldController.text = widget.name;
 
-    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
+    SchedulerBinding.instance.addPostFrameCallback((Duration _) {
       if (nameFieldController.text.isEmpty) {
         nameFieldFocusNode.requestFocus();
       }
@@ -70,7 +73,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
     });
   }
 
-  void onSave() {
+  void onSave() async {
     if (!_formKey.currentState!.validate()) {
       return;
     }
@@ -82,13 +85,14 @@ class _CollectionEditorState extends State<CollectionEditor> {
       questions: questions,
     );
 
-    newCollection.saveCollection();
+    await newCollection.saveCollection();
 
-    Navigator.pop(context);
+    Navigator.pop(context); // remove old, outdated list view
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => CollectionsPage()),
     );
+    widget.refresh();
   }
 
   @override
