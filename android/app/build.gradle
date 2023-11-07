@@ -22,6 +22,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace "com.vengelstudio.kto_teraz"
     compileSdkVersion flutter.compileSdkVersion
@@ -51,13 +57,20 @@ android {
         versionName flutterVersionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
-        }
-    }
+    signingConfigs {
+       release {
+           keyAlias keystoreProperties['POZNAJMYSIE_UPLOAD_KEY_ALIAS']
+           keyPassword keystoreProperties['POZNAJMYSIE_UPLOAD_KEY_PASSWORD']
+           storeFile keystoreProperties['POZNAJMYSIE_UPLOAD_STORE_FILE'] ? file(keystoreProperties['POZNAJMYSIE_UPLOAD_STORE_FILE']) : null
+           storePassword keystoreProperties['POZNAJMYSIE_UPLOAD_STORE_PASSWORD']
+       }
+   }
+
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+       }
+   }
 }
 
 flutter {
