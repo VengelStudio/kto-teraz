@@ -7,8 +7,7 @@ class QuestionCard extends StatelessWidget {
   final Winner winner;
   final Question question;
 
-  QuestionCard({Key? key, required this.winner, required this.question})
-      : super(key: key);
+  QuestionCard({Key? key, required this.winner, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +44,7 @@ class QuestionCard extends StatelessWidget {
                     Spacer(),
                     Text(
                       '(kliknij aby zamknąć)',
-                      style:
-                          TextStyle(fontSize: 15.0, color: Color(0xff555555)),
+                      style: TextStyle(fontSize: 15.0, color: Color(0xff555555)),
                     ),
                     SizedBox(
                       height: 30,

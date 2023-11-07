@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
             textStyle: TextStyle(fontSize: 18.0),
             minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-            backgroundColor : Color(0xffD30C7B),
+            backgroundColor: Color(0xffD30C7B),
             shape: StadiumBorder(),
           ),
         ),
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             textStyle: TextStyle(fontSize: 18.0),
             minimumSize: Size(220, 60),
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-            backgroundColor : Color(0xffD30C7B),
+            backgroundColor: Color(0xffD30C7B),
             shape: StadiumBorder(
               side: BorderSide(width: 8, color: Colors.black),
             ),

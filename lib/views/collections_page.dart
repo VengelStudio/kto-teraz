@@ -24,8 +24,7 @@ class _CollectionsState extends State<CollectionsPage> {
       body: SafeArea(
         child: FutureBuilder<List<Collection>>(
           future: _collections,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Collection>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<Collection>> snapshot) {
             Widget child;
             if (snapshot.hasData) {
               child = ListView.builder(
@@ -36,8 +35,7 @@ class _CollectionsState extends State<CollectionsPage> {
                       return new Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text('Kolekcje pytań',
-                            style: TextStyle(fontSize: 32.0)),
+                        child: Text('Kolekcje pytań', style: TextStyle(fontSize: 32.0)),
                       );
                     }
                     index -= 1;
@@ -45,15 +43,13 @@ class _CollectionsState extends State<CollectionsPage> {
                     return CollectionCard(
                       collection: collection,
                       refresh: refreshCollections,
-                      readonly: collection.uuid == "kto-teraz-original" ||
-                          collection.uuid == "kto-teraz-tabu",
+                      readonly: collection.uuid == "kto-teraz-original" || collection.uuid == "kto-teraz-tabu",
                     );
                   });
             } else if (snapshot.hasError) {
               child = Container(
                   alignment: Alignment.center,
-                  child: Text(snapshot.error.toString(),
-                      style: TextStyle(fontSize: 24.0)));
+                  child: Text(snapshot.error.toString(), style: TextStyle(fontSize: 24.0)));
             } else {
               child = Container(
                 alignment: Alignment.center,
