@@ -74,7 +74,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
   }
 
   void onSave() async {
-    if (!_formKey.currentState!.validate()) {
+    if (!_formKey.currentState!.validate() || questions.length == 0) {
       return;
     }
 
