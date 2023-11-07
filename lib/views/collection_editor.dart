@@ -74,7 +74,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
   }
 
   void onSave() async {
-    if (!_formKey.currentState!.validate() || questions.length == 0) {
+    if (!_formKey.currentState!.validate()) {
       return;
     }
 
@@ -210,7 +210,8 @@ class _CollectionEditorState extends State<CollectionEditor> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
               child: FloatingActionButton.extended(
-                  onPressed: onSave,
+                  onPressed: questions.length > 0 ? onSave : null,
+                  backgroundColor: questions.length > 0 ? Theme.of(context).primaryColor : Color(0xff555555),
                   icon: Icon(Icons.save),
                   label: Text(
                     "ZAPISZ",
