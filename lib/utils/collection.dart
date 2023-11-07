@@ -16,11 +16,7 @@ class Collection {
   bool isTabu;
   List<Question> questions;
 
-  Collection(
-      {required this.uuid,
-      required this.name,
-      required this.isTabu,
-      required this.questions});
+  Collection({required this.uuid, required this.name, required this.isTabu, required this.questions});
 
   void setUuid(String uuid) {
     this.uuid = uuid;
@@ -76,14 +72,12 @@ class Collection {
   }
 
   static Future<List<Collection>> readDefaultCollections() async {
-    final data =
-        await rootBundle.loadString('assets/json/defaultCollections.json');
+    final data = await rootBundle.loadString('assets/json/defaultCollections.json');
 
     return compute(parseCollections, data);
   }
 
-  factory Collection.fromJson(Map<String, dynamic> data) =>
-      _$CollectionFromJson(data);
+  factory Collection.fromJson(Map<String, dynamic> data) => _$CollectionFromJson(data);
 
   Map<String, dynamic> toJson() => _$CollectionToJson(this);
 
@@ -105,8 +99,7 @@ class Collection {
 
     final customCollections = await readCollectionsFromFile();
 
-    var isExisting =
-        customCollections.indexWhere((element) => element.uuid == this.uuid);
+    var isExisting = customCollections.indexWhere((element) => element.uuid == this.uuid);
 
     if (isExisting != -1) {
       customCollections[isExisting] = this;

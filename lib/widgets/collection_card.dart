@@ -9,12 +9,7 @@ class CollectionCard extends StatelessWidget {
   final bool readonly;
   final Function refresh;
 
-  CollectionCard(
-      {Key? key,
-      required this.collection,
-      required this.refresh,
-      this.readonly = false})
-      : super(key: key);
+  CollectionCard({Key? key, required this.collection, required this.refresh, this.readonly = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +24,12 @@ class CollectionCard extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => CollectionEditor(
-                            uuid: collection.uuid,
-                            name: collection.name,
-                            isTabu: collection.isTabu,
-                            questions: collection.questions,
-                            readonly: readonly,
-                          )),
+                          uuid: collection.uuid,
+                          name: collection.name,
+                          isTabu: collection.isTabu,
+                          questions: collection.questions,
+                          readonly: readonly,
+                          refresh: refresh)),
                 );
               },
               child: Container(
@@ -84,9 +79,7 @@ class CollectionCard extends StatelessWidget {
           else
             Opacity(
               opacity: 0,
-              child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black26),
-                  onPressed: () {}),
+              child: IconButton(icon: Icon(Icons.close, color: Colors.black26), onPressed: () {}),
             )
         ],
       ),
@@ -100,8 +93,8 @@ class CollectionCard extends StatelessWidget {
       actions: [
         CupertinoDialogAction(
           child: TextButton(
-            onPressed: () {
-              collection.deleteCollection();
+            onPressed: () async {
+              await collection.deleteCollection();
               Navigator.of(context).pop();
               refresh();
             },

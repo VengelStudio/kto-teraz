@@ -13,6 +13,7 @@ class CollectionEditor extends StatefulWidget {
   final bool isTabu;
   final List<Question> questions;
   final bool readonly;
+  final Function refresh;
 
   CollectionEditor(
       {Key? key,
@@ -20,6 +21,7 @@ class CollectionEditor extends StatefulWidget {
       required this.name,
       required this.isTabu,
       required this.questions,
+      required this.refresh,
       this.readonly = false});
 
   @override
@@ -41,9 +43,10 @@ class _CollectionEditorState extends State<CollectionEditor> {
     collectionName = widget.name;
     isForAdults = widget.isTabu;
     questions = widget.questions;
+
     nameFieldController.text = widget.name;
 
-    SchedulerBinding.instance?.addPostFrameCallback((Duration _) {
+    SchedulerBinding.instance.addPostFrameCallback((Duration _) {
       if (nameFieldController.text.isEmpty) {
         nameFieldFocusNode.requestFocus();
       }
@@ -70,7 +73,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
     });
   }
 
-  void onSave() {
+  void onSave() async {
     if (!_formKey.currentState!.validate()) {
       return;
     }
@@ -82,13 +85,14 @@ class _CollectionEditorState extends State<CollectionEditor> {
       questions: questions,
     );
 
-    newCollection.saveCollection();
+    await newCollection.saveCollection();
 
-    Navigator.pop(context);
+    Navigator.pop(context); // remove old, outdated list view
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => CollectionsPage()),
     );
+    widget.refresh();
   }
 
   @override
@@ -115,8 +119,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
                             controller: nameFieldController,
                             decoration: InputDecoration(
                               border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(
-                                      color: Theme.of(context).primaryColor)),
+                                  borderSide: new BorderSide(color: Theme.of(context).primaryColor)),
                               hintText: "Nazwa kolekcji",
                             ),
                             validator: (value) {
@@ -163,16 +166,13 @@ class _CollectionEditorState extends State<CollectionEditor> {
                     return TextButton(
                         onPressed: onAddQuestion,
                         child: Container(
-                            margin:
-                                EdgeInsets.only(top: 16, bottom: 32, left: 16),
+                            margin: EdgeInsets.only(top: 16, bottom: 32, left: 16),
                             child: Row(
                               children: [
-                                Icon(Icons.add,
-                                    color: Theme.of(context).primaryColor),
+                                Icon(Icons.add, color: Theme.of(context).primaryColor),
                                 Text(
                                   "Dodaj pytanie",
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor),
+                                  style: TextStyle(color: Theme.of(context).primaryColor),
                                 ),
                               ],
                             )));
@@ -200,13 +200,12 @@ class _CollectionEditorState extends State<CollectionEditor> {
           ),
         ),
         floatingActionButton: Visibility(
-            visible: !widget.readonly &&
-                MediaQuery.of(context).viewInsets.bottom == 0,
+            visible: !widget.readonly && MediaQuery.of(context).viewInsets.bottom == 0,
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
               child: FloatingActionButton.extended(
-                  onPressed: onSave,
+                  onPressed: questions.length > 0 ? onSave : null,
+                  backgroundColor: questions.length > 0 ? Theme.of(context).primaryColor : Color(0xff555555),
                   icon: Icon(Icons.save),
                   label: Text(
                     "ZAPISZ",

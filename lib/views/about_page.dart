@@ -24,10 +24,7 @@ class _AboutPageState extends State<AboutPage> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Kto teraz?',
-                          style: TextStyle(
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffD30C7B)),
+                          style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: Color(0xffD30C7B)),
                         ),
                       ),
                       Row(
@@ -47,10 +44,7 @@ class _AboutPageState extends State<AboutPage> {
                             padding: const EdgeInsets.only(top: 20, bottom: 5),
                             child: Text(
                               "Developerzy",
-                              style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xffD30C7B)),
+                              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xffD30C7B)),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -73,10 +67,7 @@ class _AboutPageState extends State<AboutPage> {
                         padding: const EdgeInsets.only(top: 20, bottom: 5),
                         child: Text(
                           "Wsparcie",
-                          style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffD30C7B)),
+                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xffD30C7B)),
                         ),
                       ),
                       SizedBox(height: 20),
