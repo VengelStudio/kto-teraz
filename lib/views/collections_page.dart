@@ -12,7 +12,7 @@ class CollectionsPage extends StatefulWidget {
 class _CollectionsState extends State<CollectionsPage> {
   var _collections = Collection.readAllCollections();
 
-  refresCollections() {
+  refreshCollections() {
     setState(() {
       _collections = Collection.readAllCollections();
     });
@@ -24,8 +24,7 @@ class _CollectionsState extends State<CollectionsPage> {
       body: SafeArea(
         child: FutureBuilder<List<Collection>>(
           future: _collections,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Collection>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<Collection>> snapshot) {
             Widget child;
             if (snapshot.hasData) {
               child = ListView.builder(
@@ -36,24 +35,21 @@ class _CollectionsState extends State<CollectionsPage> {
                       return new Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text('Kolekcje pytań',
-                            style: TextStyle(fontSize: 32.0)),
+                        child: Text('Kolekcje pytań', style: TextStyle(fontSize: 32.0)),
                       );
                     }
                     index -= 1;
                     var collection = snapshot.data![index];
                     return CollectionCard(
                       collection: collection,
-                      refresh: refresCollections,
-                      readonly: collection.uuid == "kto-teraz-original" ||
-                          collection.uuid == "kto-teraz-tabu",
+                      refresh: refreshCollections,
+                      readonly: collection.uuid == "kto-teraz-original" || collection.uuid == "kto-teraz-tabu",
                     );
                   });
             } else if (snapshot.hasError) {
               child = Container(
                   alignment: Alignment.center,
-                  child: Text(snapshot.error.toString(),
-                      style: TextStyle(fontSize: 24.0)));
+                  child: Text(snapshot.error.toString(), style: TextStyle(fontSize: 24.0)));
             } else {
               child = Container(
                 alignment: Alignment.center,
@@ -79,6 +75,7 @@ class _CollectionsState extends State<CollectionsPage> {
                       uuid: UniqueKey().toString(),
                       name: "",
                       isTabu: false,
+                      refresh: refreshCollections,
                       questions: [])),
             );
           },

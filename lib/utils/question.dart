@@ -11,8 +11,7 @@ class Question {
 
   Question({required this.text});
 
-  factory Question.fromJson(Map<String, dynamic> data) =>
-      _$QuestionFromJson(data);
+  factory Question.fromJson(Map<String, dynamic> data) => _$QuestionFromJson(data);
 
   Map<String, dynamic> toJson() => _$QuestionToJson(this);
 
@@ -25,15 +24,10 @@ class QuestionManager {
   int questionIndex = 0;
   List<Question> _questions = [];
 
-  static Future<QuestionManager> create(
-      BuildContext context, List<Collection> collections) async {
+  static Future<QuestionManager> create(BuildContext context, List<Collection> collections) async {
     var component = QuestionManager();
 
-    component._questions = collections
-        .map((collection) => collection.questions)
-        .toList()
-        .expand((i) => i)
-        .toList();
+    component._questions = collections.map((collection) => collection.questions).toList().expand((i) => i).toList();
 
     component._questions.shuffle();
 

@@ -123,8 +123,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                             .map(
                               (collection) => new Container(
                                 child: CheckboxListTile(
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 24),
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 24),
                                   title: Row(
                                     children: [
                                       Opacity(
@@ -146,10 +145,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                                       ),
                                     ],
                                   ),
-                                  value:
-                                      selectedCollections.contains(collection),
-                                  onChanged: (bool? value) =>
-                                      _toggleCollection(value, collection),
+                                  value: selectedCollections.contains(collection),
+                                  onChanged: (bool? value) => _toggleCollection(value, collection),
                                 ),
                               ),
                             )
@@ -166,8 +163,7 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (selectedCollections.isEmpty) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(new SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
                             content: Text('Wybierz kolekcje pytań!'),
                           ));
                           return;
@@ -175,9 +171,8 @@ class _GameOptionsPageState extends State<GameOptionsPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GamePage(
-                                  gameOptions: gameOptions,
-                                  collections: selectedCollections)),
+                              builder: (context) =>
+                                  GamePage(gameOptions: gameOptions, collections: selectedCollections)),
                         );
                       },
                       child: Text(

@@ -40,8 +40,7 @@ class _GameState extends State<GamePage> {
   );
 
   _loadQuestions() async {
-    var createdManager =
-        await QuestionManager.create(context, widget.collections);
+    var createdManager = await QuestionManager.create(context, widget.collections);
 
     setState(() {
       questionManager = createdManager;
@@ -58,8 +57,7 @@ class _GameState extends State<GamePage> {
               child: Emojis.getTransformedEmoji(player.emoji),
               style: FortuneItemStyle(
                 color: player.color, // <-- custom circle slice fill color
-                borderColor:
-                    Colors.black38, // <-- custom circle slice stroke color
+                borderColor: Colors.black38, // <-- custom circle slice stroke color
                 borderWidth: 1, // <-- custom circle slice stroke width
               ),
             ))
@@ -73,10 +71,7 @@ class _GameState extends State<GamePage> {
       int winnerId = Random().nextInt(players.length);
       controller.add(winnerId);
 
-      winner = new Winner(
-          id: winnerId,
-          color: players[winnerId].color,
-          emoji: players[winnerId].emoji);
+      winner = new Winner(id: winnerId, color: players[winnerId].color, emoji: players[winnerId].emoji);
     });
   }
 
@@ -108,8 +103,7 @@ class _GameState extends State<GamePage> {
                               color: Colors.transparent,
                               shadowColor: Colors.black,
                               elevation: 8,
-                              clipper:
-                                  ShapeBorderClipper(shape: CircleBorder()),
+                              clipper: ShapeBorderClipper(shape: CircleBorder()),
                               child: FortuneWheel(
                                 physics: CircularPanPhysics(
                                   duration: Duration(seconds: nextDurationInS),
@@ -128,8 +122,7 @@ class _GameState extends State<GamePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Color(0xffD30C7B)),
+                                  valueColor: AlwaysStoppedAnimation(Color(0xffD30C7B)),
                                 ),
                                 SizedBox(height: 20.0),
                                 Text("Ładowanie...")
@@ -150,10 +143,7 @@ class _GameState extends State<GamePage> {
                     decoration: BoxDecoration(color: Colors.black45),
                     alignment: Alignment.topCenter,
                     padding: new EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * .68,
-                        right: 20.0,
-                        left: 20.0,
-                        bottom: 20),
+                        top: MediaQuery.of(context).size.height * .68, right: 20.0, left: 20.0, bottom: 20),
                     child: new Container(
                       width: MediaQuery.of(context).size.width,
                       child: new Container(
@@ -172,9 +162,7 @@ class _GameState extends State<GamePage> {
                                   children: [
                                     TextSpan(
                                       text: "❯ ",
-                                      style: TextStyle(
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                      style: TextStyle(color: Theme.of(context).primaryColor),
                                     ),
                                     TextSpan(
                                       text: "Każdy wybiera swoje pole\n",
@@ -182,13 +170,10 @@ class _GameState extends State<GamePage> {
                                     ),
                                     TextSpan(
                                       text: "❯ ",
-                                      style: TextStyle(
-                                          color:
-                                              Theme.of(context).primaryColor),
+                                      style: TextStyle(color: Theme.of(context).primaryColor),
                                     ),
                                     TextSpan(
-                                      text:
-                                          "Wylosowany gracz odpowiada na pytanie",
+                                      text: "Wylosowany gracz odpowiada na pytanie",
                                       style: TextStyle(color: Colors.black87),
                                     ),
                                   ],
@@ -197,8 +182,7 @@ class _GameState extends State<GamePage> {
                               Spacer(),
                               Text(
                                 '(kliknij aby zamknąć)',
-                                style: TextStyle(
-                                    fontSize: 12.0, color: Color(0xff555555)),
+                                style: TextStyle(fontSize: 12.0, color: Color(0xff555555)),
                               ),
                             ]),
                           ),
