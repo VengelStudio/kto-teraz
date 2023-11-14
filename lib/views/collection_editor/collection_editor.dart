@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import '../utils/collection.dart';
-import '../utils/question.dart';
-import '../widgets/question_box.dart';
+import '../../utils/collection.dart';
+import '../../utils/question.dart';
+import '../../widgets/question_box.dart';
 import 'package:collection/collection.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'collections_page.dart';
+import '../collections_page.dart';
+import 'widgets/add_question_button.dart';
+import 'widgets/adult_switch.dart';
+import 'widgets/collection_name_form.dart';
 
 class CollectionEditor extends StatefulWidget {
   final String uuid;
@@ -112,48 +114,24 @@ class _CollectionEditorState extends State<CollectionEditor> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Form(
-                          key: _formKey,
-                          child: TextFormField(
-                            focusNode: nameFieldFocusNode,
-                            controller: nameFieldController,
-                            decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                                  borderSide: new BorderSide(color: Theme.of(context).primaryColor)),
-                              hintText: "Nazwa kolekcji",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Nazwa kolekcji nie może być pusta';
-                              }
-                              return null;
-                            },
-                            onChanged: onNameChanged,
-                            readOnly: widget.readonly,
-                          )),
+                      child: CollectionNameForm(
+                        formKey: _formKey,
+                        controller: nameFieldController,
+                        focusNode: nameFieldFocusNode,
+                        readonly: widget.readonly,
+                        onNameChanged: onNameChanged,
+                      ),
                     ),
                     SizedBox(width: 16),
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            "18+",
-                            style: GoogleFonts.lato(),
-                          ),
-                          Switch(
-                            value: isForAdults,
-                            onChanged: widget.readonly
-                                ? null
-                                : (value) {
-                                    setState(() {
-                                      isForAdults = !isForAdults;
-                                    });
-                                  },
-                            activeColor: Theme.of(context).primaryColor,
-                          ),
-                        ],
-                      ),
-                    )
+                    AdultSwitch(
+                      isForAdults: isForAdults,
+                      readonly: widget.readonly,
+                      onChanged: (value) {
+                        setState(() {
+                          isForAdults = !isForAdults;
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -163,19 +141,7 @@ class _CollectionEditorState extends State<CollectionEditor> {
                 itemCount: questions.length + 1,
                 itemBuilder: (context, index) {
                   if (index == questions.length) {
-                    return TextButton(
-                        onPressed: onAddQuestion,
-                        child: Container(
-                            margin: EdgeInsets.only(top: 16, bottom: 32, left: 16),
-                            child: Row(
-                              children: [
-                                Icon(Icons.add, color: Theme.of(context).primaryColor),
-                                Text(
-                                  "Dodaj pytanie",
-                                  style: TextStyle(color: Theme.of(context).primaryColor),
-                                ),
-                              ],
-                            )));
+                    return AddQuestionButton(onPressed: onAddQuestion);
                   }
 
                   return Padding(
@@ -200,12 +166,16 @@ class _CollectionEditorState extends State<CollectionEditor> {
           ),
         ),
         floatingActionButton: Visibility(
-            visible: !widget.readonly && MediaQuery.of(context).viewInsets.bottom == 0,
+            visible: !widget.readonly &&
+                MediaQuery.of(context).viewInsets.bottom == 0,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 42.0),
               child: FloatingActionButton.extended(
                   onPressed: questions.length > 0 ? onSave : null,
-                  backgroundColor: questions.length > 0 ? Theme.of(context).primaryColor : Color(0xff555555),
+                  backgroundColor: questions.length > 0
+                      ? Theme.of(context).primaryColor
+                      : Color(0xff555555),
                   icon: Icon(Icons.save),
                   label: Text(
                     "ZAPISZ",

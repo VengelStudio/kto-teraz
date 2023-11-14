@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../utils/collection.dart';
-import '../views/collection_editor.dart';
+import '../views/collection_editor/collection_editor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CollectionCard extends StatelessWidget {

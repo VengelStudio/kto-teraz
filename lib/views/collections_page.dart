@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/collection.dart';
 import '../widgets/collection_card.dart';
 
-import 'collection_editor.dart';
+import 'collection_editor/collection_editor.dart';
 
 class CollectionsPage extends StatefulWidget {
   @override
